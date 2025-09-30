@@ -154,15 +154,13 @@ a:hover {
     overflow: hidden;
 }
 
-/* PLACEHOLDER: Hero background image */
 .hero-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--gray-800) 100%);
-    /* Replace with: background: url('../images/parking-lot-empty.jpg') center/cover; */
+    background: url('../images/empty_parking_lot.jpeg') center/cover;
 }
 
 .hero-overlay {

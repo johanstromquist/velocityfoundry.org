@@ -36,8 +36,8 @@ velocityfoundry.org/
 │   │   ├── assessment.js   # Assessment logic
 │   │   ├── calculators.js  # Interactive calculators
 │   │   └── blog-loader.js  # Blog post loader
-│   ├── downloads/          # Template files (add your PDFs/Excel here)
-│   └── images/             # Image assets
+│   ├── downloads/          # Template PDFs and Excel files (all included)
+│   └── images/             # Hero images, blog images, book cover
 └── blog/
     ├── posts.js            # Blog post manifest
     └── post-template.html  # Template for new posts
@@ -59,21 +59,25 @@ velocityfoundry.org/
 
 ### Adding a Blog Post
 
-1. Copy `blog/post-template.html` to `blog/2025-01-your-post.html`
+1. Copy `blog/post-template.html` to `blog/YYYY-MM-your-post.html`
 2. Edit the content in your new file
-3. Add entry to `blog/posts.js`:
+3. Add a hero image to `assets/images/` (optional)
+4. Add entry to `blog/posts.js`:
 
 ```javascript
 {
-    slug: '2025-01-your-post',
+    slug: 'YYYY-MM-your-post',
     title: 'Your Post Title',
-    date: '2025-01-15',
+    date: 'YYYY-MM-DD',
     excerpt: 'Brief description...',
-    readTime: '5 min'
+    readTime: '5 min',
+    image: 'assets/images/your-image.jpg'  // optional
 }
 ```
 
-4. Commit and push - GitHub Pages will deploy automatically
+5. Commit and push - GitHub Pages will deploy automatically
+
+**Current blog posts:** 5 published articles on organizational velocity
 
 ### Adding Tools/Templates
 
@@ -81,23 +85,31 @@ velocityfoundry.org/
 2. Update links in `tools.html`
 3. Commit and push
 
-## 🖼️ Image Placeholders
+## 🖼️ Images
 
-The following sections need images added:
+All images are in place:
 
-- **Homepage hero** (`index.html`) - Empty parking lot at 5:30 PM
-- **Book cover** (`book.html`) - The Velocity Framework book cover
-
-Search for "PLACEHOLDER" comments in the HTML files to find exact locations.
+- **Homepage hero** (`index.html`) - Empty parking lot at golden hour
+- **Book cover** (`book.html`) - The Velocity Framework cover
+- **Blog hero images** - Featured images for all blog posts
+- **Blog card images** - Thumbnail images for blog listing
 
 ## 🚢 Deployment
 
-This site is designed for GitHub Pages:
+**Status: Live at https://velocityfoundry.org/** 🚀
 
-1. Push to your GitHub repository
-2. Enable GitHub Pages in repository settings
-3. Set source to main branch / root directory
-4. Optional: Add custom domain (CNAME file)
+Deployed via GitHub Pages:
+- Repository: https://github.com/johanstromquist/velocityfoundry.org
+- Branch: main (root directory)
+- Custom domain: velocityfoundry.org
+- DNS: Configured via Network Solutions
+- HTTPS: Available (enforce via GitHub Pages settings)
+
+To deploy changes:
+1. Make edits locally
+2. Commit: `git add . && git commit -m "Description"`
+3. Push: `git push`
+4. GitHub Pages auto-deploys (1-2 minutes)
 
 ## 🛠️ Local Development
 
