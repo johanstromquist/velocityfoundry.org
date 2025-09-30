@@ -1,46 +1,44 @@
 # Quick Start Guide
 
-## Getting Your Site Live in 5 Minutes
+## Site Status
 
-### Step 1: Initial Setup (1 minute)
+✅ **Repository**: https://github.com/johanstromquist/velocityfoundry.org
+✅ **GitHub Pages**: Enabled
+🌐 **Live Site**: http://velocityfoundry.org/
 
-1. Create a new GitHub repository named `velocityfoundry.org`
-2. Push this directory to the repository:
+### What's Already Done
 
-```bash
-cd /path/to/velocityfoundry.org
-git init
-git add .
-git commit -m "Initial commit: Velocity Foundry website"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/velocityfoundry.org.git
-git push -u origin main
-```
+- Git repository initialized
+- Code pushed to GitHub
+- GitHub Pages enabled from main branch
+- Custom domain configured (velocityfoundry.org)
 
-### Step 2: Enable GitHub Pages (1 minute)
+### Next Step: Configure DNS at Network Solutions
 
-1. Go to repository Settings → Pages
-2. Under "Source", select "main" branch and "/" (root)
-3. Click Save
-4. Wait 1-2 minutes for deployment
+To complete the custom domain setup, configure these DNS records in Network Solutions:
 
-Your site will be live at `https://YOUR_USERNAME.github.io/velocityfoundry.org/`
+1. Log into Network Solutions
+2. Go to Domain Management → Manage DNS
+3. Add/update these records:
 
-### Step 3: Add Custom Domain (Optional, 2 minutes)
+**CNAME Record:**
+- Host: `www`
+- Points to: `johanstromquist.github.io`
+- TTL: 3600 (or default)
 
-1. In your domain registrar (e.g., Namecheap, GoDaddy):
-   - Add CNAME record: `www` → `YOUR_USERNAME.github.io`
-   - Add A records for apex domain:
-     - `185.199.108.153`
-     - `185.199.109.153`
-     - `185.199.110.153`
-     - `185.199.111.153`
+**A Records (for apex domain):**
+- Host: `@` (or leave blank)
+- Points to (add 4 separate records):
+  - `185.199.108.153`
+  - `185.199.109.153`
+  - `185.199.110.153`
+  - `185.199.111.153`
+- TTL: 3600 (or default)
 
-2. In GitHub Pages settings:
-   - Enter `velocityfoundry.org` in "Custom domain"
-   - Enable "Enforce HTTPS" (after DNS propagates)
+4. Wait for DNS propagation (up to 48 hours, usually 1-2 hours)
+5. Once DNS propagates, enable "Enforce HTTPS" in GitHub Pages settings
 
-### Step 4: Add Essential Content (Before Launch)
+### Add Essential Content (Before Launch)
 
 #### 1. Replace Image Placeholders
 

@@ -37,13 +37,18 @@
                 day: 'numeric'
             });
 
+            const imageHtml = post.image ? `<div class="post-image"><img src="${post.image}" alt="${post.title}" /></div>` : '';
+
             postCard.innerHTML = `
-                <time class="post-date">${formattedDate}</time>
-                <h3><a href="blog/${post.slug}.html">${post.title}</a></h3>
-                <p class="post-excerpt">${post.excerpt}</p>
-                <div class="post-meta">
-                    <span class="read-time">${post.readTime}</span>
-                    <a href="blog/${post.slug}.html" class="read-more">Read more →</a>
+                ${imageHtml}
+                <div class="post-card-content">
+                    <time class="post-date">${formattedDate}</time>
+                    <h3><a href="blog/${post.slug}.html">${post.title}</a></h3>
+                    <p class="post-excerpt">${post.excerpt}</p>
+                    <div class="post-meta">
+                        <span class="read-time">${post.readTime}</span>
+                        <a href="blog/${post.slug}.html" class="read-more">Read more →</a>
+                    </div>
                 </div>
             `;
 

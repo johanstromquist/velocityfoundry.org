@@ -250,6 +250,7 @@ a:hover {
 .btn-secondary {
     background: var(--gray-100);
     color: var(--navy);
+    white-space: nowrap;
 }
 
 .btn-secondary:hover {
