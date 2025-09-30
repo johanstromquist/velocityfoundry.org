@@ -1,0 +1,32 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temp files
+*.tmp
+*.bak
+
+# Logs
+*.log
+
+# Don't ignore these (keep placeholder folders)
+!assets/downloads/.gitkeep
+!assets/images/.gitkeep
+
+# Auto-coders
+.claude/
+CLAUDE.md
+AGENT.md
+
+# Python
+venv/
+
+# References
+references/

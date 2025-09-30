@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Velocity Foundry</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <style>
+        .error-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-lg);
+        }
+        .error-content {
+            max-width: 600px;
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--blue);
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+        }
+        .error-message {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: var(--space-md);
+        }
+        .error-description {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            margin-bottom: var(--space-lg);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <a href="index.html" class="nav-logo">Velocity Foundry</a>
+            <ul class="nav-menu">
+                <li><a href="assess.html">Assess</a></li>
+                <li><a href="tools.html">Tools</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="error-container">
+        <div class="error-content fade-in-up">
+            <div class="error-code">404</div>
+            <h1 class="error-message">Page Not Found</h1>
+            <p class="error-description">
+                This page doesn't exist. Like organizational friction, it should disappear.
+            </p>
+            <a href="index.html" class="cta-primary">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

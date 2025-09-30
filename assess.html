@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover your organization's velocity score and identify your biggest bottleneck in 2 minutes.">
+    <title>Velocity Assessment - Velocity Foundry</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/assessment.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <a href="index.html" class="nav-logo">Velocity Foundry</a>
+            <ul class="nav-menu">
+                <li><a href="assess.html" class="active">Assess</a></li>
+                <li><a href="tools.html">Tools</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Assessment Container -->
+    <main class="assessment-container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen fade-in-up">
+            <div class="screen-content">
+                <h1>The Velocity Assessment</h1>
+                <p class="lead">Answer 15 quick questions to discover your organization's true velocity score.</p>
+                <div class="assessment-info">
+                    <div class="info-item">
+                        <span class="icon icon-clock blue"></span>
+                        <span>2 minutes</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon icon-lock blue"></span>
+                        <span>Stored locally</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon icon-chart blue"></span>
+                        <span>Instant results</span>
+                    </div>
+                </div>
+                <button class="cta-primary large" id="start-btn">Start Assessment →</button>
+            </div>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="question-screen" class="screen" style="display: none;">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+                <div class="progress-text" id="progress-text">Question 1 of 15</div>
+            </div>
+
+            <!-- Question Content -->
+            <div class="question-content fade-in-up">
+                <div class="question-number" id="question-number"></div>
+                <h2 class="question-text" id="question-text"></h2>
+                <p class="question-helper" id="question-helper"></p>
+
+                <!-- Answer Options -->
+                <div class="answer-options" id="answer-options"></div>
+
+                <!-- Navigation -->
+                <div class="question-nav">
+                    <button class="btn-outline" id="prev-btn" style="visibility: hidden;">← Previous</button>
+                    <button class="cta-primary" id="next-btn">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen" style="display: none;">
+            <div class="results-content fade-in-up">
+                <h1>Your Velocity Score</h1>
+
+                <!-- Score Display -->
+                <div class="score-display">
+                    <div class="score-circle">
+                        <div class="score-number" id="total-score">0</div>
+                        <div class="score-max">/ 40.5</div>
+                    </div>
+                    <div class="score-level" id="score-level"></div>
+                </div>
+
+                <!-- Comparison -->
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">Industry Average</div>
+                        <div class="comparison-bar">
+                            <div class="comparison-fill" style="width: 46%"></div>
+                        </div>
+                        <div class="comparison-value">18.7 / 40.5</div>
+                    </div>
+                    <div class="comparison-item highlight">
+                        <div class="comparison-label">Your Score</div>
+                        <div class="comparison-bar">
+                            <div class="comparison-fill your-score" id="your-score-bar"></div>
+                        </div>
+                        <div class="comparison-value" id="your-score-text">0 / 40.5</div>
+                    </div>
+                </div>
+
+                <!-- Breakdown -->
+                <div class="score-breakdown">
+                    <h3>Score Breakdown</h3>
+                    <div class="breakdown-grid">
+                        <div class="breakdown-item">
+                            <div class="breakdown-category">Decision Velocity</div>
+                            <div class="breakdown-score" id="decision-score">0 / 10.5</div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-category">Information Flow</div>
+                            <div class="breakdown-score" id="information-score">0 / 7.5</div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-category">Problem Resolution</div>
+                            <div class="breakdown-score" id="problem-score">0 / 7.5</div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-category">Organizational Efficiency</div>
+                            <div class="breakdown-score" id="efficiency-score">0 / 5.0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="recommendations">
+                    <h3>Your Biggest Constraint</h3>
+                    <div class="constraint-card">
+                        <div class="icon icon-target xlarge blue"></div>
+                        <h4 id="constraint-title"></h4>
+                        <p id="constraint-description"></p>
+                    </div>
+
+                    <h3>Recommended First Rock</h3>
+                    <div class="rock-card">
+                        <div class="icon icon-rock xlarge blue"></div>
+                        <h4 id="rock-title"></h4>
+                        <p id="rock-description"></p>
+                        <div class="rock-impact" id="rock-impact"></div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="results-actions">
+                    <a href="tools.html" class="cta-primary large">Download Rock Canvas →</a>
+                    <button class="btn-outline" id="save-pdf-btn">Save Results as PDF</button>
+                    <button class="btn-outline" id="retake-btn">Retake Assessment</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/assessment-questions.js"></script>
+    <script src="assets/js/assessment.js"></script>
+</body>
+</html>
