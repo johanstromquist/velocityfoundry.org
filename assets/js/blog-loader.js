@@ -20,8 +20,27 @@
             return;
         }
 
+        // Filter out posts that are scheduled for future publication
+        const now = new Date();
+        const publishedPosts = posts.filter(post => {
+            // If no publishDate is set, the post is published immediately
+            if (!post.publishDate) return true;
+
+            // Otherwise, check if the publish date has passed
+            const publishDate = new Date(post.publishDate);
+            return publishDate <= now;
+        });
+
+        // Check if there are any published posts
+        if (publishedPosts.length === 0) {
+            if (noPosts) {
+                noPosts.style.display = 'block';
+            }
+            return;
+        }
+
         // Sort posts by date (newest first)
-        const sortedPosts = [...posts].sort((a, b) => {
+        const sortedPosts = [...publishedPosts].sort((a, b) => {
             return new Date(b.date) - new Date(a.date);
         });
 
