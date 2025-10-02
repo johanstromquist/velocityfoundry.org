@@ -26,8 +26,8 @@
             // If no publishDate is set, the post is published immediately
             if (!post.publishDate) return true;
 
-            // Otherwise, check if the publish date has passed
-            const publishDate = new Date(post.publishDate);
+            // Parse publishDate as UTC at 12:00 (noon)
+            const publishDate = new Date(post.publishDate + 'T12:00:00Z');
             return publishDate <= now;
         });
 

@@ -17,10 +17,19 @@
 
 const posts = [
     {
+        slug: '2025-10-platos-dialogue-on-agi',
+        title: 'Plato\'s Dialogue on AGI',
+        date: '2025-10-20',
+        publishDate: '2025-10-20',
+        excerpt: 'Socrates would have laughed at our AGI debates. While we argue about whether AI is "truly intelligent," we\'re missing what\'s actually happening - and making the same philosophical error ancient Athens already solved.',
+        readTime: '9 min',
+        image: 'assets/images/Socrates.png'
+    },
+    {
         slug: '2025-10-operationalizing-velocity-os',
         title: 'Operationalizing Velocity OS: From Committee Speed to Continuous Speed',
-        date: '2025-10-07',
-        publishDate: '2025-10-06',
+        date: '2025-10-13',
+        publishDate: '2025-10-13',
         excerpt: 'The Velocity Operating System isn\'t philosophy - it\'s mechanics. Five core components that work together to eliminate organizational friction and move from committee speed to continuous speed.',
         readTime: '10 min',
         image: 'assets/images/parking-lot.png'
