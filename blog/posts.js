@@ -17,10 +17,19 @@
 
 const posts = [
     {
-        slug: '2025-10-platos-dialogue-on-agi',
-        title: 'Plato\'s Dialogue on AGI',
+        slug: '2025-10-from-friction-to-velocity',
+        title: 'From Friction to Velocity: How Your Support Functions Can Make You Accelerate',
         date: '2025-10-20',
         publishDate: '2025-10-20',
+        excerpt: 'Most organizations operate at 5% efficiency. Not because people aren\'t working hard, but because 95% of their energy goes into overcoming internal friction. What if the very functions we built to manage complexity are actually creating it?',
+        readTime: '8 min',
+        image: 'assets/images/hamster.jpg'
+    },
+    {
+        slug: '2025-10-platos-dialogue-on-agi',
+        title: 'Plato\'s Dialogue on AGI',
+        date: '2025-10-08',
+        publishDate: '2025-10-08',
         excerpt: 'Socrates would have laughed at our AGI debates. While we argue about whether AI is "truly intelligent," we\'re missing what\'s actually happening - and making the same philosophical error ancient Athens already solved.',
         readTime: '9 min',
         image: 'assets/images/Socrates.png'

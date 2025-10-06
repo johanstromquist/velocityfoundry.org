@@ -291,11 +291,40 @@
     margin-top: var(--space-lg);
     padding-top: var(--space-md);
     border-top: 2px solid var(--gray-200);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
 }
 
 .post-nav a {
     color: var(--blue);
     font-weight: 600;
+    transition: color 200ms;
+}
+
+.post-nav a:hover {
+    color: var(--navy);
+}
+
+.post-nav-prev {
+    font-size: 0.9375rem;
+    text-align: left;
+    max-width: 40%;
+}
+
+.post-nav-next {
+    font-size: 0.9375rem;
+    text-align: right;
+    max-width: 40%;
+}
+
+.post-nav-all {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
 }
 
 /* === RESPONSIVE === */

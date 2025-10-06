@@ -11,33 +11,15 @@
     <link rel="stylesheet" href="../assets/css/blog.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container">
-            <a href="../index.html" class="nav-logo">
-                <img src="../assets/images/logo.png" alt="Velocity Foundry Logo">
-                <span>Velocity Foundry</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="../assess.html">Assess</a></li>
-                <li><a href="../tools.html">Tools</a></li>
-                <li><a href="../book.html">Book</a></li>
-                <li><a href="../blog.html">Blog</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
 
     <!-- Post Content -->
-    <article class="container" style="padding: var(--space-xl) var(--space-md);">
-        <nav class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);">
-            <a href="../blog.html">← All Posts</a>
-        </nav>
-
-        <header class="post-header">
-            <time>October 13, 2025</time>
-            <h1>Operationalizing Velocity OS: From Committee Speed to Continuous Speed</h1>
-            <p class="post-byline">By Johan Strömquist</p>
-        </header>
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
 
         <div class="post-content">
             <p>In a previous post, we explored why biotechs run at committee speed when they could run at continuous speed. Why decisions that contain 90 minutes of actual work take 336 hours to complete. Why your parking lot is full at 9 PM not because the work is hard, but because your organization is broken.</p>
@@ -173,39 +155,15 @@
             <p>- Johan Strömquist, SSI Strategy</p>
         </div>
 
-        <nav class="post-nav">
-            <a href="../blog.html">← Back to all posts</a>
-        </nav>
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
     </article>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About</h4>
-                    <p>By Johan Strömquist, President & Chief Innovation Officer at SSI Strategy / NDA Group</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Email: <a href="mailto:johan.stromquist@ssistrategy.com">johan.stromquist@ssistrategy.com</a></p>
-                    <p>LinkedIn: <a href="https://linkedin.com/in/johanstromquist" target="_blank">@johanstromquist</a></p>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="../assess.html">Velocity Assessment</a></li>
-                        <li><a href="../tools.html">Templates & Tools</a></li>
-                        <li><a href="../book.html">The Book</a></li>
-                        <li><a href="../blog.html">Blog</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Johan Strömquist. All rights reserved.</p>
-                <p class="footer-motto">Transform faster. Deliver sooner. Live better.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
 </body>
 </html>
