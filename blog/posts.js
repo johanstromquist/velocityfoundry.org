@@ -26,6 +26,15 @@ const posts = [
         image: 'assets/images/hamster.jpg'
     },
     {
+        slug: '2025-10-the-bio-tech-stack',
+        title: 'The Bio Tech Stack: Golden Paths for Every Biotech',
+        date: '2025-10-06',
+        publishDate: '2025-10-06 14:00:00',
+        excerpt: '80% of biotech operations follow predictable patterns. We\'re all special snowflakes doing identical administrative work. Stop rebuilding these processes from scratch and start assembling your Bio Tech Stack.',
+        readTime: '7 min',
+        image: 'assets/images/techstack.png'
+    },
+    {
         slug: '2025-10-platos-dialogue-on-agi',
         title: 'Plato\'s Dialogue on AGI',
         date: '2025-10-08',
