@@ -86,7 +86,7 @@ const posts = [
         publishDate: '2025-10-13',
         excerpt: 'The Velocity Operating System isn\'t philosophy - it\'s mechanics. Five core components that work together to eliminate organizational friction and move from committee speed to continuous speed.',
         readTime: '10 min',
-        image: 'assets/images/parking-lot.png'
+        image: 'assets/images/switchboard.png'
     },
     {
         slug: '2025-09-velocity-os',
