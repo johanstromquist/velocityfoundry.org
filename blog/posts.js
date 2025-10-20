@@ -17,6 +17,42 @@
 
 const posts = [
     {
+        slug: '2025-11-kill-the-redlines',
+        title: 'Kill the Redlines',
+        date: '2025-11-17',
+        publishDate: '2025-11-17',
+        excerpt: 'It\'s 10 PM on a Thursday. You\'re on email round 17, negotiating an NDA that\'s 98% identical to the last 50. Nine hours on a document that will never be read again. And this isn\'t unusual. This is Thursday.',
+        readTime: '13 min',
+        image: 'assets/images/racing_yacht.png'
+    },
+    {
+        slug: '2025-11-the-capability-engine',
+        title: 'The Capability Engine',
+        date: '2025-11-10',
+        publishDate: '2025-11-10',
+        excerpt: 'It\'s Tuesday, 9:15 AM. Your new hire is sitting in reception. No laptop. No access badge. Six hours of coordination that requires zero HR expertise. And this isn\'t unusual. This is Tuesday.',
+        readTime: '10 min',
+        image: 'assets/images/song_bird.png'
+    },
+    {
+        slug: '2025-11-the-continuous-close',
+        title: 'The Continuous Close',
+        date: '2025-11-03',
+        publishDate: '2025-11-03',
+        excerpt: 'It\'s 8 PM on a Tuesday. You\'re searching for a $47,000 variance. Another missed family dinner. Four hours to find a mistake that took four seconds to make. The worst part? Next month, everything you\'re doing tonight will be worthless.',
+        readTime: '11 min',
+        image: 'assets/images/beans.png'
+    },
+    {
+        slug: '2025-10-its-great-escape',
+        title: 'IT\'s Great Escape',
+        date: '2025-10-27',
+        publishDate: '2025-10-27',
+        excerpt: 'Your ticket queue has 47 requests. Your team works nights and weekends. You\'re not building anymore—you\'re drowning. Here\'s the truth: In the Velocity age, your survival depends on making most of what you do today unnecessary.',
+        readTime: '12 min',
+        image: 'assets/images/walkway.png'
+    },
+    {
         slug: '2025-10-from-friction-to-velocity',
         title: 'From Friction to Velocity: How Your Support Functions Can Make You Accelerate',
         date: '2025-10-20',
