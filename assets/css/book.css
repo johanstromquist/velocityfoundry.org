@@ -218,6 +218,11 @@
         text-align: center;
     }
 
+    .dimensions-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
     .book-cover {
         margin: 0 auto var(--space-md);
         width: 250px;

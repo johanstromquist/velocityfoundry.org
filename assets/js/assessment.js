@@ -228,10 +228,13 @@
             totalScore += weighted;
         }
 
+        // Calculate maxTotal dynamically from MAX_SCORES
+        const maxTotal = Object.values(MAX_SCORES).reduce((sum, val) => sum + val, 0);
+
         return {
             total: totalScore,
             categories: weightedScores,
-            maxTotal: 30.5 // Sum of all MAX_SCORES
+            maxTotal: maxTotal
         };
     }
 
@@ -299,9 +302,16 @@
 
         // Total score
         document.getElementById('total-score').textContent = scores.total.toFixed(1);
+        document.getElementById('score-max').textContent = `/ ${scores.maxTotal.toFixed(1)}`;
         document.getElementById('score-level').textContent =
             `${level.level} (${level.capacity} capacity)`;
         document.getElementById('score-level').style.color = level.color;
+
+        // Industry average (46% of max score)
+        const industryAverage = scores.maxTotal * 0.46;
+        document.getElementById('industry-score-text').textContent =
+            `${industryAverage.toFixed(1)} / ${scores.maxTotal.toFixed(1)}`;
+        document.getElementById('industry-bar').style.width = '46%';
 
         // Score bar
         const percentage = (scores.total / scores.maxTotal) * 100;

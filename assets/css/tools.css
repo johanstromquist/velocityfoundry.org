@@ -551,6 +551,11 @@
 
     .tools-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+
+    .tool-card {
+        padding: var(--space-md);
     }
 
     .tool-actions {

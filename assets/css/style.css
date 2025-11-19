@@ -485,6 +485,14 @@ a:hover {
         gap: var(--space-sm);
     }
 
+    .nav-logo span {
+        display: none;
+    }
+
+    .hide-mobile {
+        display: none;
+    }
+
     .hero {
         flex-direction: column;
         min-height: auto;

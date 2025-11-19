@@ -63,7 +63,8 @@ function getPublishedPosts() {
     const now = new Date();
     return posts.filter(post => {
         if (!post.publishDate) return true;
-        const publishDate = new Date(post.publishDate);
+        // Parse publishDate as UTC at 12:00 (noon) to match blog-loader.js
+        const publishDate = new Date(post.publishDate + 'T12:00:00Z');
         return publishDate <= now;
     });
 }
