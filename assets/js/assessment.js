@@ -315,11 +315,14 @@
 
         // Score bar
         const percentage = (scores.total / scores.maxTotal) * 100;
-        alert(`DEBUG: Percentage=${percentage}, Total=${scores.total}, Max=${scores.maxTotal}`);
         const yourScoreBar = document.getElementById('your-score-bar');
         if (yourScoreBar) {
+            // Try multiple methods to set the width
             yourScoreBar.style.width = percentage + '%';
-            alert(`DEBUG: Set bar width to ${percentage}%. Current style.width = ${yourScoreBar.style.width}`);
+            yourScoreBar.style.setProperty('width', percentage + '%', 'important');
+            yourScoreBar.setAttribute('style', `width: ${percentage}% !important;`);
+
+            alert(`DEBUG: Set width to ${percentage}%\nComputed width: ${yourScoreBar.style.width}\nOffsetWidth: ${yourScoreBar.offsetWidth}px\nParent width: ${yourScoreBar.parentElement.offsetWidth}px`);
         } else {
             alert('ERROR: your-score-bar element NOT FOUND!');
         }
