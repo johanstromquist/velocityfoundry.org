@@ -143,6 +143,93 @@
     padding: var(--space-xl) 0;
 }
 
+/* === CHAPTER TABS === */
+.chapter-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 2px solid var(--gray-200);
+    padding-bottom: 0;
+}
+
+.chapter-tab {
+    background: transparent;
+    border: none;
+    color: var(--gray-600);
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 200ms ease-out;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    position: relative;
+    text-align: center;
+    line-height: 1.4;
+    min-width: 180px;
+}
+
+.chapter-tab:hover {
+    color: var(--navy);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* Velocity Framework tabs - Navy/Gray theme */
+.chapter-tab.velocity-tab {
+    color: #475569;
+}
+
+.chapter-tab.velocity-tab:hover {
+    color: #1e293b;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.05) 0%, rgba(51, 65, 85, 0.05) 100%);
+}
+
+.chapter-tab.velocity-tab.active {
+    color: #1e293b;
+    border-bottom-color: #334155;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.08) 0%, rgba(51, 65, 85, 0.08) 100%);
+    font-weight: 600;
+}
+
+/* On Change tabs - Red theme */
+.chapter-tab.change-tab {
+    color: #9f1239;
+}
+
+.chapter-tab.change-tab:hover {
+    color: #7f1d1d;
+    background: linear-gradient(135deg, rgba(74, 14, 14, 0.05) 0%, rgba(153, 27, 27, 0.05) 100%);
+}
+
+.chapter-tab.change-tab.active {
+    color: #7f1d1d;
+    border-bottom-color: #991b1b;
+    background: linear-gradient(135deg, rgba(74, 14, 14, 0.08) 0%, rgba(153, 27, 27, 0.08) 100%);
+    font-weight: 600;
+}
+
+.chapter-tab-content {
+    display: none;
+}
+
+.chapter-tab-content.active {
+    display: block;
+    animation: fadeIn 400ms ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .book-chapter {
     background: white;
     border-radius: var(--border-radius);
@@ -261,5 +348,25 @@
     .book-chapter p,
     .book-chapter li {
         font-size: 1rem;
+    }
+
+    .chapter-tabs {
+        flex-direction: column;
+        gap: 0.5rem;
+        border-bottom: none;
+    }
+
+    .chapter-tab {
+        width: 100%;
+        text-align: left;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        padding: 0.75rem 1rem;
+    }
+
+    .chapter-tab.active {
+        border-bottom: none;
+        border-left-color: var(--blue);
+        background: rgba(59, 130, 246, 0.05);
     }
 }

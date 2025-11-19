@@ -51,7 +51,7 @@
                     </p>
                     <div class="book-actions">
                         <a href="https://www.amazon.com/dp/B0G2PWP93P" target="_blank" rel="noopener noreferrer" class="cta-primary large">Get the Series on Amazon →</a>
-                        <a href="#velocity-framework" class="btn-outline on-dark">Read Free Chapters ↓</a>
+                        <a href="#free-chapters" class="btn-outline on-dark">Read Free Chapters ↓</a>
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="book-actions fade-in-up" style="animation-delay: 0.4s">
                         <a href="https://www.amazon.com/dp/B0G2PWP93P" target="_blank" rel="noopener noreferrer" class="cta-primary large">Get the Series →</a>
-                        <a href="#velocity-foreword" class="btn-outline on-dark">Read Free Chapters ↓</a>
+                        <a href="#free-chapters" class="btn-outline on-dark">Read Free Chapters ↓</a>
                     </div>
                 </div>
             </div>
@@ -241,7 +241,7 @@
                     </div>
                     <div class="book-actions fade-in-up" style="animation-delay: 0.4s">
                         <a href="https://www.amazon.com/dp/B0G2PWP93P" target="_blank" rel="noopener noreferrer" class="cta-primary large" style="background: white; color: #7f1d1d; border: none;">Get the Series →</a>
-                        <a href="#on-change-foreword" class="btn-outline on-dark">Read Free Chapter ↓</a>
+                        <a href="#free-chapters" class="btn-outline on-dark" onclick="document.querySelector('[data-tab=change-foreword-tab]').click();">Read Free Chapter ↓</a>
                     </div>
                 </div>
             </div>
@@ -318,9 +318,27 @@
         </div>
     </section>
 
-    <!-- Free Content - Velocity Framework -->
-    <section id="velocity-foreword" class="book-content-section">
+    <!-- Free Chapter Excerpts -->
+    <section id="free-chapters" class="book-content-section">
         <div class="content-container">
+            <h2 style="text-align: center; color: var(--navy); font-size: 2.5rem; margin-bottom: var(--space-lg);">Free Chapter Excerpts</h2>
+
+            <div class="chapter-tabs">
+                <button class="chapter-tab velocity-tab active" data-tab="velocity-foreword-tab">
+                    <strong>The Velocity Framework</strong><br>
+                    <span style="font-size: 0.875rem; font-weight: 400;">Foreword</span>
+                </button>
+                <button class="chapter-tab velocity-tab" data-tab="velocity-prologue-tab">
+                    <strong>The Velocity Framework</strong><br>
+                    <span style="font-size: 0.875rem; font-weight: 400;">Prologue</span>
+                </button>
+                <button class="chapter-tab change-tab" data-tab="change-foreword-tab">
+                    <strong>On Change</strong><br>
+                    <span style="font-size: 0.875rem; font-weight: 400;">Foreword</span>
+                </button>
+            </div>
+
+            <div id="velocity-foreword-tab" class="chapter-tab-content active">
             <article class="book-chapter fade-in-up">
                 <div class="chapter-meta" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);">The Velocity Framework - Free Chapter - Foreword</div>
                 <h2>Foreword: Fieri Iussit</h2>
@@ -422,7 +440,9 @@
                     <a href="https://www.amazon.com/dp/B0G2PWP93P" target="_blank" rel="noopener noreferrer" class="cta-primary">Get the Complete Series →</a>
                 </div>
             </article>
+            </div>
 
+            <div id="velocity-prologue-tab" class="chapter-tab-content">
             <article class="book-chapter fade-in-up">
                 <div class="chapter-meta" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);">The Velocity Framework - Free Chapter - Prologue</div>
                 <h2>Your Organization Runs at 5% Capacity</h2>
@@ -603,12 +623,9 @@
                     <a href="https://www.amazon.com/dp/B0G2PWP93P" target="_blank" rel="noopener noreferrer" class="cta-primary">Get the Complete Series →</a>
                 </div>
             </article>
-        </div>
-    </section>
+            </div>
 
-    <!-- Free Content - On Change -->
-    <section id="on-change-foreword" class="book-content-section" style="background: #f8f9fa;">
-        <div class="content-container">
+            <div id="change-foreword-tab" class="chapter-tab-content">
             <article class="book-chapter fade-in-up">
                 <div class="chapter-meta" style="background: linear-gradient(135deg, #4a0e0e 0%, #8b1e3f 50%, #991b1b 100%);">On Change - Free Chapter - Foreword</div>
                 <h2>Foreword: The Missing Dimension</h2>
@@ -769,6 +786,7 @@
                     <a href="https://www.amazon.com/dp/B0G2PWP93P" target="_blank" rel="noopener noreferrer" class="cta-primary">Get the Complete Series →</a>
                 </div>
             </article>
+            </div>
         </div>
     </section>
 
@@ -801,5 +819,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Chapter tab switching functionality
+        document.querySelectorAll('.chapter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-tab');
+                const section = this.closest('.book-content-section');
+
+                // Remove active class from all tabs and content in this section
+                section.querySelectorAll('.chapter-tab').forEach(t => t.classList.remove('active'));
+                section.querySelectorAll('.chapter-tab-content').forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                document.getElementById(targetId).classList.add('active');
+
+                // Smooth scroll to top of section
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
 </body>
 </html>
