@@ -30,6 +30,7 @@ venv/
 
 # References
 references/
+linkedin/
 
 # Blog preview files (not for public)
 blog/all_posts.html
