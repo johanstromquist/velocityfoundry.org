@@ -3,14 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Your organization operates at 5% of its potential. The Velocity Framework shows you how to achieve breakthrough speed in biotech.">
-    <title>Velocity Foundry - Breakthrough Biotechs at Breakthrough Speed</title>
+    <meta name="description" content="Your organization operates at 5% of its potential. Two books show you how to achieve breakthrough speed with your people.">
+    <title>Velocity Foundry - Transform Faster With Your People</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/icons.css">
+    <style>
+        /* === NEW BOOK ANNOUNCEMENT BANNER - REMOVE AFTER CAMPAIGN === */
+        .announcement-banner {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .announcement-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .announcement-text {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .announcement-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .announcement-message {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .announcement-message strong {
+            font-weight: 700;
+        }
+
+        .announcement-cta {
+            display: inline-block;
+            background: white;
+            color: #dc2626;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .announcement-cta:hover {
+            background: #fef2f2;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .announcement-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+            line-height: 1;
+        }
+
+        .announcement-close:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .announcement-content {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .announcement-text {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .announcement-cta {
+                width: 100%;
+                text-align: center;
+            }
+
+            .announcement-close {
+                position: absolute;
+                top: 0.5rem;
+                right: 1rem;
+            }
+        }
+
+        /* === HERO BOOK OVERLAY - REMOVE AFTER CAMPAIGN === */
+        .hero-book-overlay {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            max-width: 500px;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.95) 0%, rgba(153, 27, 27, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+
+        .hero-book-content {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .hero-book-cover {
+            flex-shrink: 0;
+            width: 140px;
+        }
+
+        .hero-book-cover img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-book-text {
+            flex: 1;
+            color: white;
+        }
+
+        .hero-book-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-book-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 0 0.25rem 0;
+            line-height: 1.2;
+        }
+
+        .hero-book-subtitle {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin: 0 0 1rem 0;
+            font-weight: 500;
+        }
+
+        .hero-book-blurb {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0 0 1.5rem 0;
+            opacity: 0.95;
+        }
+
+        .hero-book-cta {
+            display: inline-block;
+            background: white;
+            color: #dc2626;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .hero-book-cta:hover {
+            background: #fef2f2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-book-overlay {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin: -4rem auto 2rem;
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-book-overlay {
+                margin: -2rem 1rem 2rem;
+                padding: 1.5rem;
+            }
+
+            .hero-book-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-book-cover {
+                width: 160px;
+            }
+
+            .hero-book-title {
+                font-size: 1.75rem;
+            }
+        }
+        /* === END HERO BOOK OVERLAY STYLES === */
+        /* === END ANNOUNCEMENT BANNER STYLES === */
+    </style>
 </head>
 <body>
+    <!-- NEW BOOK ANNOUNCEMENT BANNER - REMOVE AFTER CAMPAIGN -->
+    <div id="announcement-banner" class="announcement-banner" style="display: none;">
+        <div class="announcement-content">
+            <div class="announcement-text">
+                <span class="announcement-badge">New Release</span>
+                <span class="announcement-message">
+                    <strong>On Change</strong> is now available — Move fast AND bring people with you
+                </span>
+            </div>
+            <a href="book.html" class="announcement-cta">Get the Book →</a>
+            <button class="announcement-close" onclick="dismissBanner()" aria-label="Close announcement">×</button>
+        </div>
+    </div>
+    <script>
+        // Banner dismissal logic - REMOVE AFTER CAMPAIGN
+        function dismissBanner() {
+            document.getElementById('announcement-banner').style.display = 'none';
+            localStorage.setItem('onChangeBannerDismissed', 'true');
+        }
+
+        // Show banner if not dismissed
+        if (!localStorage.getItem('onChangeBannerDismissed')) {
+            document.getElementById('announcement-banner').style.display = 'block';
+        }
+    </script>
+    <!-- END ANNOUNCEMENT BANNER -->
+
     <!-- Navigation -->
     <nav class="nav">
         <div class="container">
@@ -40,6 +310,23 @@
                 <a href="assess.html" class="cta-primary" style="white-space: nowrap;">Take the 2-Minute Assessment →</a>
             </div>
         </div>
+
+        <!-- NEW BOOK HERO OVERLAY - REMOVE AFTER CAMPAIGN -->
+        <div class="hero-book-overlay fade-in-up" style="animation-delay: 0.3s;">
+            <div class="hero-book-content">
+                <div class="hero-book-cover">
+                    <img src="assets/images/On_Change_Cover_Kindle.jpg" alt="On Change Book Cover">
+                </div>
+                <div class="hero-book-text">
+                    <div class="hero-book-badge">New Release</div>
+                    <h2 class="hero-book-title">On Change</h2>
+                    <p class="hero-book-subtitle">A Velocity Framework Companion</p>
+                    <p class="hero-book-blurb">Most transformations fail at Day 45. This book shows you how to move with urgency AND empathy—so your people follow instead of resist.</p>
+                    <a href="book.html" class="hero-book-cta">Get the Book →</a>
+                </div>
+            </div>
+        </div>
+        <!-- END BOOK HERO OVERLAY -->
     </section>
 
     <!-- Three Paths Section -->
@@ -63,8 +350,8 @@
                 <div class="path-card fade-in-up" style="animation-delay: 0.3s">
                     <div class="icon icon-book large blue"></div>
                     <h3>Learn</h3>
-                    <p>Read the framework that's transforming biotech organizations worldwide.</p>
-                    <a href="book.html" class="btn-secondary">Read Book →</a>
+                    <p>Two books. Complete transformation. The physics and the people.</p>
+                    <a href="book.html" class="btn-secondary">Read Books →</a>
                 </div>
             </div>
         </div>
@@ -131,7 +418,7 @@
                     <ul>
                         <li><a href="assess.html">Velocity Assessment</a></li>
                         <li><a href="tools.html">Templates & Tools</a></li>
-                        <li><a href="book.html">The Book</a></li>
+                        <li><a href="book.html">The Books</a></li>
                         <li><a href="blog.html">Blog</a></li>
                     </ul>
                 </div>

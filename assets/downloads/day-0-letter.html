@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter to Your Future Self - Day 0</title>
+    <style>
+        @media print {
+            body { margin: 0; padding: 20px; }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #1e293b;
+            background: #f8f9fa;
+        }
+        h1 {
+            color: #991b1b;
+            border-bottom: 3px solid #991b1b;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .intro {
+            background: #fef2f2;
+            border-left: 4px solid #991b1b;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        .letter-container {
+            background: #fffbeb;
+            border: 2px solid #f59e0b;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        .letter-form {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #991b1b;
+        }
+        .download-btn {
+            width: 100%;
+            padding: 18px;
+            background: #991b1b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .download-btn:hover {
+            background: #7f1d1d;
+        }
+        .tip {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .tip strong {
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+    <h1>Letter to Your Future Self</h1>
+
+    <div class="intro">
+        <p><strong>You're about to start a transformation. This letter is your anchor for Day 45.</strong></p>
+        <p>At Day 45, you'll doubt everything. The skeptics will be loud. You'll be exhausted. You'll wonder if you made the right call.</p>
+        <p><strong>This letter—written by you, today, with clarity—will remind you why you started and why you must continue.</strong></p>
+    </div>
+
+    <div class="tip">
+        <strong>When to write this:</strong> Right now, before you launch your transformation. Before the doubt sets in. While you still have clarity.
+        <br><br>
+        <strong>When to read it:</strong> At Day 45, when you're in the messy middle and questioning everything.
+    </div>
+
+    <div class="letter-container">
+        <h2 style="margin-top: 0; color: #92400e;">Fill Out Your Letter</h2>
+
+        <div class="letter-form">
+            <label>1. Why are you starting this transformation?</label>
+            <textarea id="letter-why" rows="4" placeholder="What problem are you solving? What happens if you do nothing? Why does this matter?"></textarea>
+
+            <label>2. What does success look like?</label>
+            <textarea id="letter-success" rows="4" placeholder="When this works, what will be different? How will people's work lives improve? What specific outcomes will prove this was worth it?"></textarea>
+
+            <label>3. What do you already know will be hard?</label>
+            <textarea id="letter-hard" rows="4" placeholder="What resistance do you expect? What will make you doubt? What skeptical voices can you already hear?"></textarea>
+
+            <label>4. What are you committing to?</label>
+            <textarea id="letter-commitment" rows="4" placeholder="How long will you give this? What would be valid reasons to stop vs invalid reasons driven by fear or fatigue?"></textarea>
+
+            <label>5. Who's counting on you?</label>
+            <textarea id="letter-people" rows="3" placeholder="Who believed in this? Who will benefit if you push through? Whose work lives will improve?"></textarea>
+        </div>
+
+        <button onclick="downloadLetter()" class="download-btn">
+            ↓ Download Your Letter (Save for Day 45)
+        </button>
+    </div>
+
+    <div class="tip">
+        <strong>What to do with your letter:</strong>
+        <ul style="margin: 10px 0 0 0;">
+            <li>Download it and save it somewhere you won't lose it</li>
+            <li>Set a calendar reminder for Day 45 of your transformation</li>
+            <li>When that reminder hits, open this letter and read it before making any decisions about retreating</li>
+        </ul>
+    </div>
+
+    <p style="text-align: center; margin-top: 40px; color: #64748b;">
+        From <em>On Change: A Velocity Framework Companion</em> by Johan Strömquist
+    </p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script>
+        function downloadLetter() {
+            const why = document.getElementById('letter-why').value.trim();
+            const success = document.getElementById('letter-success').value.trim();
+            const hard = document.getElementById('letter-hard').value.trim();
+            const commitment = document.getElementById('letter-commitment').value.trim();
+            const people = document.getElementById('letter-people').value.trim();
+
+            if (!why && !success && !hard && !commitment && !people) {
+                alert('Please fill in at least one section before downloading.');
+                return;
+            }
+
+            const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            // Define the PDF document
+            const docDefinition = {
+                pageSize: 'LETTER',
+                pageMargins: [60, 80, 60, 60],
+                defaultStyle: {
+                    fontSize: 11,
+                    lineHeight: 1.5
+                },
+                styles: {
+                    header: {
+                        fontSize: 18,
+                        bold: true,
+                        alignment: 'center',
+                        color: '#991b1b',
+                        margin: [0, 0, 0, 5]
+                    },
+                    subheader: {
+                        fontSize: 10,
+                        italics: true,
+                        alignment: 'center',
+                        color: '#666666',
+                        margin: [0, 0, 0, 30]
+                    },
+                    sectionTitle: {
+                        fontSize: 10,
+                        bold: true,
+                        color: '#991b1b',
+                        margin: [0, 20, 0, 8]
+                    },
+                    body: {
+                        fontSize: 11,
+                        margin: [0, 0, 0, 15]
+                    },
+                    italicBody: {
+                        fontSize: 11,
+                        italics: true,
+                        color: '#555555',
+                        margin: [0, 0, 0, 15]
+                    },
+                    closing: {
+                        fontSize: 12,
+                        bold: true,
+                        margin: [0, 15, 0, 5]
+                    },
+                    signature: {
+                        fontSize: 11,
+                        italics: true,
+                        color: '#666666',
+                        margin: [0, 30, 0, 0]
+                    },
+                    footer: {
+                        fontSize: 9,
+                        alignment: 'center',
+                        color: '#666666',
+                        margin: [0, 20, 0, 0]
+                    }
+                },
+                content: [
+                    // Header
+                    { text: 'LETTER TO MY FUTURE SELF', style: 'header' },
+                    {
+                        text: [
+                            'Written on ' + today + '\n',
+                            'To be opened at Day 45 of transformation'
+                        ],
+                        style: 'subheader'
+                    },
+                    {
+                        canvas: [{
+                            type: 'line',
+                            x1: 0, y1: 0,
+                            x2: 475, y2: 0,
+                            lineWidth: 2,
+                            lineColor: '#991b1b'
+                        }],
+                        margin: [0, 0, 0, 30]
+                    },
+
+                    // Salutation
+                    { text: 'Dear Future Me,', style: 'body', margin: [0, 0, 0, 20] },
+
+                    // Opening
+                    {
+                        stack: [
+                            { text: 'If you\'re reading this, you\'re at Day 45 and it\'s hard.', style: 'italicBody', margin: [15, 0, 15, 5] },
+                            { text: 'You\'re doubting whether this was the right call. You\'re exhausted. The skeptics are loud. You\'re wondering if you should just go back to the old way, even though you know it was broken.', style: 'italicBody', margin: [15, 0, 15, 5] },
+                            { text: 'This letter is from Past You—the version of you who had clarity, who saw the problem clearly, who knew why this change was necessary.', style: 'italicBody', margin: [15, 0, 15, 5] },
+                            { text: 'Read this carefully before you make any decisions about stopping.', style: 'italicBody', bold: true, margin: [15, 0, 15, 0] }
+                        ],
+                        fillColor: '#fef2f2',
+                        margin: [0, 0, 0, 20]
+                    },
+
+                    // Section 1
+                    { text: 'WHY WE STARTED THIS', style: 'sectionTitle' },
+                    { text: why || '[You didn\'t fill this in, but you know why you started this.]', style: 'body' },
+
+                    // Section 2
+                    { text: 'WHAT SUCCESS LOOKS LIKE', style: 'sectionTitle' },
+                    { text: success || '[You didn\'t fill this in, but you had a vision.]', style: 'body' },
+
+                    // Section 3
+                    { text: 'WHAT YOU KNEW WOULD BE HARD', style: 'sectionTitle' },
+                    { text: hard || '[You didn\'t fill this in, but you expected resistance.]', style: 'body', margin: [0, 0, 0, 10] },
+                    { text: 'You\'re experiencing exactly what you predicted you would experience. This doesn\'t mean you were wrong to start. It means you\'re in the messy middle.', style: 'italicBody' },
+
+                    // Section 4
+                    { text: 'WHAT YOU COMMITTED TO', style: 'sectionTitle' },
+                    { text: commitment || '[You didn\'t fill this in, but you made a commitment.]', style: 'body' },
+
+                    // Section 5
+                    { text: 'WHO\'S COUNTING ON YOU', style: 'sectionTitle' },
+                    { text: people || '[You didn\'t fill this in, but people are counting on you.]', style: 'body', margin: [0, 0, 0, 10] },
+                    { text: 'These people are still counting on you. Their work lives are still suffering under the old broken system. They need you to push through the messy middle.', style: 'italicBody' },
+
+                    // Reminder box
+                    {
+                        stack: [
+                            { text: 'The doubt you\'re feeling is normal. It doesn\'t mean you\'re wrong. It means you\'re exactly where every successful transformation has to go through.', bold: true, margin: [0, 0, 0, 10] },
+                            { text: 'At Day 45, five predictable things are happening:', bold: true, margin: [0, 10, 0, 5] },
+                            {
+                                ol: [
+                                    'The old is gone, the new isn\'t working perfectly yet',
+                                    'Competence has temporarily decreased',
+                                    'The skeptics are louder',
+                                    'Early wins have worn off, big wins aren\'t visible yet',
+                                    'You\'re doubting yourself'
+                                ],
+                                margin: [0, 0, 0, 10]
+                            },
+                            { text: 'All of this is supposed to happen. You knew it would happen. That\'s why you wrote this letter.', margin: [0, 0, 0, 0] }
+                        ],
+                        fillColor: '#fffbeb',
+                        margin: [0, 20, 0, 20]
+                    },
+
+                    // Closing
+                    { text: 'The best work you\'ll ever do is 45 days past the point where you wanted to stop.', style: 'closing', margin: [0, 20, 0, 10] },
+                    { text: 'Don\'t stop now.', style: 'closing', fontSize: 11 },
+                    { text: 'Keep going.', style: 'closing', fontSize: 14, margin: [0, 10, 0, 0] },
+
+                    // Signature
+                    { text: '— Past You, who had clarity', style: 'signature' },
+
+                    // Footer
+                    {
+                        canvas: [{
+                            type: 'line',
+                            x1: 0, y1: 0,
+                            x2: 475, y2: 0,
+                            lineWidth: 2,
+                            lineColor: '#991b1b'
+                        }],
+                        margin: [0, 40, 0, 15]
+                    },
+                    { text: 'From "On Change: A Velocity Framework Companion" by Johan Strömquist\nDay 0 Letter to Future Self Tool', style: 'footer' }
+                ]
+            };
+
+            // Generate and download PDF
+            pdfMake.createPdf(docDefinition).download('day-0-letter-to-future-self.pdf');
+        }
+    </script>
+</body>
+</html>

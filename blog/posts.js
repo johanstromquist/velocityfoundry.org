@@ -17,6 +17,87 @@
 
 const posts = [
     {
+        slug: '2025-11-on-change-release',
+        title: 'On Change is Live',
+        date: '2025-11-19',
+        publishDate: '2025-11-19',
+        excerpt: 'After watching 300+ transformations, I wrote the book I wish existed at Day 45—when doubt peaks and most transformations die. On Change is live today.',
+        readTime: '5 min',
+        image: 'assets/images/On_Change_Cover_Kindle.jpg'
+    },
+    {
+        slug: '2026-01-compassionate-revolutionary',
+        title: 'The Compassionate Revolutionary: Why You Don\'t Have to Choose Between Speed and Humanity',
+        date: '2026-01-13',
+        publishDate: '2026-01-13',
+        excerpt: 'The leader who sees 95% waste with perfect clarity AND feels the human cost with perfect empathy—they\'re not different people. They\'re the same person, holding both truths simultaneously. That\'s the compassionate revolutionary.',
+        readTime: '12 min',
+        image: 'assets/images/Formula1.png'
+    },
+    {
+        slug: '2026-01-transformation-failure',
+        title: 'Why Your Successful 90-Day Transformation Will Fail in 18 Months',
+        date: '2026-01-06',
+        publishDate: '2026-01-06',
+        excerpt: 'Twelve successful Rocks over eighteen months. Protocol amendments from 42 days to 28 hours. Then everything regressed. This is the Sustainability Gap—and why most transformations fail long after they \'succeed.\'',
+        readTime: '14 min',
+        image: 'assets/images/switchboard.png'
+    },
+    {
+        slug: '2025-12-day-45',
+        title: 'Day 45: The Moment Every Transformation Almost Dies (And How to Survive It)',
+        date: '2025-12-30',
+        publishDate: '2025-12-30',
+        excerpt: 'The timeline is slipping. Key people have been pulled away. Pilot results are good but not spectacular. Sarah, your Rock Owner, just asked for \'a conversation about scope.\' Welcome to Day 45—the moment every transformation almost dies.',
+        readTime: '13 min',
+        image: 'assets/images/walkway.png'
+    },
+    {
+        slug: '2025-12-coalition-72-hours',
+        title: 'How to Build a Change Coalition in 72 Hours (While Your Competitors Spend 6 Months)',
+        date: '2025-12-23',
+        publishDate: '2025-12-23',
+        excerpt: 'Traditional stakeholder mapping takes six months. You have 72 hours from Rock assignment to launch. Here\'s how to build a change coalition that protects your transformation—before you need it.',
+        readTime: '11 min',
+        image: 'assets/images/techstack.png'
+    },
+    {
+        slug: '2025-12-three-categories',
+        title: 'The Three Categories Every Person Falls Into During Transformation (And What You Owe Each One)',
+        date: '2025-12-16',
+        publishDate: '2025-12-16',
+        excerpt: 'When AI and automation eliminate roles, every person falls into one of three categories. What you owe each one determines whether your transformation succeeds or fails—and whether you\'re remembered as a leader or a coward.',
+        readTime: '13 min',
+        image: 'assets/images/song_bird.png'
+    },
+    {
+        slug: '2025-12-reading-resistance',
+        title: 'Your CMC Team Isn\'t Blocking You—They\'re Trying to Save Your Ass',
+        date: '2025-12-09',
+        publishDate: '2025-12-09',
+        excerpt: 'A VP almost fired her entire CMC team for \'blocking\' transformation. Twenty minutes later, she discovered they were trying to save her from a manufacturing shutdown. Resistance is information—if you know how to listen.',
+        readTime: '12 min',
+        image: 'assets/images/rapids.png'
+    },
+    {
+        slug: '2025-12-change-management-tax',
+        title: 'The $900 Billion Change Management Tax (And Why Speed Isn\'t the Enemy)',
+        date: '2025-12-02',
+        publishDate: '2025-12-02',
+        excerpt: 'McKinsey data shows $900B wasted on failed digital transformations. The myth: choose between speed and change management. The reality: bad change management slows you down, good change management accelerates transformation.',
+        readTime: '11 min',
+        image: 'assets/images/beans.png'
+    },
+    {
+        slug: '2025-11-i-lied-to-you',
+        title: 'I Lied to You About Organizational Transformation',
+        date: '2025-11-25',
+        publishDate: '2025-11-25',
+        excerpt: 'I wrote The Velocity Framework as if transformation were purely mechanical. I knew better. This is the confession about what was missing—and why you needed the anger before the empathy.',
+        readTime: '10 min',
+        image: 'assets/images/hamster.jpg'
+    },
+    {
         slug: '2025-11-kill-the-redlines',
         title: 'Kill the Redlines',
         date: '2025-11-17',

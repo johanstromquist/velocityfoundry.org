@@ -21,6 +21,12 @@
             case 'number':
                 renderNumberGenerator();
                 break;
+            case 'resistance':
+                renderResistanceMapper();
+                break;
+            case 'velocity-diagnostic':
+                renderVelocityDiagnostic();
+                break;
         }
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -579,6 +585,528 @@
                 examples,
                 validation
             };
+        }
+
+        render();
+    }
+
+    // === RESISTANCE MAPPING TOOL ===
+    function renderResistanceMapper() {
+        const state = {
+            resistances: [],
+            editingIndex: null
+        };
+
+        const categoryDefinitions = {
+            technical: {
+                type: 'Technical',
+                color: 'var(--blue)',
+                response: 'Test claim & adapt',
+                rationale: 'Listen carefully - likely revealing real plan gaps or technical constraints. Verify the claim and adjust your plan if accurate.'
+            },
+            political: {
+                type: 'Political',
+                color: 'var(--amber)',
+                response: 'Navigate politics',
+                rationale: 'Not about your plan - revealing power dynamics and organizational politics. Map the politics and either navigate or address directly with executive support.'
+            },
+            cultural: {
+                type: 'Cultural',
+                color: 'var(--green)',
+                response: 'Check values fit',
+                rationale: 'Listen carefully - revealing values conflicts. Determine if there\'s a values-compatible approach to achieve the same outcome.'
+            },
+            personal: {
+                type: 'Personal',
+                color: 'var(--purple)',
+                response: 'Provide support',
+                rationale: 'Don\'t change your plan - provide individual support and address concerns about transition.'
+            }
+        };
+
+        function render() {
+            const hasResistances = state.resistances.length > 0;
+
+            container.innerHTML = `
+                <div class="calculator">
+                    <h3>Resistance Mapping Tool</h3>
+                    <p class="calc-intro">Map each resistance you're facing. Select the category and the tool will suggest the right response strategy.</p>
+
+                    <div class="resistance-form" style="background: var(--gray-50); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4 style="margin-bottom: 1rem; font-size: 1rem;">Add Resistance</h4>
+
+                        <div style="display: grid; gap: 1rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Who (person or group)</label>
+                                <input type="text" id="who-input" placeholder="e.g., VP of Quality, Site coordinators, Regulatory team" style="width: 100%; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 4px;">
+                            </div>
+
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">What they said (verbatim objection)</label>
+                                <textarea id="what-input" rows="2" placeholder="e.g., 'This won't pass FDA inspection' or 'We don't have time to learn a new system'" style="width: 100%; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 4px; resize: vertical;"></textarea>
+                            </div>
+
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Their role/expertise</label>
+                                <input type="text" id="role-input" placeholder="e.g., 20-year regulatory expert, New site coordinator, Process owner" style="width: 100%; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 4px;">
+                            </div>
+
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">What's at stake for them</label>
+                                <input type="text" id="stake-input" placeholder="e.g., Job security, Reputation, Workload increase, Control over process" style="width: 100%; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 4px;">
+                            </div>
+
+                            <div>
+                                <label style="display: block; margin-bottom: 0.75rem; font-weight: 500; font-size: 0.875rem;">Resistance Category</label>
+                                <div style="display: grid; gap: 0.5rem;">
+                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="if(!this.querySelector('input').checked) this.style.borderColor='var(--gray-300)'">
+                                        <input type="radio" name="category" value="technical" style="margin-right: 0.75rem; margin-top: 0.25rem;">
+                                        <div>
+                                            <strong style="color: var(--blue);">Technical</strong>
+                                            <div style="font-size: 0.75rem; color: var(--gray-600); margin-top: 0.25rem;">Real constraints or technical feasibility concerns (e.g., "This won't pass FDA inspection")</div>
+                                        </div>
+                                    </label>
+                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--amber)'" onmouseout="if(!this.querySelector('input').checked) this.style.borderColor='var(--gray-300)'">
+                                        <input type="radio" name="category" value="political" style="margin-right: 0.75rem; margin-top: 0.25rem;">
+                                        <div>
+                                            <strong style="color: var(--amber);">Political</strong>
+                                            <div style="font-size: 0.75rem; color: var(--gray-600); margin-top: 0.25rem;">Power dynamics or process requirements (e.g., "This needs to go through the steering committee")</div>
+                                        </div>
+                                    </label>
+                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="if(!this.querySelector('input').checked) this.style.borderColor='var(--gray-300)'">
+                                        <input type="radio" name="category" value="cultural" style="margin-right: 0.75rem; margin-top: 0.25rem;">
+                                        <div>
+                                            <strong style="color: var(--green);">Cultural</strong>
+                                            <div style="font-size: 0.75rem; color: var(--gray-600); margin-top: 0.25rem;">Values or identity conflicts (e.g., "That's not who we are" or "We've never worked that way")</div>
+                                        </div>
+                                    </label>
+                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--purple)'" onmouseout="if(!this.querySelector('input').checked) this.style.borderColor='var(--gray-300)'">
+                                        <input type="radio" name="category" value="personal" style="margin-right: 0.75rem; margin-top: 0.25rem;">
+                                        <div>
+                                            <strong style="color: var(--purple);">Personal</strong>
+                                            <div style="font-size: 0.75rem; color: var(--gray-600); margin-top: 0.25rem;">Individual concerns about role, job security, or workload (e.g., "What about my job?")</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="add-resistance-btn" class="cta-primary" style="margin-top: 1rem; width: 100%;">
+                            ${state.editingIndex !== null ? 'Update Resistance' : '+ Add Resistance'}
+                        </button>
+                    </div>
+
+                    ${hasResistances ? `
+                        <div class="resistance-list" style="margin-bottom: 1.5rem;">
+                            <h4 style="margin-bottom: 1rem; font-size: 1rem;">Mapped Resistance (${state.resistances.length})</h4>
+                            ${state.resistances.map((r, idx) => {
+                                const category = categoryDefinitions[r.category];
+                                return `
+                                    <div class="resistance-item" style="background: white; border: 1px solid var(--gray-300); border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem;">
+                                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                                            <div style="flex: 1;">
+                                                <p style="font-weight: 600; margin-bottom: 0.25rem;">${r.who}</p>
+                                                <p style="font-size: 0.875rem; color: var(--gray-600); font-style: italic; margin-bottom: 0.5rem;">"${r.what}"</p>
+                                            </div>
+                                            <div style="display: flex; gap: 0.5rem; margin-left: 1rem;">
+                                                <button onclick="editResistance(${idx})" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border: 1px solid var(--gray-300); background: white; border-radius: 4px; cursor: pointer;">Edit</button>
+                                                <button onclick="deleteResistance(${idx})" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border: 1px solid var(--red); color: var(--red); background: white; border-radius: 4px; cursor: pointer;">Delete</button>
+                                            </div>
+                                        </div>
+
+                                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; padding: 0.75rem; background: var(--gray-50); border-radius: 4px;">
+                                            <div>
+                                                <p style="font-size: 0.75rem; color: var(--gray-600); margin-bottom: 0.25rem;">CATEGORY</p>
+                                                <p style="font-weight: 600; color: ${category.color};">${category.type}</p>
+                                            </div>
+                                            <div>
+                                                <p style="font-size: 0.75rem; color: var(--gray-600); margin-bottom: 0.25rem;">RESPONSE</p>
+                                                <p style="font-weight: 600;">${category.response}</p>
+                                            </div>
+                                            <div style="grid-column: 1 / -1;">
+                                                <p style="font-size: 0.75rem; color: var(--gray-600); margin-bottom: 0.25rem;">RATIONALE</p>
+                                                <p style="font-size: 0.875rem;">${category.rationale}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div style="display: flex; gap: 1rem;">
+                            <button id="download-btn" class="cta-primary" style="flex: 1;">Download Analysis (.xlsx)</button>
+                            <button id="clear-btn" class="btn-outline" style="flex: 0 0 auto;">Clear All</button>
+                        </div>
+                    ` : `
+                        <p style="text-align: center; color: var(--gray-600); padding: 2rem;">No resistance mapped yet. Add your first resistance above.</p>
+                    `}
+                </div>
+            `;
+
+            // Event listeners
+            document.getElementById('add-resistance-btn').addEventListener('click', addOrUpdateResistance);
+
+            if (hasResistances) {
+                document.getElementById('download-btn').addEventListener('click', downloadAnalysis);
+                document.getElementById('clear-btn').addEventListener('click', () => {
+                    if (confirm('Clear all resistance entries?')) {
+                        state.resistances = [];
+                        render();
+                    }
+                });
+            }
+
+            // Populate form if editing
+            if (state.editingIndex !== null) {
+                const r = state.resistances[state.editingIndex];
+                document.getElementById('who-input').value = r.who;
+                document.getElementById('what-input').value = r.what;
+                document.getElementById('role-input').value = r.role;
+                document.getElementById('stake-input').value = r.stake;
+                const categoryRadio = document.querySelector(`input[name="category"][value="${r.category}"]`);
+                if (categoryRadio) categoryRadio.checked = true;
+            }
+        }
+
+        function addOrUpdateResistance() {
+            const who = document.getElementById('who-input').value.trim();
+            const what = document.getElementById('what-input').value.trim();
+            const role = document.getElementById('role-input').value.trim();
+            const stake = document.getElementById('stake-input').value.trim();
+            const categoryRadio = document.querySelector('input[name="category"]:checked');
+
+            if (!who || !what || !role || !stake) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            if (!categoryRadio) {
+                alert('Please select a resistance category');
+                return;
+            }
+
+            const resistance = {
+                who,
+                what,
+                role,
+                stake,
+                category: categoryRadio.value
+            };
+
+            if (state.editingIndex !== null) {
+                state.resistances[state.editingIndex] = resistance;
+                state.editingIndex = null;
+            } else {
+                state.resistances.push(resistance);
+            }
+
+            // Clear form
+            document.getElementById('who-input').value = '';
+            document.getElementById('what-input').value = '';
+            document.getElementById('role-input').value = '';
+            document.getElementById('stake-input').value = '';
+            const radios = document.querySelectorAll('input[name="category"]');
+            radios.forEach(r => r.checked = false);
+
+            render();
+        }
+
+        window.editResistance = function(idx) {
+            state.editingIndex = idx;
+            render();
+            document.getElementById('who-input').focus();
+        };
+
+        window.deleteResistance = function(idx) {
+            state.resistances.splice(idx, 1);
+            render();
+        };
+
+        function downloadAnalysis() {
+            const wb = XLSX.utils.book_new();
+
+            // Create main data array
+            const wsData = [
+                ['RESISTANCE MAPPING ANALYSIS'],
+                [],
+                ['Who', 'What They Said', 'Role/Expertise', "What's At Stake", 'Category', 'Response Strategy', 'Rationale']
+            ];
+
+            state.resistances.forEach(r => {
+                const category = categoryDefinitions[r.category];
+                wsData.push([
+                    r.who,
+                    r.what,
+                    r.role,
+                    r.stake,
+                    category.type,
+                    category.response,
+                    category.rationale
+                ]);
+            });
+
+            // Add summary section
+            wsData.push([]);
+            wsData.push([]);
+            wsData.push(['SUMMARY BY CATEGORY']);
+            wsData.push(['Category', 'Count']);
+
+            const categories = {};
+            state.resistances.forEach(r => {
+                const category = categoryDefinitions[r.category];
+                categories[category.type] = (categories[category.type] || 0) + 1;
+            });
+
+            Object.entries(categories).forEach(([cat, count]) => {
+                wsData.push([cat, count]);
+            });
+
+            // Create worksheet
+            const ws = XLSX.utils.aoa_to_sheet(wsData);
+
+            // Set column widths
+            ws['!cols'] = [
+                {wch: 20}, // Who
+                {wch: 40}, // What They Said
+                {wch: 25}, // Role/Expertise
+                {wch: 25}, // What's At Stake
+                {wch: 15}, // Category
+                {wch: 20}, // Response Strategy
+                {wch: 60}  // Rationale
+            ];
+
+            XLSX.utils.book_append_sheet(wb, ws, 'Resistance Analysis');
+            XLSX.writeFile(wb, 'resistance-analysis.xlsx');
+        }
+
+        render();
+    }
+
+    // === CHANGE VELOCITY DIAGNOSTIC ===
+    function renderVelocityDiagnostic() {
+        const state = {
+            step: 1,
+            answers: {},
+            totalSteps: 3
+        };
+
+        const questions = [
+            {
+                section: 'Urgency Dimension',
+                items: [
+                    { id: 'decision_speed', text: 'Major decisions get made within days, not weeks or months' },
+                    { id: 'rock_rhythm', text: 'We complete meaningful transformations in 90-day cycles' },
+                    { id: 'waste_elimination', text: 'We eliminate waste permanently rather than just managing it' },
+                    { id: 'speed_advantage', text: 'Speed is a measurable competitive advantage for us' },
+                    { id: 'process_times', text: 'Our process cycle times are 50%+ faster than 12 months ago' },
+                    { id: 'meetings', text: 'We\'ve eliminated committees and approval chains that don\'t add value' },
+                    { id: 'automation', text: 'Automation and AI are actively reducing friction in our workflows' }
+                ]
+            },
+            {
+                section: 'Empathy Dimension',
+                items: [
+                    { id: 'people_heard', text: 'People feel genuinely heard during change, not steamrolled' },
+                    { id: 'coalition', text: 'We build coalitions before launching changes, not after resistance appears' },
+                    { id: 'workforce_dignity', text: 'Workforce transitions are handled with transparency and dignity' },
+                    { id: 'resistance_reading', text: 'We analyze resistance for valuable information rather than dismissing it' },
+                    { id: 'support_systems', text: 'We have real support systems for people transitioning to new roles' },
+                    { id: 'communication', text: 'Leaders acknowledge difficulty honestly without creating panic' },
+                    { id: 'trust', text: 'Employee trust and engagement scores are stable or improving during transformation' }
+                ]
+            }
+        ];
+
+        function render() {
+            if (state.step <= state.totalSteps) {
+                if (state.step === 1) renderSection(questions[0], 1);
+                else if (state.step === 2) renderSection(questions[1], 2);
+                else renderResults();
+            }
+        }
+
+        function renderSection(section, sectionNum) {
+            container.innerHTML = `
+                <div class="calculator">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="margin: 0;">Change Velocity Diagnostic</h3>
+                        <span style="color: var(--gray-600); font-size: 0.875rem;">Section ${sectionNum} of 2</span>
+                    </div>
+
+                    <div style="height: 4px; background: var(--gray-200); border-radius: 2px; margin-bottom: 2rem;">
+                        <div style="height: 100%; background: var(--blue); border-radius: 2px; width: ${(sectionNum / 2) * 100}%; transition: width 0.3s;"></div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--gray-900); margin-bottom: 0.5rem;">${section.section}</h4>
+                        <p style="color: var(--gray-600); font-size: 0.9375rem; margin-bottom: 1.5rem;">
+                            Rate each statement: 1 (Strongly Disagree) to 5 (Strongly Agree)
+                        </p>
+
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            ${section.items.map((item, idx) => `
+                                <div class="question-item" style="background: var(--gray-50); padding: 1rem; border-radius: 8px;">
+                                    <p style="margin-bottom: 0.75rem; font-weight: 500;">${idx + 1}. ${item.text}</p>
+                                    <div style="display: flex; gap: 0.5rem; justify-content: space-between;">
+                                        ${[1, 2, 3, 4, 5].map(val => `
+                                            <label style="flex: 1; text-align: center; cursor: pointer;">
+                                                <input type="radio" name="${item.id}" value="${val}" ${state.answers[item.id] === val ? 'checked' : ''} style="display: block; margin: 0 auto 0.25rem;">
+                                                <span style="font-size: 0.75rem; color: var(--gray-600);">${val}</span>
+                                            </label>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem;">
+                        ${sectionNum > 1 ?
+                            '<button id="back-btn" class="btn-outline" style="flex: 1;">← Back</button>' :
+                            '<div></div>'
+                        }
+                        <button id="next-btn" class="cta-primary" style="flex: 2;">${sectionNum === 2 ? 'See Results →' : 'Next Section →'}</button>
+                    </div>
+                </div>
+            `;
+
+            // Event listeners for radio buttons
+            section.items.forEach(item => {
+                document.querySelectorAll(`input[name="${item.id}"]`).forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        state.answers[item.id] = parseInt(e.target.value);
+                    });
+                });
+            });
+
+            document.getElementById('next-btn').addEventListener('click', () => {
+                // Validate all answered
+                const allAnswered = section.items.every(item => state.answers[item.id] !== undefined);
+                if (!allAnswered) {
+                    alert('Please answer all questions before continuing.');
+                    return;
+                }
+                state.step++;
+                render();
+            });
+
+            const backBtn = document.getElementById('back-btn');
+            if (backBtn) {
+                backBtn.addEventListener('click', () => {
+                    state.step--;
+                    render();
+                });
+            }
+        }
+
+        function renderResults() {
+            // Calculate scores
+            const urgencyQuestions = questions[0].items.map(i => i.id);
+            const empathyQuestions = questions[1].items.map(i => i.id);
+
+            const urgencyScore = urgencyQuestions.reduce((sum, id) => sum + (state.answers[id] || 0), 0);
+            const empathyScore = empathyQuestions.reduce((sum, id) => sum + (state.answers[id] || 0), 0);
+
+            const urgencyPct = (urgencyScore / (urgencyQuestions.length * 5)) * 100;
+            const empathyPct = (empathyScore / (empathyQuestions.length * 5)) * 100;
+
+            // Determine quadrant
+            let quadrant, quadrantColor, diagnosis, actions;
+
+            if (urgencyPct >= 60 && empathyPct >= 60) {
+                quadrant = 'Both Urgency & Empathy';
+                quadrantColor = 'var(--green)';
+                diagnosis = 'Rare and powerful. You\'re moving fast AND bringing people with you. This integration is the key to transformation that lasts.';
+                actions = [
+                    'Protect this balance as you scale',
+                    'Document your practices to teach others',
+                    'Watch for backsliding - success creates complacency',
+                    'Share your approach with other teams'
+                ];
+            } else if (urgencyPct >= 60 && empathyPct < 60) {
+                quadrant = 'Urgency without Empathy';
+                quadrantColor = 'var(--red)';
+                diagnosis = 'You\'re moving fast but leaving casualties. This creates resistance that will eventually kill your transformation. Speed without people doesn\'t stick.';
+                actions = [
+                    'Build coalitions BEFORE launching next Rock',
+                    'Read resistance for valuable information instead of dismissing it',
+                    'Invest in workforce transition support',
+                    'Acknowledge difficulty publicly and honestly',
+                    'Measure trust alongside velocity metrics'
+                ];
+            } else if (urgencyPct < 60 && empathyPct >= 60) {
+                quadrant = 'Empathy without Urgency';
+                quadrantColor = 'var(--amber)';
+                diagnosis = 'You\'re empathetic but losing competitive position. Consensus-building has become an excuse for delay. Patients and customers pay the price for your comfort.';
+                actions = [
+                    'Launch 90-day Rocks with clear deadlines',
+                    'Eliminate committees that don\'t add value',
+                    'Make decisions in days, not weeks',
+                    'Stop managing waste - eliminate it permanently',
+                    'Measure and publish velocity metrics'
+                ];
+            } else {
+                quadrant = 'Neither Urgency nor Empathy';
+                quadrantColor = 'var(--gray-600)';
+                diagnosis = 'Critical state. You\'re neither fast nor bringing people along. This is organizational decline in slow motion.';
+                actions = [
+                    'Read BOTH books: The Velocity Framework AND On Change',
+                    'Start with one 90-day Rock to prove velocity is possible',
+                    'Build a small coalition to support that first Rock',
+                    'Get executive sponsorship for transformation',
+                    'Consider bringing in external help - this is urgent'
+                ];
+            }
+
+            container.innerHTML = `
+                <div class="calculator">
+                    <h3>Your Change Velocity Profile</h3>
+
+                    <div style="background: var(--gray-50); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
+                            <div>
+                                <p style="color: var(--gray-600); font-size: 0.875rem; margin-bottom: 0.5rem;">URGENCY SCORE</p>
+                                <p style="font-size: 2rem; font-weight: 700; color: var(--blue);">${urgencyScore}/${urgencyQuestions.length * 5}</p>
+                                <p style="color: var(--gray-600); font-size: 0.875rem;">${urgencyPct.toFixed(0)}%</p>
+                            </div>
+                            <div>
+                                <p style="color: var(--gray-600); font-size: 0.875rem; margin-bottom: 0.5rem;">EMPATHY SCORE</p>
+                                <p style="font-size: 2rem; font-weight: 700; color: var(--purple);">${empathyScore}/${empathyQuestions.length * 5}</p>
+                                <p style="color: var(--gray-600); font-size: 0.875rem;">${empathyPct.toFixed(0)}%</p>
+                            </div>
+                        </div>
+
+                        <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid ${quadrantColor};">
+                            <p style="font-size: 0.875rem; color: var(--gray-600); margin-bottom: 0.5rem;">YOUR QUADRANT</p>
+                            <p style="font-size: 1.5rem; font-weight: 700; color: ${quadrantColor}; margin-bottom: 1rem;">${quadrant}</p>
+                            <p style="color: var(--gray-700);">${diagnosis}</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="margin-bottom: 1rem;">Your Specific Actions</h4>
+                        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                            ${actions.map(action => `
+                                <li style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="color: ${quadrantColor}; font-weight: 700; flex-shrink: 0;">→</span>
+                                    <span>${action}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="result-actions" style="display: flex; gap: 1rem;">
+                        <button id="restart-btn" class="btn-outline" style="flex: 1;">← Start Over</button>
+                        <a href="book.html" class="cta-primary" style="flex: 2; text-decoration: none; text-align: center; padding: 0.75rem;">Get Both Books →</a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('restart-btn').addEventListener('click', () => {
+                state.step = 1;
+                state.answers = {};
+                render();
+            });
         }
 
         render();
