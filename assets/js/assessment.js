@@ -315,7 +315,11 @@
 
         // Score bar
         const percentage = (scores.total / scores.maxTotal) * 100;
-        document.getElementById('your-score-bar').style.width = percentage + '%';
+        const yourScoreBar = document.getElementById('your-score-bar');
+        if (yourScoreBar) {
+            yourScoreBar.style.width = percentage + '%';
+            console.log('Setting your-score-bar width to:', percentage + '%', 'Score:', scores.total, 'MaxTotal:', scores.maxTotal);
+        }
         document.getElementById('your-score-text').textContent =
             `${scores.total.toFixed(1)} / ${scores.maxTotal.toFixed(1)}`;
 
