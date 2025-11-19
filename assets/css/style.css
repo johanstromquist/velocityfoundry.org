@@ -162,9 +162,12 @@ a:hover {
     position: relative;
     min-height: 85vh;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    gap: var(--space-md);
     overflow: hidden;
+    padding: var(--space-md);
 }
 
 .hero-image {
@@ -480,6 +483,18 @@ a:hover {
 
     .nav-menu {
         gap: var(--space-sm);
+    }
+
+    .hero {
+        flex-direction: column;
+        min-height: auto;
+        padding: var(--space-sm);
+    }
+
+    .hero-overlay {
+        width: 100%;
+        max-width: 100%;
+        margin: var(--space-sm) 0;
     }
 
     .hero-title {
