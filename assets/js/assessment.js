@@ -317,7 +317,7 @@
         const percentage = (scores.total / scores.maxTotal) * 100;
         document.getElementById('your-score-bar').style.width = percentage + '%';
         document.getElementById('your-score-text').textContent =
-            `${scores.total.toFixed(1)} / ${scores.maxTotal}`;
+            `${scores.total.toFixed(1)} / ${scores.maxTotal.toFixed(1)}`;
 
         // Category breakdown
         document.getElementById('decision-score').textContent =
