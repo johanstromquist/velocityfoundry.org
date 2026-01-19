@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anthropic released new tools connecting Claude to life science databases. My first thought wasn't 'cool, let's check it out' but 'cool, I should be able to do that too.' Two hours later, I had seven connectors in place.">
+    <title>Agents and the Speed of Development - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+
+            <p>Just the other day I saw that Anthropic has released some new tools for Claude that connect it to public life science data sources—making Claude smarter at biological and medical research. A colleague pointed me to the news. Thank you, Ingela.</p>
+
+            <p>My first thought wasn't <em>cool, let's check it out</em>.</p>
+
+            <p>It was <em>cool, I should be able to do that too</em>.</p>
+
+            <h2>The MMAgent</h2>
+
+            <p>I'm not sure I'm allowed to say this, but before Christmas the team at Metalmind—our boutique GenAI agency—had created the MMAgent: a lightweight framework for integrating agents into host applications.</p>
+
+            <p>Since then they've built a proof of concept. A generalist agent that can be equipped with different skills. I loved the experience of working with it. Super easy to use, very helpful, and an incredibly cool use of tools.</p>
+
+            <p>The greatest advantage of the MMAgent is the ease with which you can add new skills to it. So considering Anthropic's play, I figured—why not try to create similar tools for our agent?</p>
+
+            <h2>Two Hours</h2>
+
+            <p>It took two hours with Claude Code.</p>
+
+            <p>Then I had the first seven connectors in place:</p>
+
+            <ul>
+                <li><strong>PubMed</strong> — 35 million+ biomedical articles</li>
+                <li><strong>bioRxiv + medRxiv</strong> — preprints from the life sciences</li>
+                <li><strong>ChEMBL</strong> — 2.4 million+ bioactive molecules</li>
+                <li><strong>UniProt</strong> — protein sequences and functional information</li>
+                <li><strong>Open Targets</strong> — drug-target associations</li>
+                <li><strong>Reactome</strong> — biological pathways</li>
+                <li><strong>ClinicalTrials.gov</strong> — 500,000+ registered clinical trials</li>
+            </ul>
+
+            <p>It took another five minutes and the agent had written a desktop research piece on the current status of Trastuzumab in HER2-positive breast cancer.</p>
+
+            <p>Five minutes.</p>
+
+            <h2>The Trajectory Problem</h2>
+
+            <p>I wrote <em>The Velocity Framework</em> naive to the practical impact of agents on knowledge work, but very much prepared for the capabilities they offer.</p>
+
+            <p>It is challenging to look at your current situation and try to draw out a trajectory of development. We're kind of forever stuck in a world where things are the way they are. And after the next change we shrug and still believe they are the way they are.</p>
+
+            <p>Dragging out that trajectory from yesteryear's AI capabilities to where we are today is easy. But continuing to extend it meaningfully into the future is <em>incredibly</em> difficult.</p>
+
+            <blockquote>
+                I do believe that working with the latest the labs have to offer gives you a continual glimpse of the future and what is to come.
+            </blockquote>
+
+            <h2>The Auto-Coder Vision</h2>
+
+            <p>When I wrote <em>The Velocity Framework</em> I was 100% convinced that knowledge workers will solve a large amount of their own day-to-day assignments using code.</p>
+
+            <p>They will build solutions—or speak them into existence—to make the problem go away forever.</p>
+
+            <p>What's left is going to be a new frontier of impossibilities. Things we never imagined we could do, simply because we couldn't, that we are now suddenly capable of.</p>
+
+            <p>You want to build an agent? Ask your auto-coder.</p>
+
+            <p>You want to build an immersive online role-playing game? Ask your auto-coder.</p>
+
+            <p>You want to write a book? Ask your auto-coder.</p>
+
+            <h2>What This Means for Biotechs</h2>
+
+            <p>For biotechs this is good news.</p>
+
+            <p>It's <em>only</em> good news, and not great, because we still have to change. We have to embrace the new opportunities. We have to learn. We have to experiment, fail, and be frustrated.</p>
+
+            <p>Those who do this fast will be ahead, for sure.</p>
+
+            <p>But more than that—they will be the ones making the greatest difference to the patients they are trying to serve.</p>
+
+            <p><em>—Johan Strömquist</em></p>
+
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

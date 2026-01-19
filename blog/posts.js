@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-01-fda-ema-ai-guidance',
+        title: '10 Principles, Zero Excuses: What FDA/EMA\'s AI Guidance Actually Means',
+        date: '2026-01-21',
+        publishDate: '2026-01-21',
+        excerpt: 'FDA and EMA just released joint guidance on AI in drug development. Ten principles. Zero ambiguity. The regulatory uncertainty excuse just evaporated—here\'s what it means for your organization.',
+        readTime: '12 min',
+        image: 'assets/images/regulatory_runway.png'
+    },
+    {
         slug: '2025-11-on-change-release',
         title: 'On Change is Live',
         date: '2025-11-19',
@@ -24,6 +33,15 @@ const posts = [
         excerpt: 'After watching 300+ transformations, I wrote the book I wish existed at Day 45—when doubt peaks and most transformations die. On Change is live today.',
         readTime: '5 min',
         image: 'assets/images/On_Change_Cover_Kindle.jpg'
+    },
+    {
+        slug: '2026-01-agents-and-velocity',
+        title: 'Agents and the Speed of Development',
+        date: '2026-01-19',
+        publishDate: '2026-01-19',
+        excerpt: 'Anthropic released new tools connecting Claude to life science databases. My first thought wasn\'t "cool, let\'s check it out" but "cool, I should be able to do that too." Two hours later, I had seven connectors in place.',
+        readTime: '8 min',
+        image: 'assets/images/stopwatch_scientist.jpeg'
     },
     {
         slug: '2026-01-compassionate-revolutionary',
