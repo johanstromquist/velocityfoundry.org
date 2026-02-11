@@ -17,6 +17,24 @@
 
 const posts = [
     {
+        slug: '2026-02-acceleration-gap',
+        title: 'The Acceleration Gap: Why Waiting Is the Riskiest Strategy',
+        date: '2026-02-16',
+        publishDate: '2026-02-16',
+        excerpt: 'The gap between AI adopters and everyone else is no longer a gentle slope. It has become a cliff. And it\'s compounding. Here\'s what the data shows—and why waiting is the riskiest strategy of all.',
+        readTime: '9 min',
+        image: 'assets/images/acceleration_gap.png'
+    },
+    {
+        slug: '2026-02-possibility-stack',
+        title: 'The Possibility Stack: Why "We Can Do Anything" Is the Wrong Promise',
+        date: '2026-02-09',
+        publishDate: '2026-02-09',
+        excerpt: 'The most dangerous promise in AI is "we can make it do anything." Not because it\'s false—it\'s increasingly true. But because it sets up a collision between infinite technical possibility and finite organizational capacity.',
+        readTime: '10 min',
+        image: 'assets/images/possibility_stack.png'
+    },
+    {
         slug: '2026-01-fda-ema-ai-guidance',
         title: '10 Principles, Zero Excuses: What FDA/EMA\'s AI Guidance Actually Means',
         date: '2026-01-21',
