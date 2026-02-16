@@ -27,6 +27,7 @@ AGENT.md
 
 # Python
 venv/
+.venv/
 
 # References
 references/

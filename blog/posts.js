@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-02-what-remains',
+        title: 'What Remains',
+        date: '2026-02-23',
+        publishDate: '2026-02-23',
+        excerpt: 'We built our sense of worth on what we produce. AI just called that bluff. The question isn\'t what happens to human value when machines do our work. It\'s why we let "our work" become the whole answer to "our value."',
+        readTime: '8 min',
+        image: 'assets/images/what_remains.png'
+    },
+    {
         slug: '2026-02-acceleration-gap',
         title: 'The Acceleration Gap: Why Waiting Is the Riskiest Strategy',
         date: '2026-02-16',
