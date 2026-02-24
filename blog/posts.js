@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-03-no-free-lunch',
+        title: 'No Free Lunch',
+        date: '2026-03-02',
+        publishDate: '2026-03-02',
+        excerpt: 'The question everyone asks about AI and work -- "how will I earn my keep?" -- assumes the current system rewards effort proportionally. It doesn\'t. It never did. And AI is making the fiction unsustainable.',
+        readTime: '9 min',
+        image: 'assets/images/no_free_lunch.png'
+    },
+    {
         slug: '2026-02-what-remains',
         title: 'What Remains',
         date: '2026-02-23',
