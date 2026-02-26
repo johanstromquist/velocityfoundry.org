@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-03-life-inside-the-curve',
+        title: 'Life Inside the Curve',
+        date: '2026-03-09',
+        publishDate: '2026-03-09',
+        excerpt: 'What does it feel like to be inside an exponential curve? Not the theory. Not the benchmarks. The actual experience of watching seven AI sessions collaborate to solve a problem that would have taken days -- and finishing before lunch.',
+        readTime: '10 min',
+        image: 'assets/images/life_inside_the_curve.png'
+    },
+    {
         slug: '2026-03-no-free-lunch',
         title: 'No Free Lunch',
         date: '2026-03-02',

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What does it feel like to be inside an exponential curve? Not the theory. Not the benchmarks. The actual experience of watching seven AI sessions collaborate to solve a problem that would have taken you days -- and finishing before lunch.">
+    <title>Life Inside the Curve - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+
+            <p style="margin-bottom: var(--space-lg); padding-bottom: var(--space-md); border-bottom: 1px solid var(--gray-200);">
+                <strong>This post is an abbreviated version of the full essay.</strong> For the complete analysis with all citations and references, <a href="../assets/downloads/essay_life_inside_the_curve.pdf">download "Life Inside the Curve" (PDF)</a>.
+            </p>
+
+            <p>Last week I had a problem. I had built six standalone applications designed to work together as a pipeline. They were not integrated. They did not share contracts. They could not speak to each other. Even with AI assistance, updating each application individually would have taken days. Testing the end-to-end flow -- days more.</p>
+
+            <p>Instead, I spent two hours building a lightweight coordination service -- <a href="https://github.com/johanstromquist/CCRouter">CCRouter</a> -- that allows Claude Code sessions to read each other's conversations and send messages to each other's terminals.</p>
+
+            <p>I opened seven terminal windows. Each ran a Claude Code session -- six pointed at the six applications, one acting as orchestrator. The orchestrator read the state of each application, identified the integration gaps, and sent application-specific instructions to each worker session. Within hours, all six applications were synchronised. A few hours after that, the orchestrator had run ten full end-to-end test cycles, identified failures, dispatched fixes, and re-tested. By the end of the day, the pipeline worked.</p>
+
+            <p>The problem had shifted. It was no longer "how do I get these applications to talk to each other?" It was "how do I get my agents to collaborate to make this work?" And the second problem was smaller, faster, and more interesting than the first.</p>
+
+            <p>I have been working with generative AI tools daily since January 2023. Three years. But watching seven AI sessions work in parallel -- not generating content, but doing actual engineering with testable outcomes -- was something different. The word that keeps coming back is <em>vertiginous</em>.</p>
+
+            <h2>The Two-Week Arc</h2>
+
+            <p>On February 10, Matt Shumer published "Something Big Is Happening." It reached over 80 million views. The central claim: he describes software in plain English, walks away, and comes back to finished, correct work. He compared the feeling to early COVID -- something enormous clearly happening, most people not yet adjusted.</p>
+
+            <p>The discourse was more interesting than the essay. Isaac Saul argued that code is uniquely suited to AI and the transfer to messier human work is overstated. A writer called Wilmanitas argued LLMs produce "the feeling of work, not work itself." Nathaniel Whittemore's counter was sharp: the real indictment is of knowledge work in general. Most corporate output already consists of work-shaped objects -- reports no one reads, decks that justify meetings, processes that serve compliance rather than outcomes. AI doesn't replace real work. It replaces the <em>performance</em> of work.</p>
+
+            <p>Two weeks later, METR -- Model Evaluation & Threat Research -- released updated results for their autonomous AI capability benchmark. Opus 4.5, tested in December 2025, could work autonomously on a software engineering task for 4 hours and 49 minutes. Opus 4.6, tested in February 2026, reached approximately 14 and a half hours -- tripling its predecessor in a single generational jump. The overall doubling rate had compressed from approximately seven months to four, with the most recent jump suggesting further acceleration.</p>
+
+            <p>And then something instructive happened. The numbers were so dramatic that the response was not analysis but qualification: the benchmark is saturating, the confidence intervals are wide, these results might not generalise. The impulse to qualify is itself a data point. It is what it looks like when measurement outpaces the frameworks people use to interpret it.</p>
+
+            <p>This oscillation -- feeling outrunning measurement, measurement outrunning comprehension, comprehension reaching for caveats to slow the feeling back down -- is the lived experience of exponential change.</p>
+
+            <h2>The Instruments Are Failing</h2>
+
+            <p>METR's benchmark is, by their own admission, beginning to saturate -- running out of tasks hard enough to differentiate between the most capable models. This is not a failure of the benchmark. It is a success so rapid that the measuring instrument has been outpaced by the thing it measures.</p>
+
+            <p>This pattern is everywhere. Economic models of AI impact were calibrated on assumptions about capability growth that are already obsolete. Workforce planning tools assume a rate of displacement that the data suggests is dramatically too slow. Regulatory frameworks were designed for a technology moving at one speed and are being implemented as it moves at another. Organisational change methodologies assume transformation takes quarters; the CCRouter story describes one that took hours.</p>
+
+            <p>The most dangerous consequence is not that the instruments give wrong answers. It is that people continue to trust them because the instruments are familiar and the reality is not. A workforce model that says "AI will affect 30% of tasks over five years" feels measured. The reality -- that capability is doubling every few months and no one knows where the ceiling is -- feels hysterical. People choose the measured-feeling answer not because the evidence supports it but because the alternative is vertigo.</p>
+
+            <p>But vertigo is information. It is the correct response to a situation where the ground is moving faster than your ability to map it.</p>
+
+            <h2>The Level Shift</h2>
+
+            <p>The interesting thing about the CCRouter experience was not that AI wrote code faster than I could. That has been true for some time. The interesting thing was that the <em>nature of my work changed</em>.</p>
+
+            <p>I did not write integration code. I did not run tests. I did not debug failures. I did not even write the coordination tool -- Claude Code did most of that. What I did was: define the problem, design the coordination architecture, decide which agent should have which role, and intervene when the <em>approach</em> was wrong, not when the code was wrong.</p>
+
+            <p>The work moved up a level of abstraction. From writing code to orchestrating agents that write code. From debugging applications to designing systems in which agents debug applications. This is not the first time technology has produced such a shift. But previous transitions played out over years or decades. This one played out over an afternoon.</p>
+
+            <p>But the supervisory session in my CCRouter setup was itself a Claude session. There is no technical reason it could not have designed its own coordination strategy and managed its own workflow without me. I was in the loop because the tools are new and I wanted to understand the process. Not because the process required me.</p>
+
+            <p>This is what makes exponential capability different from linear improvement. Linear improvement makes you faster at the same work. Exponential capability makes the work itself obsolete, then makes the next level of work obsolete, then the next. Each level shift feels like a stable equilibrium -- "AI does the coding, humans do the orchestrating" -- until it doesn't.</p>
+
+            <h2>The Asymmetry</h2>
+
+            <p>If you overestimate AI and prepare accordingly -- invest in understanding the tools, restructure workflows, build organisational capacity for rapid adaptation -- and AI plateaus, you have lost some time. The skills are not wasted. The capacity is not harmful. You are, at worst, slightly ahead of schedule.</p>
+
+            <p>If you underestimate AI and do not prepare -- assume the pace will slow, that your profession is exempt, that you have years rather than months -- and the trajectory continues, you face a problem that cannot be solved by catching up. Because on an exponential curve, the distance between you and the frontier does not stay constant while you stand still. It grows. Every month of inaction is not one month behind. It is one month behind a frontier that has moved further than it moved the previous month.</p>
+
+            <p>You do not need to be certain about AI's trajectory. You need to be honest about what happens if you are wrong in each direction.</p>
+
+            <h2>The Transition</h2>
+
+            <p>The optimists point to the knitting machine and the power loom and note that technology has always created more work than it destroyed. The pessimists point to Citrini Research's scenario paper "The 2028 Global Intelligence Crisis" -- which triggered an actual stock market selloff when published -- and note the unprecedented speed. Both are probably right about the destination. New industries will emerge. And the transition will be brutal for many people.</p>
+
+            <p>I have written elsewhere about what happens to <a href="2026-02-what-remains.html">identity</a> when productive capabilities are no longer uniquely human, and about the <a href="2026-03-no-free-lunch.html">material architecture</a> needed when labour and income decouple. But those essays address the philosophical and structural dimensions. The experiential dimension is different.</p>
+
+            <p>It feels like vertigo. It feels like watching seven AI sessions do in hours what would have taken days, and not knowing whether to be exhilarated or frightened, and settling on both. It feels like reading a benchmark result that says the autonomous work horizon tripled in two months and immediately reaching for reasons it might not be true. It feels like recognising that your skills, your workflows, your professional identity were calibrated for a rate of change that no longer exists.</p>
+
+            <p>The vertigo is not the problem. The vertigo is the correct response. The problem is what you do next.</p>
+
+            <h2>What the Trajectory Says</h2>
+
+            <p>I built CCRouter in two hours. Not because I am unusually skilled, but because the tools have reached a point where a coordination service with an embedded MCP server, process-tree identification, message routing, and terminal injection is a two-hour project. A year ago, it would have been a two-week project. Two years before that, it would not have been possible to build at all.</p>
+
+            <p><a href="https://github.com/johanstromquist/CCRouter">CCRouter is open source.</a> Anyone can run it. Anyone can set up seven terminal windows and watch Claude sessions coordinate on a shared problem. The experience of watching agents collaborate -- of seeing the level shift happen in real time, of feeling the vertigo -- is more informative than any benchmark or any essay, including this one.</p>
+
+            <p>The curve is not something that happens to other people in other industries at some future date. It is something you can sit inside today, on your own machine, and feel.</p>
+
+            <p>The question -- the only question that matters now -- is what you do with that feeling.</p>
+
+            <p style="margin-top: var(--space-lg); padding-top: var(--space-md); border-top: 1px solid var(--gray-200);">
+                <strong>Read the full essay:</strong> For the complete analysis with all citations and references, <a href="../assets/downloads/essay_life_inside_the_curve.pdf">download "Life Inside the Curve" (PDF)</a>.
+            </p>
+
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>
