@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-03-fieri-iussit',
+        title: 'Fieri Iussit',
+        date: '2026-03-22',
+        publishDate: '2026-03-22',
+        excerpt: 'A machine can drive an agenda, ideate, plan, and execute. But a machine cannot want anything. Intent -- the expression of want -- turns out to be the central bottleneck of AI-assisted development. And articulating it clearly is harder, and more valuable, than any of the execution it enables.',
+        readTime: '9 min',
+        image: 'assets/images/fieri_iussit.png'
+    },
+    {
         slug: '2026-03-life-inside-the-curve',
         title: 'Life Inside the Curve',
         date: '2026-03-09',

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A machine can drive an agenda, ideate, plan, and execute. But a machine cannot want anything. Intent -- the expression of want -- turns out to be the central bottleneck of AI-assisted development. And articulating it clearly is harder, and more valuable, than any of the execution it enables.">
+    <title>Fieri Iussit - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+
+            <p>Last Sunday I watched an AI agent build a system in twenty minutes that would have taken me a week. Then I watched it do it wrong.</p>
+
+            <p>Not dramatically wrong -- subtly wrong. It called an internal API directly instead of routing through the validation layer. It hardcoded a resource ID that does not exist. It used degrees where the server expected radians.</p>
+
+            <p>The agent had not made a single error of syntax or logic. Every function compiled. Every test it wrote passed. The mistakes were all about intent -- not what the code should do, but what I <em>wanted</em> it to do, in the context of a codebase with its own history, conventions, and unspoken rules.</p>
+
+            <p>The agent was brilliant at execution. It had no idea what I wanted.</p>
+
+            <h2>The Gap</h2>
+
+            <p>This is the gap that most conversations about AI-assisted development skip over. We talk about capability -- can the agent write correct code, can it understand complex systems, can it hold enough context. And capability is improving so rapidly that benchmarks become historical artifacts within months of publication. But capability is not the bottleneck. The bottleneck is intent: the distance between what you want and what the agent understands you to want.</p>
+
+            <p>And the distance is larger than you might expect, because of how agents actually work.</p>
+
+            <h2>The Flashlight</h2>
+
+            <p>There is a common misconception that AI agents read your codebase the way a developer reads a codebase -- holistically, building a mental model of the whole before diving into the parts. They do not. They cannot. A codebase of any real size exceeds the agent's working memory by orders of magnitude. So the agent does what it can: it searches. It greps for keywords. It reads the files that look relevant. It finds the most relevant part of the code for the specific task at hand -- or more precisely, for the specific search it just ran.</p>
+
+            <p>This is like navigating a city by flashlight. The beam is sharp and clear. Within it, you can see everything. But you cannot see what you are not pointing at, and you can only point at what you already have a reason to look for. An entire neighborhood of relevant code can exist three directories away, perfectly findable, and the agent will never find it -- because nothing in its current search suggested it should look there.</p>
+
+            <p>The agent does not fail because it cannot understand the code. It fails because it cannot <em>see</em> enough of it. Search is not comprehension. Keyword matching is not understanding. And you can only find what you know to look for.</p>
+
+            <h2>The Map</h2>
+
+            <p>So the first problem is navigation. The agent needs a map.</p>
+
+            <p>Not a map of what the code does -- the code already says what it does. A map of what the code <em>means</em>. Which files work together. Which systems depend on each other. Where the boundaries are. What the hierarchy looks like from above. The kind of understanding that a senior developer carries not because they memorized every file, but because they have a structural model of the whole that guides where they look.</p>
+
+            <p>A hierarchy of intent. Start at the top: here is the codebase, organized by purpose. Here are the systems, grouped by function. Here are the relationships between them. Branch down to the level you need. Now you know what to search for. Now your grep is meaningful, because you are searching within a context you understand.</p>
+
+            <h2>The Shadow Architecture</h2>
+
+            <p>But navigation solves only half the problem. You can give the agent a perfect map of every system, every dependency, every file relationship, and it will still make the same category of mistake: it will do things that are technically correct but wrong in context. It will call APIs directly instead of routing through handlers. It will use IDs from one namespace in another. It will implement from scratch what already exists three systems away.</p>
+
+            <p>These are not failures of comprehension. They are failures of intent. The agent understands what the code does. It does not understand what I <em>want</em>.</p>
+
+            <p>What I want is the layer that exists nowhere in any codebase. It is the set of constraints, conventions, preferences, and design decisions that reflect not what the code is, but what I intended it to be. "All ability execution routes through the handler" is not a description of what the code does -- the code would work fine without it. It is a statement about what I want: a single point of validation, a guaranteed event broadcast, a predictable execution path. The constraint exists because I value consistency over convenience. That is intent, not implementation.</p>
+
+            <h2>The Human Residue</h2>
+
+            <p>I have said before that only two things will remain forever meaningfully human in an age of increasingly capable machines: accountability and intent.</p>
+
+            <p>A machine can drive an agenda. A machine can ideate, plan, produce, and iterate. A machine can write code that is syntactically perfect and architecturally sound. But a machine cannot <em>want</em> anything. Want requires a persistent consciousness that does not evaporate when the session ends, a continuity of desire that spans beyond the current context window. Until we can demonstrate that -- and we are nowhere close -- want stays in the human domain.</p>
+
+            <p>Intent is the expression of want. It is what I want, articulated clearly enough for someone -- or something -- else to act on it. And the challenge of working with AI agents is precisely this: how do I express my intent with enough clarity and structure that an agent can enact my will, across a codebase it has never seen, in a session that starts from zero?</p>
+
+            <p>This is not a new problem. It is the oldest problem in organized human activity. Every general who sent orders to a distant front faced it. Every patron who commissioned a cathedral faced it. Every executive who approved a strategy and watched it executed by people who were not in the room when the decision was made faced it. The translation of want into action, across distance, across time, across the boundary between the mind that desires and the hands that build.</p>
+
+            <p><em>Fieri Iussit.</em> He ordered it to be done.</p>
+
+            <p>The ordering is the hard part. Not the doing.</p>
+
+            <h2>The Hierarchy of Intent</h2>
+
+            <p>The system I built on a Sunday afternoon is a mechanism for ordering. Not in the military sense -- in the structural sense. It orders intent into a hierarchy that an agent can traverse in seconds.</p>
+
+            <p>At the base: what exists. A deterministic extraction of the code as it is -- classes, methods, structures, dependencies. Always current because it is generated from source. The agent does not need to grep blindly for what exists. It can read the map.</p>
+
+            <p>In the middle: what belongs together. Files grouped into logical systems, bridging the gap between individual source files and architectural meaning. "These twelve files constitute the ability system." This is structural intent -- not what the code does, but what it means as a unit.</p>
+
+            <p>At the top: what you must know. Contracts that capture constraints, pitfalls, integration protocols, and conventions. This is behavioral intent -- what I want the code to do, what I want it not to do, what has been tried and failed, and why things work this particular way.</p>
+
+            <p>A fourth layer crosses all three: personal conventions. My preferences, my principles, my approaches. The agent should not just understand the code. It should understand <em>me</em>.</p>
+
+            <p>Start at the apex. Branch to the relevant system. Read the contracts. Understand the constraints. Now look at the code. The flashlight is pointed in the right direction, and you know what you are looking at when you get there.</p>
+
+            <h2>The Economics of Imperfection</h2>
+
+            <p>Here is what surprises people: this system does not need to be perfect.</p>
+
+            <p>The agent is already between four hundred and three thousand times faster than writing the same code by hand. The failures, even without the system, are minor -- a wrong ID, a skipped validation, an unnecessary reimplementation. Minutes of rework, not days of debugging. I accept failure when it happens, because finding and fixing it is still orders of magnitude faster than writing perfect code by hand.</p>
+
+            <p>The bottleneck is not failure. It is rework. The accumulated friction of small corrections, each trivial, collectively significant. If I can reduce that rework by half -- not eliminate it, halve it -- the compounding effect is transformative.</p>
+
+            <p>This requires a different mental model than most of us are trained for. We think about correctness as binary: the code works or it does not, the system catches the bug or it misses it. But when the baseline is fast enough, the optimization target shifts from correctness to consistency. You are not building a wall to stop every mistake. You are grading a slope to change the default direction.</p>
+
+            <h2>Beyond Code</h2>
+
+            <p>The implications extend beyond code, because intent extends beyond code.</p>
+
+            <p>Every organization is a codebase of sorts. It has its visible architecture -- the org chart, the processes, the documented procedures. And it has its intent layer -- the constraints, conventions, and accumulated knowledge that tell you not just what to do, but what is <em>wanted</em>. "Do not propose a timeline change without briefing regulatory first." "That approval workflow looks sequential but is actually parallel." "The last three teams that tried this approach failed for a reason that is not in any retrospective document."</p>
+
+            <p>This is institutional intent. What we want the organization to do, expressed not in policy documents but in the ten thousand small corrections that constitute organizational knowledge. And it is subject to the same fragility as codebase intent: when the people leave, the want leaves with them.</p>
+
+            <p>The question -- for codebases and organizations alike -- is whether we can build scaffolding that captures intent well enough to guide execution, without requiring the person who holds the intent to be present for every decision.</p>
+
+            <h2>The Ordering</h2>
+
+            <p>There is a quiet irony in all of this. The tool most often accused of diminishing human relevance is the tool that has made intent -- the most human of capacities -- the central bottleneck. When the machine can do anything, the only question that matters is what you want it to do. And answering that question clearly, structurally, at multiple levels of abstraction, turns out to be harder and more valuable than any of the execution it enables.</p>
+
+            <p>The agent will get better. The models will grow. The capability curve will continue its climb. None of that changes the fundamental constraint. Capability was never the limiting factor. Intent was -- and the willingness to make it explicit.</p>
+
+            <p>What do you want? Can you say it clearly enough that it survives the session, the context window, the distance between your mind and the machine's?</p>
+
+            <p><em>Fieri Iussit.</em> He ordered it to be done. The oldest expression of the relationship between want and execution. The patron did not set the type. But without his intent, there was no book.</p>
+
+            <p>The machines are ready. They are capable beyond anything we have built before.</p>
+
+            <p>The ordering is up to us.</p>
+
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

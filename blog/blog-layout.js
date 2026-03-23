@@ -49,7 +49,7 @@ const footerHTML = `
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Johan Strömquist. All rights reserved.</p>
+                <p>&copy; ${new Date().getFullYear()} Johan Strömquist. All rights reserved.</p>
                 <p class="footer-motto">Transform faster. Deliver sooner. Live better.</p>
             </div>
         </div>
