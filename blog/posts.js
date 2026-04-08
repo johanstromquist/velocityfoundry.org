@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-04-the-new-ai-stack',
+        title: 'The New AI Stack',
+        date: '2026-04-13',
+        publishDate: '2026-04-13',
+        excerpt: 'Today\'s frontier is tomorrow\'s commodity. The agentic explosion is compressing that cycle faster than anything in the history of computing. The question is not which model wins. It is whether you are building for the vector.',
+        readTime: '11 min',
+        image: 'assets/images/new_ai_stack.png'
+    },
+    {
         slug: '2026-03-fieri-iussit',
         title: 'Fieri Iussit',
         date: '2026-03-22',
