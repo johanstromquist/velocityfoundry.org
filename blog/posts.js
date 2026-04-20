@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-04-a-dream-to-match-the-alarm',
+        title: 'A Dream to Match the Alarm',
+        date: '2026-04-20',
+        publishDate: '2026-04-20',
+        excerpt: 'The Molotov at Sam Altman\'s gate was a report. So were the thousands of likes on the comments that followed. An alarm has been sounded for three years, in good faith, from many directions. A dream to answer it has not. That is where the radicalization lives.',
+        readTime: '12 min',
+        image: 'assets/images/a_dream_to_match_the_alarm.png'
+    },
+    {
         slug: '2026-04-the-new-ai-stack',
         title: 'The New AI Stack',
         date: '2026-04-13',
