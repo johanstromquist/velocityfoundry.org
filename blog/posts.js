@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-04-belonging-not-status',
+        title: 'Belonging, Not Status',
+        date: '2026-04-28',
+        publishDate: '2026-04-28',
+        excerpt: 'Starbucks tried to replace baristas with equipment and discovered that the customer was not paying for throughput. As AI makes commodity production cheap, the same lesson is arriving for the rest of the economy. The model says the relational sector grows. It does not say whether the engine driving it is status or belonging. That is a choice.',
+        readTime: '10 min',
+        image: 'assets/images/belonging_not_status.png'
+    },
+    {
         slug: '2026-04-a-dream-to-match-the-alarm',
         title: 'A Dream to Match the Alarm',
         date: '2026-04-21',
