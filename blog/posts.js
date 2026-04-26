@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-04-the-floor-and-the-bridge',
+        title: 'The Floor and the Bridge',
+        date: '2026-05-04',
+        publishDate: '2026-05-04',
+        excerpt: 'Detroit, the English coalfields, Roubaix -- places where the last industrial reallocation was largely left to happen. The Ruhr -- where it was organised at scale. The model that says the relational sector grows under AI is silent on the same architecture: a floor under those displaced, and a bridge to what comes next. Hindsight makes that plain.',
+        readTime: '9 min',
+        image: 'assets/images/floor_and_bridge.png'
+    },
+    {
         slug: '2026-04-belonging-not-status',
         title: 'Belonging, Not Status',
         date: '2026-04-27',
