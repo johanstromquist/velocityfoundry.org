@@ -44,6 +44,14 @@
     gap: var(--space-xs);
 }
 
+.local-storage-note {
+    max-width: 560px;
+    margin: calc(var(--space-sm) * -1) auto var(--space-md);
+    color: var(--gray-600);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+}
+
 /* === PROGRESS BAR === */
 .progress-container {
     margin-bottom: var(--space-lg);

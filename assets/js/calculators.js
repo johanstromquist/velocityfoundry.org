@@ -9,8 +9,20 @@
     const modal = document.getElementById('calculator-modal');
     const container = document.getElementById('calculator-container');
 
+    const HTML_ESCAPE_CHARS = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    };
+
+    function escapeHTML(value) {
+        return String(value ?? '').replace(/[&<>"']/g, char => HTML_ESCAPE_CHARS[char]);
+    }
+
     // Show calculator
-    window.showCalculator = function(type) {
+    function showCalculator(type) {
         switch(type) {
             case 'compound':
                 renderCompoundCalculator();
@@ -30,13 +42,25 @@
         }
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-    };
+    }
 
     // Close calculator
-    window.closeCalculator = function() {
+    function closeCalculator() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
-    };
+    }
+
+    window.showCalculator = showCalculator;
+    window.closeCalculator = closeCalculator;
+
+    document.querySelectorAll('[data-calculator]').forEach(button => {
+        button.addEventListener('click', () => showCalculator(button.dataset.calculator));
+    });
+
+    const closeButton = document.querySelector('[data-close-calculator]');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeCalculator);
+    }
 
     // Close on outside click
     modal.addEventListener('click', function(e) {
@@ -265,9 +289,9 @@
                     <textarea
                         id="answer-input"
                         rows="4"
-                        placeholder="${q.placeholder}"
+                        placeholder="${escapeHTML(q.placeholder)}"
                         style="width: 100%; padding: 0.75rem; border: 1px solid var(--gray-300); border-radius: 8px; font-family: inherit; font-size: 0.9375rem; resize: vertical;"
-                    >${state.answers[q.key] || ''}</textarea>
+                    >${escapeHTML(state.answers[q.key] || '')}</textarea>
                 `;
             } else if (q.type === 'radio') {
                 inputHTML = '<div style="display: flex; flex-direction: column; gap: 0.75rem;">';
@@ -275,8 +299,8 @@
                     const checked = state.answers[q.key] === opt.value ? 'checked' : '';
                     inputHTML += `
                         <label style="display: flex; align-items: flex-start; cursor: pointer; padding: 0.75rem; border: 1px solid var(--gray-300); border-radius: 8px; transition: all 0.2s;">
-                            <input type="radio" name="answer" value="${opt.value}" ${checked} style="margin-top: 0.25rem; margin-right: 0.75rem;">
-                            <span style="flex: 1;">${opt.label}</span>
+                            <input type="radio" name="answer" value="${escapeHTML(opt.value)}" ${checked} style="margin-top: 0.25rem; margin-right: 0.75rem;">
+                            <span style="flex: 1;">${escapeHTML(opt.label)}</span>
                         </label>
                     `;
                 });
@@ -295,8 +319,8 @@
                     </div>
 
                     <div style="margin-bottom: 2rem;">
-                        <h4 style="color: var(--gray-900); margin-bottom: 0.5rem;">${q.title}</h4>
-                        <p style="color: var(--gray-600); font-size: 0.9375rem; margin-bottom: 1.5rem;">${q.subtitle}</p>
+                        <h4 style="color: var(--gray-900); margin-bottom: 0.5rem;">${escapeHTML(q.title)}</h4>
+                        <p style="color: var(--gray-600); font-size: 0.9375rem; margin-bottom: 1.5rem;">${escapeHTML(q.subtitle)}</p>
                         ${inputHTML}
                     </div>
 
@@ -354,7 +378,7 @@
                     <div class="calculator-results">
                         <div class="result-highlight">
                             <h4>Your Number:</h4>
-                            <p class="metric-value">${analysis.metric}</p>
+                            <p class="metric-value">${escapeHTML(analysis.metric)}</p>
                         </div>
 
                         <div class="result-context">
@@ -362,21 +386,21 @@
                                 <span class="icon icon-user small blue"></span>
                                 <div class="context-content">
                                     <p class="context-label">Your Value Delivery:</p>
-                                    <p class="context-value">"${state.answers.value_delivery}"</p>
+                                    <p class="context-value">"${escapeHTML(state.answers.value_delivery)}"</p>
                                 </div>
                             </div>
                             <div class="context-item">
                                 <span class="icon icon-activity small blue"></span>
                                 <div class="context-content">
                                     <p class="context-label">Your Process Flow:</p>
-                                    <p class="context-value">"${state.answers.process_flow}"</p>
+                                    <p class="context-value">"${escapeHTML(state.answers.process_flow)}"</p>
                                 </div>
                             </div>
                             <div class="context-item">
                                 <span class="icon icon-alert small red"></span>
                                 <div class="context-content">
                                     <p class="context-label">Your Bottlenecks:</p>
-                                    <p class="context-value">"${state.answers.bottlenecks}"</p>
+                                    <p class="context-value">"${escapeHTML(state.answers.bottlenecks)}"</p>
                                 </div>
                             </div>
                         </div>
@@ -386,15 +410,15 @@
                                 <span class="icon icon-trend small blue"></span>
                                 <p class="section-title">How to Measure:</p>
                             </div>
-                            <p class="section-content">${analysis.measurement}</p>
+                            <p class="section-content">${escapeHTML(analysis.measurement)}</p>
                             ${analysis.examples ? `
                                 <div class="examples-section">
                                     <p class="examples-header">Real-world examples:</p>
                                     ${analysis.examples.map(ex => `
                                         <div class="example-item">
-                                            <p class="example-role">${ex.role}</p>
-                                            <p class="example-metric"><strong>Metric:</strong> ${ex.metric}</p>
-                                            <p class="example-result"><strong>Result:</strong> ${ex.result}</p>
+                                            <p class="example-role">${escapeHTML(ex.role)}</p>
+                                            <p class="example-metric"><strong>Metric:</strong> ${escapeHTML(ex.metric)}</p>
+                                            <p class="example-result"><strong>Result:</strong> ${escapeHTML(ex.result)}</p>
                                         </div>
                                     `).join('')}
                                 </div>
@@ -406,7 +430,7 @@
                                 <span class="icon icon-lightbulb small amber"></span>
                                 <p class="section-title">Why This Metric:</p>
                             </div>
-                            <p class="section-content">${analysis.why}</p>
+                            <p class="section-content">${escapeHTML(analysis.why)}</p>
                         </div>
 
                         <div class="result-section">
@@ -415,10 +439,10 @@
                                 <p class="section-title">Validation Check:</p>
                             </div>
                             <ul class="validation-list">
-                                <li><strong>Velocity-focused:</strong> ${analysis.validation.velocity ? '✓' : '⚠️'} ${analysis.validation.velocityNote}</li>
-                                <li><strong>Direct control:</strong> ${analysis.validation.control ? '✓' : '⚠️'} ${analysis.validation.controlNote}</li>
-                                <li><strong>Measurable:</strong> ${analysis.validation.measurable ? '✓' : '⚠️'} ${analysis.validation.measurableNote}</li>
-                                <li><strong>Hard to game:</strong> ${analysis.validation.gaming ? '✓' : '⚠️'} ${analysis.validation.gamingNote}</li>
+                                <li><strong>Velocity-focused:</strong> ${analysis.validation.velocity ? '✓' : '⚠️'} ${escapeHTML(analysis.validation.velocityNote)}</li>
+                                <li><strong>Direct control:</strong> ${analysis.validation.control ? '✓' : '⚠️'} ${escapeHTML(analysis.validation.controlNote)}</li>
+                                <li><strong>Measurable:</strong> ${analysis.validation.measurable ? '✓' : '⚠️'} ${escapeHTML(analysis.validation.measurableNote)}</li>
+                                <li><strong>Hard to game:</strong> ${analysis.validation.gaming ? '✓' : '⚠️'} ${escapeHTML(analysis.validation.gamingNote)}</li>
                             </ul>
                         </div>
 
@@ -427,7 +451,7 @@
                                 <span class="icon icon-target small amber"></span>
                                 <p class="section-title">Getting Started:</p>
                             </div>
-                            <p class="section-content">${analysis.gettingStarted}</p>
+                            <p class="section-content">${escapeHTML(analysis.gettingStarted)}</p>
                         </div>
 
                         ${analysis.warnings.length > 0 ? `
@@ -437,7 +461,7 @@
                                 <p class="section-title">Watch Out For:</p>
                             </div>
                             <ul class="warnings-list">
-                                ${analysis.warnings.map(w => `<li>${w}</li>`).join('')}
+                                ${analysis.warnings.map(w => `<li>${escapeHTML(w)}</li>`).join('')}
                             </ul>
                         </div>
                         ` : ''}
@@ -659,28 +683,28 @@
                             <div>
                                 <label style="display: block; margin-bottom: 0.75rem; font-weight: 500; font-size: 0.875rem;">Resistance Category</label>
                                 <div style="display: grid; gap: 0.5rem;">
-                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="if(!this.querySelector('input').checked) this.style.borderColor='var(--gray-300)'">
+                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;">
                                         <input type="radio" name="category" value="technical" style="margin-right: 0.75rem; margin-top: 0.25rem;">
                                         <div>
                                             <strong style="color: var(--blue);">Technical</strong>
                                             <div style="font-size: 0.75rem; color: var(--gray-600); margin-top: 0.25rem;">Real constraints or technical feasibility concerns (e.g., "This won't pass FDA inspection")</div>
                                         </div>
                                     </label>
-                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--amber)'" onmouseout="if(!this.querySelector('input').checked) this.style.borderColor='var(--gray-300)'">
+                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;">
                                         <input type="radio" name="category" value="political" style="margin-right: 0.75rem; margin-top: 0.25rem;">
                                         <div>
                                             <strong style="color: var(--amber);">Political</strong>
                                             <div style="font-size: 0.75rem; color: var(--gray-600); margin-top: 0.25rem;">Power dynamics or process requirements (e.g., "This needs to go through the steering committee")</div>
                                         </div>
                                     </label>
-                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="if(!this.querySelector('input').checked) this.style.borderColor='var(--gray-300)'">
+                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;">
                                         <input type="radio" name="category" value="cultural" style="margin-right: 0.75rem; margin-top: 0.25rem;">
                                         <div>
                                             <strong style="color: var(--green);">Cultural</strong>
                                             <div style="font-size: 0.75rem; color: var(--gray-600); margin-top: 0.25rem;">Values or identity conflicts (e.g., "That's not who we are" or "We've never worked that way")</div>
                                         </div>
                                     </label>
-                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--purple)'" onmouseout="if(!this.querySelector('input').checked) this.style.borderColor='var(--gray-300)'">
+                                    <label style="display: flex; align-items: start; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 4px; cursor: pointer; transition: all 0.2s;">
                                         <input type="radio" name="category" value="personal" style="margin-right: 0.75rem; margin-top: 0.25rem;">
                                         <div>
                                             <strong style="color: var(--purple);">Personal</strong>
@@ -700,32 +724,32 @@
                         <div class="resistance-list" style="margin-bottom: 1.5rem;">
                             <h4 style="margin-bottom: 1rem; font-size: 1rem;">Mapped Resistance (${state.resistances.length})</h4>
                             ${state.resistances.map((r, idx) => {
-                                const category = categoryDefinitions[r.category];
+                                const category = categoryDefinitions[r.category] || categoryDefinitions.personal;
                                 return `
                                     <div class="resistance-item" style="background: white; border: 1px solid var(--gray-300); border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem;">
                                         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
                                             <div style="flex: 1;">
-                                                <p style="font-weight: 600; margin-bottom: 0.25rem;">${r.who}</p>
-                                                <p style="font-size: 0.875rem; color: var(--gray-600); font-style: italic; margin-bottom: 0.5rem;">"${r.what}"</p>
+                                                <p style="font-weight: 600; margin-bottom: 0.25rem;">${escapeHTML(r.who)}</p>
+                                                <p style="font-size: 0.875rem; color: var(--gray-600); font-style: italic; margin-bottom: 0.5rem;">"${escapeHTML(r.what)}"</p>
                                             </div>
                                             <div style="display: flex; gap: 0.5rem; margin-left: 1rem;">
-                                                <button onclick="editResistance(${idx})" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border: 1px solid var(--gray-300); background: white; border-radius: 4px; cursor: pointer;">Edit</button>
-                                                <button onclick="deleteResistance(${idx})" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border: 1px solid var(--red); color: var(--red); background: white; border-radius: 4px; cursor: pointer;">Delete</button>
+                                                <button data-resistance-edit="${idx}" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border: 1px solid var(--gray-300); background: white; border-radius: 4px; cursor: pointer;">Edit</button>
+                                                <button data-resistance-delete="${idx}" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border: 1px solid var(--red); color: var(--red); background: white; border-radius: 4px; cursor: pointer;">Delete</button>
                                             </div>
                                         </div>
 
                                         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; padding: 0.75rem; background: var(--gray-50); border-radius: 4px;">
                                             <div>
                                                 <p style="font-size: 0.75rem; color: var(--gray-600); margin-bottom: 0.25rem;">CATEGORY</p>
-                                                <p style="font-weight: 600; color: ${category.color};">${category.type}</p>
+                                                <p style="font-weight: 600; color: ${category.color};">${escapeHTML(category.type)}</p>
                                             </div>
                                             <div>
                                                 <p style="font-size: 0.75rem; color: var(--gray-600); margin-bottom: 0.25rem;">RESPONSE</p>
-                                                <p style="font-weight: 600;">${category.response}</p>
+                                                <p style="font-weight: 600;">${escapeHTML(category.response)}</p>
                                             </div>
                                             <div style="grid-column: 1 / -1;">
                                                 <p style="font-size: 0.75rem; color: var(--gray-600); margin-bottom: 0.25rem;">RATIONALE</p>
-                                                <p style="font-size: 0.875rem;">${category.rationale}</p>
+                                                <p style="font-size: 0.875rem;">${escapeHTML(category.rationale)}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -754,6 +778,12 @@
                         render();
                     }
                 });
+                container.querySelectorAll('[data-resistance-edit]').forEach(button => {
+                    button.addEventListener('click', () => editResistance(Number.parseInt(button.dataset.resistanceEdit, 10)));
+                });
+                container.querySelectorAll('[data-resistance-delete]').forEach(button => {
+                    button.addEventListener('click', () => deleteResistance(Number.parseInt(button.dataset.resistanceDelete, 10)));
+                });
             }
 
             // Populate form if editing
@@ -763,7 +793,8 @@
                 document.getElementById('what-input').value = r.what;
                 document.getElementById('role-input').value = r.role;
                 document.getElementById('stake-input').value = r.stake;
-                const categoryRadio = document.querySelector(`input[name="category"][value="${r.category}"]`);
+                const categoryRadio = Array.from(document.querySelectorAll('input[name="category"]'))
+                    .find(radio => radio.value === r.category);
                 if (categoryRadio) categoryRadio.checked = true;
             }
         }
@@ -811,16 +842,18 @@
             render();
         }
 
-        window.editResistance = function(idx) {
+        function editResistance(idx) {
+            if (!Number.isInteger(idx) || !state.resistances[idx]) return;
             state.editingIndex = idx;
             render();
             document.getElementById('who-input').focus();
-        };
+        }
 
-        window.deleteResistance = function(idx) {
+        function deleteResistance(idx) {
+            if (!Number.isInteger(idx) || !state.resistances[idx]) return;
             state.resistances.splice(idx, 1);
             render();
-        };
+        }
 
         function downloadAnalysis() {
             const wb = XLSX.utils.book_new();
@@ -833,7 +866,7 @@
             ];
 
             state.resistances.forEach(r => {
-                const category = categoryDefinitions[r.category];
+                const category = categoryDefinitions[r.category] || categoryDefinitions.personal;
                 wsData.push([
                     r.who,
                     r.what,
@@ -853,7 +886,7 @@
 
             const categories = {};
             state.resistances.forEach(r => {
-                const category = categoryDefinitions[r.category];
+                const category = categoryDefinitions[r.category] || categoryDefinitions.personal;
                 categories[category.type] = (categories[category.type] || 0) + 1;
             });
 
