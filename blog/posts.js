@@ -17,6 +17,15 @@
 
 const posts = [
     {
+        slug: '2026-04-the-intentional-layer',
+        title: 'The New Bottom Rung',
+        date: '2026-05-11',
+        publishDate: '2026-05-11',
+        excerpt: 'AI has pulled the bottom rung out of dozens of professions at once. Most firms are taking what looks like the rational efficiency: stop hiring at the entry level. The labour market bleeds from the bottom up. There is another path -- treat AI as an extension of the workforce, and redirect human resources at new work supported by AI. The bottom of the ladder is still there. It is just shaped differently.',
+        readTime: '7 min',
+        image: 'assets/images/intentional_layer.png'
+    },
+    {
         slug: '2026-04-the-floor-and-the-bridge',
         title: 'The Floor and the Bridge',
         date: '2026-05-04',
