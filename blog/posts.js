@@ -17,6 +17,24 @@
 
 const posts = [
     {
+        slug: '2026-05-what-stays-yours',
+        title: 'What Stays Yours',
+        date: '2026-06-01',
+        publishDate: '2026-06-01',
+        excerpt: 'Climbing the AI maturity ladder is also a surrender ladder. The further up the stack you get, the easier it gets to surrender, and the harder it gets to notice you have. This is the reflective follow-up to Three Tiers of AI Maturity, in conversation with Ethan Mollick on cognitive surrender. The structural answer at altitude: keep the spec, keep the verification, keep the escalation framework. Everything else can go.',
+        readTime: '8 min',
+        image: 'assets/images/what_stays_yours.png'
+    },
+    {
+        slug: '2026-05-three-tiers-of-ai-maturity',
+        title: 'Three Tiers of AI Maturity',
+        date: '2026-05-26',
+        publishDate: '2026-05-26',
+        excerpt: 'There are three tiers of AI maturity -- Copilot, Agent, Orchestration -- and they do not depend on which model you are using. They depend on how you are using it. Most operators are at Tier 1 and do not realise there are more. The transitions are not technical. They are psychological: giving up control in exchange for leverage.',
+        readTime: '9 min',
+        image: 'assets/images/three_tiers_ai_maturity.png'
+    },
+    {
         slug: '2026-04-bottom-of-the-ladder',
         title: 'Bottom of the Ladder',
         date: '2026-05-11',
