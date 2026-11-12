@@ -10,12 +10,40 @@
    SCHEDULING POSTS:
    - Add a 'publishDate' field to schedule a post for future publication
    - Posts without a publishDate are published immediately
-   - Posts with a publishDate in the future won't appear until that date
-   - Format: 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM:SS'
+   - Posts with a publishDate in the future are filtered from the main listing
+   - Date-only values publish at 12:00 UTC; exact times use ISO 8601 with an offset
    - The 'date' field is still used for display purposes
    =================================== */
 
+function parsePublishDate(value) {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+        return new Date(value + 'T12:00:00Z');
+    }
+
+    const normalized = value.replace(' ', 'T');
+    const hasTimezone = /(?:Z|[+-]\d{2}:\d{2})$/i.test(normalized);
+    return new Date(hasTimezone ? normalized : normalized + 'Z');
+}
+
 const posts = [
+    {
+        slug: '2026-11-who-gets-to-build-software',
+        title: 'Who Gets to Build Software?',
+        date: '2026-11-16',
+        publishDate: '2026-11-16T14:00:00+01:00',
+        excerpt: 'Why I wrote The vibe coder\'s guide to the galaxy: who can build software now, and what it takes to direct an agent well.',
+        readTime: '6 min',
+        image: 'assets/images/who_gets_to_build_software.jpg'
+    },
+    {
+        slug: '2026-11-how-i-wrote-the-vibe-coders-guide',
+        title: 'How I Wrote The vibe coder\'s guide to the galaxy',
+        date: '2026-11-18',
+        publishDate: '2026-11-18T14:00:00+01:00',
+        excerpt: 'How I wrote The vibe coder\'s guide to the galaxy by making principles explicit, checking examples, and directing agents through writing and publishing.',
+        readTime: '9 min',
+        image: 'assets/images/how_i_wrote_the_vibe_coders_guide.jpg'
+    },
     {
         slug: '2026-05-what-stays-yours',
         title: 'What Stays Yours',

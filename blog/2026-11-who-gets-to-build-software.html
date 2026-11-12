@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Why I wrote The vibe coder's guide to the galaxy: who can build software now, and what it takes to direct an agent well.">
+    <title>Who Gets to Build Software? - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Scheduled locally; not published. -->
+    <div id="blog-nav"></div>
+    <div id="blog-hero"><section class="post-hero" role="img" aria-label="An old brass navigation compass" style="background-image: url('../assets/images/who_gets_to_build_software.jpg');"></section></div>
+
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <h1>Who Gets to Build Software?</h1>
+
+            <p>In September, I attended a technology conference for leaders from more than 40 companies. In discussions I described how I direct a group of AI agents to write, test and ship software. I decide what they should build and check what they return; I am not sitting there typing the code myself. Not one person I talked to said they could relate to what I was describing.</p>
+
+            <p>I wrote <a href="../index.html">The vibe coder's guide to the galaxy</a> for people who want to use AI agents to build software, including people who have never programmed. Agentic engineering is the work of directing those agents: deciding what they should do, checking the result and knowing which details they can handle. Engineers and people new to programming can both build software this way, but each has a different half of the balance to learn.</p>
+
+            <h2>Learning the balance</h2>
+
+            <p>At Metalmind, where I am a co-founder, we saw the agentic shift coming and equipped our small team with current tools. Having the tools did not settle how much to trust them. Some engineers did not want to let go of code before reading every line. Others were excited enough to accept rough output too quickly. We had both instincts in the same team.</p>
+
+            <p>Neither was enough on its own.</p>
+
+            <p>Software engineering and agentic engineering are different kinds of work. Our first reactions showed why: one engineer had to learn to double-check an agent's claims, while another had to release some of the close control that had served them well when they wrote the code themselves. The job was to decide where a review could change the result, and where the agent could handle a detail without another person inspecting every line.</p>
+
+            <p>The same balance came up in my own work with Storyteller, the app I built with my agents to help me research and write books. An early build opened with an error, and rename, move and delete were disabled, each with a note saying the command was not yet available. The note explained why those commands were missing. I asked the coding agent to implement them and remove the note; after the change, all 19 tests passed. The working commands showed that the problem had been fixed.</p>
+
+            <p>This is the kind of check our engineers had to learn as well: test the agent's claim against the working result, then let it handle implementation details that do not need another decision.</p>
+
+            <p>I later used the same kind of check on a mock-up for Storyteller. Single and split view had separate controls, and the two panel toggles sat apart. I asked the editor agent to revise the mock-up so one button switched the view and the toggles sat together. I accepted the change, then the coding agents applied it.</p>
+
+            <p>I had to set how the interaction should work. I did not need to direct every implementation detail that followed.</p>
+
+            <p>One of the book's principles is that a system should show how it works. Here, the note exposed a gap, and the working command showed it had been closed. The engineer still checks behaviour and the available test result. After that, the agent can handle implementation details that do not need another decision.</p>
+
+            <p>For the Metalmind engineers, the work shifted from reading every line to choosing which checks mattered, and from applying their coding experience directly to deciding where it would make the biggest difference.</p>
+
+            <h2>A different starting point</h2>
+
+            <p>At SSI Strategy, where I am President and Chief Innovation Officer, we set up a team of Capability Engineers (CE), seven keen and enthusiastic individuals without software-engineering backgrounds. They have been equipped with tools similar to those we use at Metalmind, that help them shape an idea into an application by deciding what it should do and checking the result, while an agent writes the code. Their first need was to learn safeguards such as Git — a tool that keeps versions of the code so people can share changes and undo them if needed. We have not run many formal training sessions but this one was important. Progress is naturally uneven, but it is clear to everyone that they are all learning and developing.</p>
+
+            <p>Metalmind engineers were working out what to stop checking. The CEs first needed a reliable way to keep, control and share what they were making.</p>
+
+            <p>So what does a Capability Engineer decide? The workflow gives that person responsibility for the application's behaviour, data and definition of done. The agent implements, and the person reviews the result. They can judge whether the application serves the need without writing every feature, while remaining responsible for what was requested and whether the result meets it.</p>
+
+            <p>The adjustment was different from the one at Metalmind. The senior engineers were learning where to use skills they already had. The CE colleagues were learning safeguards that made it possible to build and share work safely. Git and code sharing gave them a way to keep work, control changes and pass it on during experiments.</p>
+
+            <p>They did not have to become the people writing the code. They did remain responsible for the need and for judging the result.</p>
+
+            <p>Most of the seven have experimented and made things, though few have yet put their work into colleagues' hands. One colleague has built more than 30 applications, mostly small tools for personal productivity. One of these tools is now in production, and other candidates are being considered because they could help more people. Another colleague stayed with one use case. Seeing how they got that single product working in production, with its own little logo and in the hands of colleagues, was incredibly rewarding.</p>
+
+            <p>Those are two different patterns of work: one person tried many applications before one reached production, while another stayed with a single use case until colleagues could use it. Both require someone to judge what is worth building and whether the result is ready to share.</p>
+
+            <p>We have more work ahead. Over the coming months, much of our effort will be on governance, deployment, security and user experience, while the SSI Innovation Office builds the technical capabilities that let these application builders' creativity flourish and help bring their work into wider use. In parallel we are inviting more colleagues to learn about building and creating with agents through our Citizen Builder programme. The intention is to foster a culture of creativity and curiosity, because we believe many of the day to day challenges we face at work could be solved through clever software, and the people who are best placed to solve them are the people to whom they are a pain.</p>
+
+            <p>So who gets to build software? Engineers and people who have never programmed both can. The engineer has to learn when to stop checking every line. The newcomer has to learn how to set the goal, keep safe versions and judge the result.&nbsp;</p><p>If I returned to that conference now, I would tell them that the work is already open to both — but the balance is a skill, and it can be learned.</p>
+        </div>
+
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <div id="blog-footer"></div>
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+
+
+
+</body></html>

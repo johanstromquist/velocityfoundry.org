@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How I wrote The vibe coder's guide to the galaxy by making principles explicit, checking examples, and directing agents through writing and publishing.">
+    <title>How I Wrote The vibe coder's guide to the galaxy - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Scheduled locally; not published. -->
+    <div id="blog-nav"></div>
+    <div id="blog-hero"></div>
+
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <h1>How I Wrote The vibe coder's guide to the galaxy</h1>
+
+            <p>I built the first incarnation of my agent fleet in January - February this year. Since then I’ve worked hard to both understand and manage this odd intelligence with its many faces.</p><p>As part of this work I wanted to put the principles I use when developing software into words. I figured that if I could, I’d be able to convey them to my agents and it would be so much easier if they just got how I think. The principles applied ten years ago, and they still apply now, because they are about the work rather than the code.&nbsp;</p><p>The difficulty was that they had become second nature. When I sat down with a blank page, I kept leaving out the connecting steps that make them useful to someone else.</p>
+
+            <p>Those principles were already shaping my work with the fleet. A large number, perhaps the vast majority, of the directions I gave it were about keeping its output in line with them. I figured that if I could find the principles in those conversations, I could explain them to other people. That is where I started.</p><p>This post is telling the story about how those principles became&nbsp;<a href="../index.html">The vibe coder's guide to the galaxy</a>.</p><p><a href="../index.html">The vibe coder's guide to the galaxy</a> is a practical guide for people who want to use AI agents to build software, including people without programming experience. I made it by directing agents through analysis, writing and publishing. Each stage left me with a different question: is this pattern real, does this draft say what the evidence supports, and is this file ready to send out?</p>
+
+            <h2>Finding the principles in my conversations</h2>
+
+            <p>My first step was to examine my conversations with Master Control, my lead agent, because I thought the principles would be encoded in the choices and corrections I made there. In October 2026, I used an AI agent to analyse about 32,000 messages from 27 Master Control sessions. The records span 10 August to 11 October. I was looking for decisions that recurred and could be made explicit as principles someone else could use.</p>
+
+            <p>That gave me a way to work from decisions I had actually made instead of trying to recall a tidy list from memory. The analysis gathered material faster than I could have reread every exchange by hand. It also showed me where a rule kept appearing in the work.</p>
+
+            <p>The first result was 31 short lessons, each with a rule, why it matters, a way to check it and dated examples. Some fit in a few words — give one job one path, use the live source of truth, make failure visible. A short sentence is not automatically a reliable principle. I needed to know whether it described a pattern in the conversations or only sounded good on the page.</p>
+
+            <h3>Checking the candidate cases</h3>
+
+            <p>I then had a reading agent collect candidate cases - 608 of them it turned out - from those conversations, grouped under the principle each seemed to show. I did not treat that count as 608 usable examples. Every item was a short summary marked unverified until checked against its source. A summary can leave out a disagreement, skip the decision that resolved it, or attach a correct sentence to the wrong event, so before I included one as an example in the book, I checked what had actually happened in the source conversation.</p>
+
+            <p>To illustrate, one checked example came from a game map. The requirement was that outside doors open outward. The drawing showed them opening inward. We corrected the drawing tool, built the game and checked the result — all 14 outer doors across nine buildings opened outward. I trusted the example because the conversation recorded the mistake, the correction and the test of the built result. It did not rely on an agent's summary that the work was done.</p>
+
+            <p>The summaries helped find possible examples, but the conversations decided whether I could use them. That check kept a fluent summary from eventually becoming a fact in the book just because it sounded complete.</p>
+
+            <h3>Turning the lessons into principles</h3>
+
+            <p>The lessons and checked examples became six principles in a playbook, which we applied across interface design, backend and API work, data modelling, agent tooling, and operations. A principle such as “use one path per job” had to make sense in an interface, an agent action and a deployment. If it only fit the example that first suggested it, it would not guide the other work.</p>
+
+            <p>That was the point of doing the comparison: I could see whether a rule described work across different disciplines, rather than naming one local fix. It gave the book a set of practices to teach, not just a collection of incidents.</p>
+
+            <h2>Writing the book with an AI author and editor</h2>
+
+            <p>I wrote the book in Storyteller, my personal authoring application, which I had been developing with my agent fleet. It was still in development while I used it, making the book a convenient test of the application as well as a manuscript: each stage showed me where the tool worked and where it still got in the way.</p>
+
+            <p>Storyteller's writing agent proposed an outline and chapter plans before drafting. A separate AI editor reviewed each plan, asked questions when a claim lacked support, and returned requested changes before the agent wrote those chapters into the manuscript. The same review continued with the drafts. The writing agent did not decide that its own work was ready.</p>
+
+            <p>Across over 600 examples there were of course many claims, and we had to verify each one of them. This process would have taken days, if not weeks done manually. Now the fleet handled it all in a matter of minutes. Here’s another illustrative example: one edit came down to the phrase “in its database.” A chapter about a property-mapping service said that the data was stored in its database. The source established what the service stored, not how it stored it. The editor flagged the extra claim, and we revised the sentence to say only what the record supported: the service stores the property data. Without that edit, the book would have stated an implementation detail that couldn’t be verified, and that were essentially not correct. Later, when I did the final edits and proof reading, there were very few factual issues that needed correcting, thanks to this “source review” step in the process.</p>
+
+            <p>The AI editor helped where a familiar phrase could hide an assumption. Its question made Storyteller’s agent check the source and choose the narrower wording. A fluent sentence was not enough. I would have to own the claim it made.</p>
+
+            <h3>My read-through</h3>
+
+            <p>When the first draft was complete, I read it myself. The editor could question structure and support. I had to decide whether the text, examples and conclusions said what I meant and whether I was prepared to publish them under my name.</p>
+
+            <p>That full read-through was how I made the manuscript mine. The agent had produced the draft, and the editor had questioned it, but I had to stand behind the whole book, not only the sentences that had already been discussed.</p>
+
+            <h3>Preparing the publication files</h3>
+
+            <p>Storyteller then produced the publication files — an EPUB, a print-interior PDF, a print-cover PDF and a Kindle front-cover image — from the manuscript. The application could prepare those deliverables. I still had to review the cover and proof before sending them on.</p>
+
+            <p>Having the files generated from the manuscript saved me from preparing each edition as a separate writing task. I could spend my review on whether the files represented the book I meant to publish.</p>
+
+            <h2>Preparing the editions for publication</h2>
+
+            <p>This first publication took longer because Storyteller was still being built. I could have made manual fixes outside the application and moved on, but that would have hidden the very problems I needed to solve before using the tool for the next book. I wanted this book to show whether the authoring process itself worked.</p>
+
+            <p>The print PDF exposed one of those problems. I needed finer control over the spacing after lists and tables, and over the tables themselves, so I needed a fresh export even though the manuscript had not changed. Storyteller kept returning the previous PDF because it treated an unchanged manuscript as an unchanged export. The export logic had to be fixed in the application before I could get the file I needed.</p>
+
+            <p>That was slower for this book. It also meant the fix belonged to the tool I was building, rather than to a one-off manual edit that the next book could not repeat.</p>
+
+            <p>On Amazon's Kindle Direct Publishing site, I signed in and then spun up a publisher agent that opened the eBook setup, entered the title, author, description, categories and seven keywords, then uploaded the EPUB and Kindle cover. When necessary, the agent stopped and asked me for facts or preferences. I supplied the answers. It entered them, set the price and saved the edition as a draft. The information depended on my knowledge of how the book had been made and how I wanted it to be priced and marketed.</p>
+
+            <p>For the paperback, the agent entered the print settings, uploaded the interior and full-wrap cover, and opened KDP's preview. It reported 210 pages and “No Issue Selected”. I saw that the spine lettering was the wrong colour, stopped before approving the proof and exported a corrected cover from Storyteller.</p>
+
+            <p>The corrected cover was ready, but the agent's upload attempt failed, so I uploaded it myself. When the revised interior was ready after addressing the line spacing issue mentioned above, the same upload problem meant I sent that file too. KDP processed the new interior, and the agent reopened the preview, which again showed 210 pages and no selected issue. It left proof approval to me. I reviewed it, approved it and clicked Next. The agent saved paperback pricing as a draft and stopped before the final publish control. I published both editions myself.</p>
+
+            <p>The agent could enter the details and move the files through KDP, which spared me that form work. The choices that depended on how the book had been made, the corrected cover and the final proof still needed my input. The agent handled production steps, and I retained responsibility for what I published.</p>
+
+            <p>That is what directing agents looked like in this project: they found patterns, collected candidate cases, drafted chapters, produced files and prepared retailer pages. I remained responsible for decisions that depended on evidence, intent and review.</p>
+
+            <p>Does the source support this rule? Does the sentence say only what we know? Is the cover correct? Is this proof ready? I did not need to do every task myself. I did need to decide what the evidence meant, what I intended to publish and when the work had passed review. That is the skill this book is for — deciding what to ask an agent to do, what to check, and when to just let it work.</p>
+        </div>
+
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <div id="blog-footer"></div>
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+
+
+
+</body></html>
