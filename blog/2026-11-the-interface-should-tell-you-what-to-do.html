@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="People do not read instructions. An interface can show what to do through its structure, controls, defaults, constraints and feedback. Self-explanatory design is a north star, and it applies directly to software built with an agent.">
+    <title>The Interface Should Tell You What to Do - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>In the 1980s, researchers at IBM watched people learning to use new office computer systems. In one training course, the guide showed a list of icons for the applications on the machine, but the learners were not allowed to try them. They were supposed to read first.</p>
+
+            <p>After about an hour, one learner complained: <a href="https://research.cs.vt.edu/ns/cs5724papers/4.mental.mental.carroll.paradox.pdf">“I’m getting impatient. I want to do something, not learn to do everything.”</a> Half an hour later he said: “I could have typed 3000 words by now!” Another, told by an on-screen tutorial to read a passage without doing anything, said: “I’m tempted to do it anyway and then see if I can get out.”</p>
+
+            <p>John Carroll and Mary Beth Rosson, who reported these sessions in 1987, drew this conclusion from such observations: “Learners at every level of experience try to avoid reading.”</p>
+
+            <p>Their finding leads to a design principle. It is possible to build interfaces so clear that people do not need instructions to use them. Not every interface will get there. It is still the direction every design decision should point in. The interface itself should show what can be done and what to do next, through its structure, the controls it shows and where it puts them, its defaults, its constraints, the feedback it gives, and what it leaves out. Text is the last resort, because people do not read it.</p>
+
+            <p>This essay sets out the evidence that people do not read, then takes the ways an interface can show what to do one at a time, each with the cases that show it working. It then marks where the principle reaches its limits. The last part applies it to software built with an AI agent. An agent can write a paragraph of explanation in a second, so the person directing it has to ask for a screen that does not need one, and has to know how to check that they got it.</p>
+
+            <h2>People do not read</h2>
+
+            <p>Carroll and Rosson called the first half of what they saw the “production bias.” People sit down at a new system to get work done. “Their paramount goal is throughput.” Reading about the system is time not spent doing the work, so they skip it, and when they do read, they want to try each operation as soon as it is mentioned. The secretaries learning a word processor were experts at office work, “far more expert than the designers of their word processing system,” as the paper puts it, and “the orientation is to do real work, not to read descriptions and instructions, or to practice step-by-step exercises.”</p>
+
+            <p>The paper is titled “Paradox of the Active User” because the same impatience costs the users something. People who skip the explanation and learn by trying make mistakes the explanation would have prevented, and they tend to stay with the first method they find even when a better one exists. Carroll and Rosson argued that design has to accept this behaviour and work with it. They called the problems “true paradoxes that necessitate programmatic tradeoff solutions.”</p>
+
+            <p>Steve Krug reached the same conclusion from usability testing on websites. His book <em>Don’t Make Me Think</em> was first published in 2000. Its second chapter sets out three “facts of life.” The first is <a href="https://archive.org/stream/SteveKrugDontMakeMeThink/Steve_Krug_Don%E2%80%99t_Make_Me_Think,_djvu.txt">“We don’t read pages. We scan them.”</a> The third is “We don’t figure out how things work. We muddle through.” He writes: “Faced with any sort of technology, very few people take the time to read instructions. Instead, we forge ahead and muddle through, making up our own vaguely plausible stories about what we’re doing and why it works.”</p>
+
+            <p>Measurements agree with him. In 2008 Jakob Nielsen analysed data from a study by Harald Weinreich and colleagues, who recorded the ordinary web browsing of 25 people, about 45,000 page views in all. Nielsen compared how long people stayed on each page with how many words it had. Each extra 100 words added only 4.4 seconds to the visit, enough, by his estimate of reading speed, to read about 18 of them. He concluded that <a href="https://www.nngroup.com/articles/how-little-do-users-read/">“users have time to read at most 28% of the words”</a> on an average page, and that “20% is more likely.”</p>
+
+            <p>Eye-tracking shows what people do with the little time they spend. In 2006 Nielsen’s group <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/">recorded how 232 people looked at thousands of web pages</a>. The most common pattern was a rough letter F: a horizontal sweep across the top of the content, a shorter sweep a little further down, then a vertical scan down the left edge. Nielsen’s first conclusion was “Users won’t read your text thoroughly in a word-by-word manner.” They read the first words of lines and paragraphs, and the third word on a line “much less often than the first two words.” A sentence of instructions placed in the middle of a screen sits where people look least.</p>
+
+            <p>Krug’s advice follows from this. A section of his book is headed “Instructions must die.” “The main thing you need to know about instructions is that no one is going to read them,” he writes, at least “not until after repeated attempts at ‘muddling through’ have failed.” And: “Your objective should always be to eliminate instructions entirely by making everything self-explanatory, or as close to it as possible.”</p>
+
+            <p>The strongest evidence comes from Carroll’s own group, because they tested what happens when instruction is cut down. Their answer to learners who would not read was the Minimal Manual, a training manual for a word processor built around the way the learners in their studies behaved. It removed the conceptual material that filled conventional manuals and kept concrete procedures for real tasks. It left some steps out on purpose, in sections called “On Your Own,” so that learners would work them out by trying. It was then revised through rounds of testing on single skills. Getting to the typing area, for example, meant passing through several menus, and in the earlier manuals learners had trouble with it. The Minimal Manual reduced it to a few steps, “in part by sheer deletion of conceptual material.”</p>
+
+            <p>Then they ran a full comparison. Learners used one of five training methods, including two versions of the Minimal Manual and commercial manuals, for up to seven full working days. The Minimal Manual learners were “substantially faster” on the basic topics it covered, and learned at least as well. In a later phase, the Minimal Manual learners moved on to the advanced sections of a commercial manual. They were still faster, and their results on learning achievement tests were “better by a factor of eight.” The authors concluded that the design was “an order of magnitude more effective than comparable state-of-the-art commercial manual designs.”</p>
+
+            <p>The Minimal Manual was still a manual. The finding is about how much reading people will do and how much they get from it. Taking most of the words away made people learn faster and better. The next step is an interface that needs no manual at all.</p>
+
+            <h2>When simple things need labels</h2>
+
+            <p>Don Norman made this argument about physical objects in 1988, in the book now called <em><a href="https://jnd.org/the-design-of-everyday-things-revised-and-expanded-edition/">The Design of Everyday Things</a></em>. When a design uses its affordances well, he wrote, “the user knows what to do just by looking: no picture, label, or instruction required. Complex things may require explanation, but simple things should not. When simple things need pictures, labels, or instructions, the design has failed.”</p>
+
+            <p>A familiar example is a door with the same handle on both sides. The handle says “pull,” so people pull, and on one side the door only opens by pushing. Someone tapes a sign on it that says PUSH. The sign is the evidence that the door is wrong. A door with a flat plate on the side you push and a handle on the side you pull needs no sign. The shape of the hardware tells people what to do.</p>
+
+            <p>Norman later made his terms more precise. What a design must provide, <a href="https://jnd.org/signifiers-not-affordances/">he wrote in 2008</a>, are signifiers: “I call any physically perceivable cue a signifier, whether it is incidental or deliberate.” His examples include a crowded or empty railway platform, which tells you whether the train has left, and the paths worn across a lawn that show where people actually walk. People, he wrote, “search for clues, for any sign that might help them cope and understand.” His closing line was addressed to designers: “Forget affordances. Provide signifiers.”</p>
+
+            <p>Norman and his colleagues Edwin Hutchins and James Hollan also named the two gaps a person has to cross when using anything. The gulf of execution is the gap between what you want to do and working out how to do it with the controls in front of you. The gulf of evaluation is the gap between what the system is doing and your understanding of it. Instructions are an attempt to bridge both gaps with words. A self-explanatory design narrows the gaps themselves: the controls show what can be done, and the system shows what has happened.</p>
+
+            <p>The industrial designer Dieter Rams put the same aim into his ten principles of good design. The fourth is that good design <a href="https://www.vitsoe.com/gb/about/good-design">“makes a product understandable”</a>: “It clarifies the product’s structure. Better still, it can make the product talk. At best, it is self-explanatory.”</p>
+
+            <h2>Show what is there</h2>
+
+            <p>Recognising something is easier than recalling it. Nielsen Norman Group’s usability guidelines ask designers to <a href="https://www.nngroup.com/articles/recognition-and-recall/">“promote recognition over recall,”</a> because recognition “involves more cues.” A menu is the standard example: you do not need to remember that the formatting option is called Strikethrough, because you can see it in the list. A command line is the opposite. To rename a file you have to already know the command and type it correctly.</p>
+
+            <p>The designers of the Xerox Star, an office workstation released in 1981, made this one of their main goals. In a 1982 article in <em>Byte</em>, five members of the team listed it as <a href="https://guidebookgallery.org/articles/designingthestaruserinterface/">“seeing and pointing versus remembering and typing.”</a> They wrote: “A well-designed system makes everything relevant to a task visible on the screen. It doesn’t hide things under CODE+key combinations or force you to remember conventions. That burdens your memory.”</p>
+
+            <p>The Star put this into practice in two ways that are now familiar. Documents, folders and printers appeared on the screen as pictures, and to print a document you moved its picture onto the printer’s picture. The team wrote that their “intention and hope is that users will intuit things to do with icons.” For formatting, the Star used what it called property sheets. When you selected some text and pressed a key, a sheet appeared showing every property of the characters, such as the font, the size, bold and italic, with the current settings highlighted. “Instead of having to remember the properties of characters, the current settings of those properties, and, worst of all, how to change those properties, property sheets simply show everything on the screen. All the options are presented. To change one, you point to it with the mouse and push a button.” The formatting panels in today’s word processors work the same way.</p>
+
+            <p>In 1983 the computer scientist Ben Shneiderman gave this way of working a name, direct manipulation, in <a href="https://www.cs.umd.edu/~ben/papers/Shneiderman1983Direct.pdf">an article in <em>IEEE Computer</em></a>. He had noticed that some users were enthusiastic about certain systems, and he looked for what those systems had in common. “The central ideas seemed to be visibility of the object of interest; rapid, reversible, incremental actions; and replacement of complex command language syntax by direct manipulation of the object of interest.”</p>
+
+            <p>His clearest example was text editing. With a line editor, a common tool at the time, you saw one line of a document at a time and moved through it with typed commands such as UP 6. Shneiderman wrote that this view was “like seeing the world through a narrow cardboard tube,” and that such commands “may be difficult to learn, hard to recall, and a source of frustrating errors.” A display editor showed a full screen of the document, close to the form in which it would be printed, and you moved through it with arrow keys or a mouse. Keys marked INSERT, DELETE or BOLD, he wrote, “act as a permanent menu selection display, reminding the operator of the features.”</p>
+
+            <p>He listed what designs like these achieved. Two items on his list are the subject of this essay: “Novices can learn basic functionality quickly, usually through a demonstration by a more experienced user,” and “Error messages are rarely needed.”</p>
+
+            <h2>Make the wrong action impossible</h2>
+
+            <p>In the 1960s the Japanese industrial engineer Shigeo Shingo studied a factory where workers assembled a small switch with two push-buttons. Each button needed a spring under it, and workers <a href="https://en.wikipedia.org/wiki/Poka-yoke">would often forget to insert one of the springs</a>. Shingo changed the order of the work. The worker first took the two springs needed for one switch out of the parts box and put them in a small dish. Then the worker assembled the switch using the springs from the dish. If a spring was still in the dish at the end, a step had been missed, and the worker could see it at once and correct it.</p>
+
+            <p>Shingo first called methods like this baka-yoke, “fool-proofing,” and later changed it to the milder poka-yoke, “mistake-proofing.” He separated mistakes, which people will always make, from defects, which happen when a mistake is allowed to reach the customer. The process should catch the mistake where it happens.</p>
+
+            <p>Everyday machines use the same idea. A car with an automatic gearbox will not start unless it is in Park or Neutral. A microwave oven will not run with its door open, and stops if the door is opened. Nobody needs to read a warning about starting the car in gear, because it cannot be done.</p>
+
+            <p>Carroll’s group tested a version of this on software. Their “training wheels” interface showed every function of a full word processor but switched off the advanced functions and the choices that commonly led beginners into trouble. A learner who chose one of them got a short message saying it was not available during training, and nothing else changed. In their experiments, learners asked to type and print a simple document with the training wheels system “got started faster, produced better work, and spent less time not only on the errors that our design blocked, but on the errors we did not block.” They also did better on a test of how the system worked.</p>
+
+            <p>In a screen, the same idea takes simple forms. A date picker that only offers valid dates. A Submit button that stays inactive until the required fields are filled. A field that accepts only digits where only digits make sense. Each of these removes a sentence that would otherwise have to say “please enter a valid date.”</p>
+
+            <h2>Show the common case first, and choose the defaults</h2>
+
+            <p>Most screens have a few things almost everyone needs and many things a few people need. Nielsen calls the answer <a href="https://www.nngroup.com/articles/progressive-disclosure/">progressive disclosure</a>: “Initially, show users only a few of the most important options,” then “offer a larger set of specialized options upon request.” He wrote that it improves three of the five parts of usability: “learnability, efficiency of use, and error rate.” The print dialogue is his standard example. The first box offers a small set of choices, mainly how many copies to print, and perhaps which pages and which printer. Rarely used settings, such as scaling and printing the pages in reverse order, are behind a button that opens a second box.</p>
+
+            <p>The Star team described the same trade-off. They followed what they called Alan Kay’s maxim, “simple things should be simple; complex things should be possible,” and wrote that this sometimes meant making “common things simple at the expense of uncommon things being harder.” Carroll and Rosson cited a related Star technique: not showing a setting at all when a workable default value exists.</p>
+
+            <p>A default is a decision made in advance for the user. If it is chosen well, most people never have to think about it. The evidence on how strongly defaults shape behaviour comes mostly from outside software. In the late 1990s, Brigitte Madrian and Dennis Shea studied a large American company that changed how employees joined its retirement savings plan. Before the change, employees had to sign up. After it, new employees were enrolled automatically and could opt out. Nothing else about the plan changed. Among employees with three to fifteen months at the company, <a href="https://www.nber.org/system/files/working_papers/w7682/w7682.pdf">37% of those hired before the change had joined; among those hired after it, 86% were in the plan</a>. A large share of the new employees also kept the default contribution rate and the default fund, which few employees had chosen before the change.</p>
+
+            <p>Eric Johnson and Daniel Goldstein found the same effect in organ donation across European countries. In countries where people had to register to be donors, consent rates were far lower than in countries where people were donors unless they registered not to be. <a href="https://www.dangoldstein.com/papers/DefaultsScience.pdf">“The two distributions have no overlap, and nearly 60 percentage points separate the two groups.”</a></p>
+
+            <p>In both cases, most people accepted whatever had been filled in for them. A designer who fills in what most people would choose has answered the question for them, and no instruction about how to answer it is needed.</p>
+
+            <h2>Answer every action at once</h2>
+
+            <p>The gulf of evaluation closes when the system shows what it is doing, immediately and where the user is looking. Shneiderman’s list of what direct manipulation achieved included: “Users can immediately see if their actions are furthering their goals, and if not, they can simply change the direction of their activity.” In his display editor, the effect of a change was on the screen as it was made, so formatting errors were “immediately apparent” and the user did not have to print the document to find them.</p>
+
+            <p>The opposite case is described by Kathryn Whitenton of Nielsen Norman Group. She spent <a href="https://www.nngroup.com/articles/two-ux-gulfs-evaluation-execution/">an hour</a> failing to pair a new headset with her computer before she realised that “the Bluetooth settings screen I’d been staring at for the past hour was actually showing me that Bluetooth was off.” The switch on the screen did not look like the physical switches she knew. On a physical speaker, “to turn it on, you push the switch towards the word ON.” On the screen, “pushing the switch towards the label Off changes the switch status to On.” The screen did give feedback. The feedback was hard to read, and an hour was lost.</p>
+
+            <p>Good feedback is specific and immediate. A button that changes as it is pressed. An item that appears in the list the moment it is added. A field that turns red as soon as the date in it cannot be right, with the reason beside it. A progress bar that moves. Each of these teaches the user how the system works by letting them watch it work.</p>
+
+            <h2>Take things away</h2>
+
+            <p>John Maeda’s first law of simplicity is <a href="https://lawsofsimplicity.com/">“The simplest way to achieve simplicity is through thoughtful reduction.”</a> Rams’s tenth principle is summed up in three words, <a href="https://www.vitsoe.com/gb/about/good-design">“Less, but better,”</a> because good design concentrates on what is essential and does not burden the product with the rest. Every control on a screen is something a user has to look at, wonder about and decide to ignore.</p>
+
+            <p>The best-documented example of removing one control is told by the usability consultant Jared Spool. A large online retailer had a simple form at the start of checkout: <a href="https://web.archive.org/web/2015/http://www.uie.com/articles/three_hund_million_button/">two fields, Email Address and Password, and two buttons, Login and Register</a>. The designers thought first-time buyers would not mind registering because it would make later purchases faster. In Spool’s usability tests, they minded. “I’m not here to enter into a relationship,” one shopper said. “I just want to buy something.” Returning customers did not remember which email address or password they had used. The retailer’s database showed that 45% of all customers had more than one registration, and about 160,000 people a day asked for their password; 75% of those never tried to complete the purchase.</p>
+
+            <p>The designers took the Register button away. In its place they put a Continue button, with a short message saying that no account was needed to buy and that one could be created during checkout. The number of customers completing a purchase went up by 45%. The extra sales were $15 million in the first month and $300 million in the first year. The change was mostly subtraction: one step removed from the path to buying.</p>
+
+            <p>Reduction can apply to a whole product. When the iPhone 3G went on sale in 2008, the printed guide in the box was, as David Pogue described it in <em>iPhone: The Missing Manual</em>, <a href="https://api.pageplace.de/preview/DT0400.9780596153953_A23629107/preview-9780596153953_A23629107.pdf">“a cute fold-out leaflet of iPhone basics”</a> called Finger Tips. A fuller guide existed only as a PDF online. A phone that made calls, played music, browsed the web and ran applications came with one leaflet of printed help.</p>
+
+            <h2>A north star, not a guarantee</h2>
+
+            <p>Self-explanatory design is not foolproof, and the people who argue for it most strongly say so. One of Krug’s section headings is “You can’t make everything self-evident.” His rule is that a page should be self-evident “as far as is humanly possible.” Maeda’s ninth law is “Some things can never be made simple.” Norman wrote that “complex things may require explanation.” A tax return or a radiotherapy planning system will not be as obvious as a door.</p>
+
+            <p>Pictures do not explain themselves either. Shneiderman warned in the same article that praised direct manipulation that “a graphic icon, although meaningful to the designer, may require as much or more learning time as a word.” A screen that replaces every label with an icon still has to be learned.</p>
+
+            <p>Learning by trying also has a cost. Carroll and Rosson describe a learner who worked out what the Wastebasket did by throwing away one application and then another. She understood it in the end, “but at a fairly high price: she could not restore these applications.” An interface that invites people to explore has to make exploring safe. Shneiderman’s answer was the undo command, which “reduces user anxiety about making mistakes or destroying a file.”</p>
+
+            <p>Some things also have to be said because the user cannot see them: a deadline, a price, a legal condition, the reason a payment was declined. Words are the right tool for those. Testing finds the others. When Carroll’s group tested the Minimal Manual, learners were confused by having to name a document before using it, so the team added two brief explanations. They would not have known the explanations were needed without the tests.</p>
+
+            <p>Inside those limits the principle holds: if a screen needs explaining, change the screen first. When words are still needed after that, keep them short, put them at the point where the user acts, and write them for someone who is already doing the task.</p>
+
+            <h2>Directing an agent towards screens that explain themselves</h2>
+
+            <p>When something on a screen confuses people, the quickest change to ask an AI agent for is a sentence: a hint above the form, a tooltip, a line of help text, an onboarding tour. The agent can add it in seconds, and it looks like a fix. By the evidence above, most users will not read it. The person directing the agent has to ask for something harder, and then check the result with real people.</p>
+
+            <h3>The brief</h3>
+
+            <p>Start with the person and the task, not the screen. Say who the user is, what they are trying to get done, and what they already know. Then ask for a design where the next step is obvious without reading anything, and name the tools you expect it to use.</p>
+
+            <p>Suppose a small dental practice has a booking app, and patients keep phoning to cancel appointments because they cannot find how to do it in the app. The agent’s first suggestion may be a line of text: “To cancel, open My Bookings and choose Manage.” A better brief reads something like this:</p>
+
+            <p><em>Patients open the app to check or cancel an upcoming appointment. Most use it a few times a year and remember nothing about it. Redesign the home screen so that a patient can cancel their next appointment without reading any instructions. Show the next appointment on the home screen with its date, time and dentist, and put Cancel and Change next to it. Cancelling should ask for one confirmation that names the date and time, and the screen should then show clearly that the appointment is cancelled. Do not add help text or a tooltip. Give me three versions that solve this in different ways, and list every piece of text on each screen with a reason it is needed.</em></p>
+
+            <p>The brief names the structure (the next appointment on the home screen), the placement of the controls (beside the appointment), a constraint (one confirmation that names what will be cancelled), the feedback (a clear cancelled state) and a reduction (no help text). Asking for three versions gives you something to compare instead of one design to accept or reject. Asking the agent to justify every piece of text makes it remove the words it cannot defend.</p>
+
+            <p>When you review what comes back, look before you read. Open the screen, and before reading any label, ask yourself what the one main action is. If you cannot tell from the size, position and colour of the controls, a new user will not be able to either.</p>
+
+            <h3>The first-user test</h3>
+
+            <p>Then test it the way Carroll and Rosson studied their learners: watch people use it. Nielsen has argued since 2000 that <a href="https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/">testing with five people finds about 85% of the usability problems</a>, and that “we learn much more from the first user than from any subsequent users.” His advice is to run several small tests instead of one large one: “Spend this budget on 3 studies with 5 users each!” For a screen built with an agent, three to five people who have never seen the app are enough to start.</p>
+
+            <p>Give each person a task, written as a goal and without using any word that appears on the screen. Marieke McCloskey of Nielsen Norman Group explains why: <a href="https://www.nngroup.com/articles/task-scenarios-usability-testing/">“if you tell someone to click on Benefits in the main menu, you won’t learn if that menu label is meaningful to her.”</a> For the dental app, “Cancel your appointment using My Bookings” gives the answer away. “You cannot make it to your dentist appointment next week. Sort that out” does not.</p>
+
+            <p>Then say nothing and do not help, even when they struggle. Ask them to say aloud what they are looking for and what they expect to happen. Write down every moment where they hesitate for more than a few seconds, scroll looking for something, tap a control that does not do what they expected, ask a question, or finish without being sure it worked. Note what was on the screen at each moment. A screen recording with a timestamp is enough.</p>
+
+            <h3>What to do with what you see</h3>
+
+            <p>Each moment you wrote down is a problem with the design, and most fall into one of four kinds. Each kind has its own design fixes.</p>
+
+            <ul>
+                <li><strong>They could not find it.</strong> The control is missing, hidden or in the wrong place. Move it to where they looked, make it larger, or bring it out from a menu.</li>
+                <li><strong>They found it but did not understand it.</strong> The signifier is wrong. Change the shape, the label or the picture so that it looks like what it does.</li>
+                <li><strong>They did the wrong thing.</strong> A constraint is missing. Make the wrong action impossible, or ask for confirmation in words that name the consequence.</li>
+                <li><strong>They did not know whether it worked.</strong> The feedback is missing or unclear. Show the result where they are looking, immediately.</li>
+            </ul>
+
+            <p>Take the list back to the agent with each moment described as a fact: “Three of five testers looked for Cancel inside the appointment details and did not find it. Two tapped the date, expecting it to open options.” Ask the agent to change the design so that each moment no longer happens, and to say which change addresses which moment. Then test again with people who have not seen the app. The first group has learned the screen and can no longer show you where it is unclear.</p>
+
+            <p>Add words only for the moments that no change in the design could fix. Keep those words short and put them where the person acts. A good rule for the agent is that each sentence on the screen has to pass the same test as every control: someone used the screen without it and failed.</p>
+
+            <p>The aim is the door with a flat plate. Nobody reads anything, nobody hesitates, and the door opens.</p>
+
+            <p>Which instructions in your own software could you delete if the screen itself showed people what to do next?</p>
+
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

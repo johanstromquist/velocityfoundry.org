@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2026-11-the-interface-should-tell-you-what-to-do',
+        title: 'The Interface Should Tell You What to Do',
+        date: '2026-11-30',
+        publishDate: '2026-11-30T14:00:00+01:00',
+        excerpt: 'People do not read instructions. An interface can show what to do through its structure, controls, defaults, constraints and feedback. Self-explanatory design is a north star, and it applies directly to software built with an agent.',
+        readTime: '21 min',
+        image: 'assets/images/door_without_a_sign.png'
+    },
+    {
         slug: '2026-11-ask-for-the-map',
         title: 'Ask for the Map',
         date: '2026-11-25',
