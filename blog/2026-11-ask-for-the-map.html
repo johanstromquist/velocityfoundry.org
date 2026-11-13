@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="From a cholera map to a lost Mars probe and a medicine carton: you do not need to read code to direct software, but you do need a picture of how its parts connect.">
+    <title>Ask for the Map - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>In his <a href="https://upload.wikimedia.org/wikipedia/commons/0/0f/Report_on_the_cholera_outbreak_in_the_parish_of_St._james%2C_Westminster%2C_during_the_autumn_of_1854._%28electronic_resource%29_%28IA_b21363870%29.pdf">1855 report</a> on the Broad Street cholera outbreak, John Snow recorded the death of a woman who lived miles from the pump. A cart had brought the pump’s water to her home. A map of deaths around Broad Street could not show that route.</p>
+
+            <p>You do not need to read code to direct software. You do need a picture of how its parts connect. Ask for that picture before you ask for a change, because the harm can happen at connections nobody has looked at.</p>
+
+            <h2>The map needs the route</h2>
+
+            <p>Snow’s map showed where people died. To find out why, he followed the water. He compared households, where their water came from and how they got it. The workhouse had its own well and recorded only five deaths. Seventy brewery workers who did not drink from the Broad Street pump escaped cholera. Details like these tied a dot on the map to the water a person had actually drunk.</p>
+
+            <p>Henry Whitehead, a local curate, at first disagreed with Snow. He interviewed families, went back to some homes more than once to confirm what had happened, and wrote down their water sources, sanitation, ages and when the illness began. His records let the map be checked household by household.</p>
+
+            <p>The dots showed where deaths were recorded. They did not show who carried water, which household had a private well, or what someone drank away from home. The case rested on whether the path from the pump to each household fitted the deaths, and on evidence from people who used other water. Snow and Whitehead had to ask about those routes before the pattern could say anything about the source of the outbreak.</p>
+
+            <h2>The failure can sit between two correct parts</h2>
+
+            <p>NASA’s <a href="https://discovery.larc.nasa.gov/pdf_files/MCO_report_2.pdf">investigation into the loss of the Mars Climate Orbiter</a> found the problem at a hand-off. One team’s ground software reported thruster impulse in pound-force seconds. The navigation software read the numbers as newton-seconds. Each program handled the units it was given. The mismatch existed only where the data passed from one to the other. The spacecraft entered the Martian atmosphere on the wrong path and was lost.</p>
+
+            <p>A better picture of either system on its own would not have shown the problem. The engineers needed the connection: what one side sent, what the other expected, and whether the numbers meant the same thing at the boundary. Each team knew its own software well. That knowledge did not tell them what happened between the two.</p>
+
+            <p>The investigators traced the mismatch through an interface document and the software that exchanged the data. A boundary is where one group’s assumptions become another group’s input, even when every part has an owner who understands it.</p>
+
+            <p>A small app has lower stakes than a spacecraft, but the question is the same. A screen can look right while a stored value, another feature or an outside service receives something other than what the user meant. If you only see the screen, you may not know which connection to check.</p>
+
+            <h2>A description has to work for the person using it</h2>
+
+            <p>Before Narcan nasal spray went on sale over the counter, people <a href="https://www.news4jax.com/news/local/2023/02/15/fda-discusses-new-drug-application-for-narcan-to-treat-opioid-overdoses/">tested the directions on the package</a>. One participant asked, “Where is step one?” The instructions were split across two sides of the carton, and in a 70-person study some participants had trouble following them. The manufacturer said it would put the instructions on one panel and add pictograms. The FDA <a href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-over-counter-naloxone-nasal-spray">approved the spray for nonprescription use</a> later that year.</p>
+
+            <p>The directions were all on the carton. The test showed that a person using them under pressure could struggle to find the way through. Nobody asked participants how the spray was made or how the carton was designed. The test asked whether a person could find the steps and follow them, and its answer changed the carton before it reached the shelves.</p>
+
+            <p>A description of software should pass the same test. It should let you follow a request from what you type to what the system stores or sends, without first becoming a software engineer. An agent naming a frontend, a database and an API does not get you there. The description should take you through one real request and the parts that handle it. If it says a value is saved, check where it shows up. If it says a form sends a message, follow the message to where it should arrive.</p>
+
+            <p>A map can also be wrong. Snow checked his against what households told him. The Orbiter investigators reconstructed what crossed the interface. Narcan’s directions were tried by the people expected to use them. Each account got stronger when someone compared it with what actually happened.</p>
+
+            <p>When an agent builds software for you, you may be the first person to see the finished screen, while the data, rules and connections behind it stay out of sight. Ask for the map before you ask for the change. Then test the map against something the software does. That tells you whether the explanation fits the working result, without reading every line of code.</p>
+
+            <p>When more people can have an agent build software they cannot inspect line by line, who is responsible for showing them the connections they need to understand before they rely on it?</p>
+
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

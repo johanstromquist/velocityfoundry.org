@@ -27,6 +27,24 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2026-11-ask-for-the-map',
+        title: 'Ask for the Map',
+        date: '2026-11-25',
+        publishDate: '2026-11-25T14:00:00+01:00',
+        excerpt: 'From a cholera map to a lost Mars probe and a medicine carton: you do not need to read code to direct software, but you do need a picture of how its parts connect.',
+        readTime: '4 min',
+        image: 'assets/images/ask_for_the_map.png'
+    },
+    {
+        slug: '2026-11-the-work-only-the-director-can-do',
+        title: 'The Work Only the Director Can Do',
+        date: '2026-11-23',
+        publishDate: '2026-11-23T14:00:00+01:00',
+        excerpt: 'From Kodak cameras to AI-assisted work, new tools change who can make things and which parts of a craft remain human responsibilities.',
+        readTime: '5 min',
+        image: 'assets/images/director_selection.png'
+    },
+    {
         slug: '2026-11-who-gets-to-build-software',
         title: 'Who Gets to Build Software?',
         date: '2026-11-16',
