@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2026-12-build-the-part-every-case-can-use',
+        title: 'Build the Part Every Case Can Use',
+        date: '2026-12-07',
+        publishDate: '2026-12-07T14:00:00+01:00',
+        excerpt: 'Find the small, general part that several needs share, build it once, and make each feature an arrangement of it. Would a completely different case use it unchanged? Agents build for one request, so the director has to ask.',
+        readTime: '20 min',
+        image: 'assets/images/one_brick_many_shapes.png'
+    },
+    {
         slug: '2026-11-the-interface-should-tell-you-what-to-do',
         title: 'The Interface Should Tell You What to Do',
         date: '2026-11-30',

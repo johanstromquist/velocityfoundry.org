@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find the small, general part that several needs share, build it once, and make each feature an arrangement of it. Would a completely different case use it unchanged? Agents build for one request, so the director has to ask.">
+    <title>Build the Part Every Case Can Use - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>At 1:58 in the afternoon on 28 January 1958, the LEGO Group filed a Danish patent application for <a href="https://www.lego.com/en-us/history/articles/d-the-stud-and-tube-principle">“a toy building element.”</a> Until then its plastic bricks had been hollow, and models built from them came apart easily. Complaints had come in from the markets, and competitors were moving in. Godtfred Kirk Christiansen, who ran the company, had sketched several ways to make the bricks hold together. The one in the application put tubes inside the brick, so that the studs on top of one brick would grip the tubes underneath the next.</p>
+
+            <p>The coupling made the brick general. A brick with studs and tubes does not need to know what it will become. Any brick can join any other brick in many positions. How many became a mathematical question. LEGO used to give 102,981,500 as the number of ways to combine six of its standard eight-stud bricks. In 2004 the Danish mathematician Søren Eilers counted them by computer and found <a href="https://web.math.ku.dk/~eilers/lego.html">915,103,765</a>, almost nine times as many. LEGO now quotes his number on <a href="https://www.lego.com/en-us/history/articles/d-the-stud-and-tube-principle">its own history pages</a>. Six identical parts, each of which knows nothing about the others except how to connect, give more than 900 million different shapes.</p>
+
+            <p>Forty years after the patent, the company was in trouble. An account published in <em>strategy+business</em> in 2007 describes what had happened. LEGO <a href="https://www.strategy-business.com/article/07306">“had lost money four out of the seven years from 1998 through 2004.”</a> Sales fell 30 per cent in 2003 and another 10 per cent in 2004. Part of the problem was what the company made. It was producing more than 10,000 variations of its products. Elements that had once come in the primary colours, black and white came in more than 100 colours. One pirate set contained eight pirates with ten different kinds of legs. An article from Harvard Business School about its teaching case on LEGO describes the sets of the period as <a href="https://www.library.hbs.edu/working-knowledge/hbs-cases-lego">“increasingly complex with more unique components.”</a></p>
+
+            <p>Jørgen Vig Knudstorp became chief executive in 2004. According to the Harvard article, he “did away with many of the unique brick components” that had been added in the previous years, and two of his managers recommended cutting the palette of roughly 100 colours in half. Knudstorp said that the product designers at first saw the reduction “as pure pain,” but “gradually they realized that what they had seen at first as a new set of constraints could in fact enable them to become even more creative.”</p>
+
+            <p>The two halves of the LEGO story point in opposite directions. A small number of general parts can be combined into almost anything. A large number of special parts, each made for one model, makes everything harder to design, produce and keep track of, and a special part does nothing for the next model.</p>
+
+            <p>Software can be built either way. The principle is to find the small, general part that several needs have in common, build that part once, and make each particular feature an arrangement of it, with its own settings or data. There is a test that needs no technical knowledge: would a completely different case, with completely different data, use this part unchanged? If the answer is yes, it is a general part. If the part only works for the data it was built around, it is a special part, and the next case will need another one.</p>
+
+            <p>This matters more when an AI agent writes the software. An agent is given one need and builds something for that need. It rarely asks what the need has in common with the last request or the next one. The person directing it has to ask.</p>
+
+            <h2>Parts untangled from their first use</h2>
+
+            <p>The best-documented example of general parts in software is the Unix operating system, developed at Bell Labs from 1969. Its approach goes back to a page that Doug McIlroy, who headed a computing research department at Bell Labs, typed in October 1964, which Dennis Ritchie later published as “the page-on-the-wall.” The first of his four points was: <a href="https://www.bell-labs.com/usr/dmr/www/mdmpipe.html">“We should have some ways of connecting programs like garden hose,”</a> so that another segment could be screwed in whenever the data needed to be processed in another way. The pipe, a way of sending the output of one program straight into the next, <a href="https://www.nokia.com/bell-labs/about/dennis-m-ritchie/hist.html">appeared in Unix in 1972</a>, according to Ritchie, “at the suggestion (or perhaps insistence) of M. D. McIlroy.”</p>
+
+            <p>In 1978 McIlroy and two colleagues wrote down the maxims that Unix programmers had come to follow, in the foreword to a special issue of the <em>Bell System Technical Journal</em>. The first two were: <a href="https://ia801604.us.archive.org/6/items/bstj57-6-1899/bstj57-6-1899_text.pdf">“Make each program do one thing well. To do a new job, build afresh rather than complicate old programs by adding new ‘features.’”</a> And: “Expect the output of every program to become the input to another, as yet unknown, program.”</p>
+
+            <p>The second maxim is the brick test in different words. A program written to feed another program that does not exist yet cannot depend on knowing what that program is. It has to produce plain, general output that anything could use.</p>
+
+            <p>The clearest demonstration came in 1986, in Jon Bentley’s “Programming Pearls” column in <em>Communications of the ACM</em>. Bentley had asked Donald Knuth, one of the most respected computer scientists alive, to show off literate programming, Knuth’s method of writing a program as a readable document with the code woven into the explanation. Bentley set the problem: given a text file and a number k, print the k most common words in the file with how often each occurs. Knuth wrote a program in Pascal, presented as a documented essay of about ten pages, with a new data structure designed for the job.</p>
+
+            <p>Bentley then asked McIlroy to review it. McIlroy’s review began with praise. He had been able to “skim the dull parts and concentrate on the significant ones, learning painlessly about a new data structure,” and had even learned some mathematics along the way. <a href="https://www.cs.tufts.edu/~nr/cs257/archive/don-knuth/pearls-2.pdf">“Don Knuth’s ideas and practice mix into a whole greater than the parts.”</a></p>
+
+            <p>Then he asked an engineering question. “How often is one likely to have to do this exact task? Not at all often, I contend. It is plausible, though, that similar, but not identical, problems might arise. A wise engineering solution would produce, or better, exploit, reusable parts.” He wrote a six-line shell script on the spot. It split the text into one word per line, changed capitals to lower case, sorted the words, counted each run of identical words, sorted by the counts, and printed the first k lines. It used six standard Unix programs joined by pipes. It was “written on the spot and worked on the first try,” and took 30 seconds to handle a 10,000-word file on a VAX-11/750 computer.</p>
+
+            <p>What McIlroy wrote next is the core of the principle. The programs in his script “grew up over the years as people noticed useful steps that tended to recur in real problems. Every one was written first for a particular need, but untangled from the specific application.” With time they gained a few options for “variant, but closely related, tasks.” The sort program, for example, “did not at first admit reverse or numeric ordering,” and those options were added once they were identified as worth having.</p>
+
+            <p>McIlroy also noticed something about how people approach the problem. In a small poll of well-known programmers, “all (and only) the people with Unix experience suggested sorting as a quick-and-easy technique.” People who had spent years working with general parts looked at a new problem and saw the parts it could be made from. People who had not saw a program to write.</p>
+
+            <p>McIlroy’s verdict was “Knuth has shown us here how to program intelligibly, but not wisely. I buy the discipline. I do not buy the result.” Knuth had written exactly what he was asked for. Bentley had asked him to demonstrate a method of writing programs, and McIlroy acknowledged as much: “Knuth’s purpose was to illustrate WEB,” the name of Knuth’s system. He wrote that “the accuracy of the documentation compliments both the author and his method,” and his criticism was of the solution judged as engineering, not of the method or of Knuth’s skill. The exchange is remembered because the two answers show two ways to build. One is a single, carefully made program for one task. The other is a few general parts, each first written for some earlier need, put together in a minute for a new one.</p>
+
+            <h2>One shape for data that any application can use</h2>
+
+            <p>The same choice exists for data. In 1970 Edgar Codd, a researcher at IBM, published <a href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">“A Relational Model of Data for Large Shared Data Banks.”</a> It began: “Future users of large data banks must be protected from having to know how the data is organized in the machine.”</p>
+
+            <p>The database systems of the time stored data in trees or networks of linked records, and each was shaped around the way particular applications needed to reach the data. Codd gave an example with parts and projects. For each part the system recorded a number, a name, a description and quantities; for each project a number, a name and a description; and for each use of a part in a project, the quantity committed. He showed five different tree structures that could hold exactly this information. A program written against one of them, he wrote, tends to be “logically impaired if the trees or networks are changed in structure.” Keeping every old access route alive until every program using it had been retired was “not practical, because the number of access paths in the total model for the community of users of a data bank would eventually become excessively large.”</p>
+
+            <p>His alternative described data “with its natural structure only,” as relations, which most people now know as tables of rows and columns, with no structure added for the convenience of one application or one way of storing it. Any application could ask any question of the same tables. Relational databases built on this model, such as PostgreSQL, Oracle and SQL Server, are still in wide use more than fifty years later.</p>
+
+            <p>Each tree structure was a special part, shaped by the questions one set of programs wanted to ask; the relational model was built without knowing which questions would come.</p>
+
+            <h2>One description, read and never copied</h2>
+
+            <p>A general part needs to know the shape of the things it handles. Where that knowledge lives matters as much as the part itself. Andy Hunt and Dave Thomas put the rule in their 1999 book <em>The Pragmatic Programmer</em>, under the name DRY, “don’t repeat yourself.” Thomas explained it in a 2003 interview: <a href="https://www.artima.com/intv/dry.html">“DRY says that every piece of system knowledge should have one authoritative, unambiguous representation.”</a> He added that most people take it to mean you should not duplicate code, “That’s not its intention.” It covers “database schemas, test plans, the build system, even documentation.” If the same knowledge is written down in several places, “at some point the two or three different representations will most likely fall out of step with each other.”</p>
+
+            <p>The clearest case of copies falling out of step is the kilogram. From 1889 the kilogram was defined as the mass of one cylinder of platinum and iridium kept in a vault at the International Bureau of Weights and Measures near Paris. Official copies were kept with it, and national copies were made and sent to countries around the world. Every scale in the world was ultimately checked against a copy, or a copy of a copy.</p>
+
+            <p>The copies were brought back and compared with the original in periodic verifications, the third of which ran from 1988 to 1992. Richard Davis of the Bureau summarised the history in 2003. The original, which he calls K, and its six official copies are stored together, so travel cannot explain any change. Of those seven, <a href="http://charm.physics.ucsb.edu/courses/ph21_05/kilogrampaper.pdf">“the mass of six has increased with respect to K since their initial calibration, most by about 0.05 mg”</a> in 100 years. Among the national copies, “the mass of 22 out of 27 of them appears to have increased.” His conclusion was that the copies tend to gain mass relative to the original, a result “already suspected in 1939 and confirmed in 1992.” Nobody had a plausible mechanism. Because the original was the definition, nobody could say whether the copies had gained mass or the original had lost it.</p>
+
+            <p>Fifty micrograms is five parts in a hundred million. For a kitchen scale it does not matter. For the unit that every measurement of mass depends on, it did. In 2019 the kilogram was <a href="https://www.bipm.org/en/si-base-units/kilogram">redefined by fixing the numerical value of the Planck constant</a>, a constant of nature. Any laboratory with the right instrument can now realise the kilogram from that definition directly, without comparing anything with a cylinder in a vault.</p>
+
+            <p>The kilogram moved from a system of copies to a single description that everyone reads. Software has the same choice whenever more than one part needs to know what a record looks like, what a field is called or which values are allowed. If each part keeps its own copy, the copies drift apart, and the error shows up only when something checks one copy against another. If every part reads the same description, a change made in one place reaches all of them.</p>
+
+            <h2>Unchanged, with different data</h2>
+
+            <p>The test asks whether a completely different case could use the part unchanged. The words “completely different” matter, because a part can be reused many times and still fail the test. The first flight of the Ariane 5 rocket shows how.</p>
+
+            <p>On 4 June 1996, Ariane 5 flight 501 lifted off from Kourou in French Guiana. About 37 seconds later it veered off course, and at about 39 seconds it began to break up and was destroyed by its self-destruct system. The inquiry board, chaired by the French mathematician Jacques-Louis Lions, published its report six weeks later.</p>
+
+            <p>The rocket’s inertial reference system, which measures its position and movement, ran software that was <a href="http://www.cs.toronto.edu/~yijun/csc408h/reference/ariane5rep.pdf">“practically the same as that of an SRI which is presently used on Ariane 4.”</a> On Ariane 4, in the report’s words, the software had “worked well.” One function in it, used to align the system before launch, kept running for about 40 seconds after lift-off. The report says: “This time sequence is based on a requirement of Ariane 4 and is not required for Ariane 5.”</p>
+
+            <p>During those seconds the function calculated a value called horizontal bias. On Ariane 5 that value “was much higher than expected because the early part of the trajectory of Ariane 5 differs from that of Ariane 4 and results in considerably higher horizontal velocity values.” Converting the value into a smaller number format failed. The conversion was not protected, because the designers had reasoned that the value was “physically limited” or had a large margin of safety, “a reasoning which in the case of the variable BH turned out to be faulty.” Both inertial reference computers stopped. The flight computer treated their diagnostic output as flight data and steered the nozzles to their limits.</p>
+
+            <p>The function that failed had no purpose on Ariane 5 at all. On Ariane 4 it allowed the countdown to restart quickly after a short hold, a feature the report says “was used once, in 1989 on Flight 33.” It was kept on Ariane 5 “for commonality reasons, presumably based on the view that, unless proven necessary, it was not wise to make changes in software which worked well on Ariane 4.”</p>
+
+            <p>The report also noted that the specification for the inertial reference system “does not contain the Ariane 5 trajectory data as a functional requirement,” and that it did not state the operating limits that came from the way the software had been built. The board recommended that such a “declaration of limitation” should be mandatory for every mission-critical device. The software was reused, but it was not general. It carried the assumptions of the rocket it was written for, and the new rocket’s data broke them.</p>
+
+            <p>Reuse alone does not pass the test. A part passes when it works from the data it is given, whatever that data is, and either handles a new case correctly or stops with a clear error. A part that has been tuned to one case’s numbers will work for that case and the cases that resemble it, and fail on the first one that does not.</p>
+
+            <h2>Improve once, everywhere</h2>
+
+            <p>General parts have a further advantage. When one is improved, everything built from it improves at the same time. When a special part is improved, one feature improves.</p>
+
+            <p>McIlroy, at the end of his review, considered what to do if his six-line script turned out to be too slow for a very large job. Nearly all the time went into sorting. He suggested changing the sort program to drop duplicates as it went and keep counts, which would remove about 85 per cent of the words before the second sort and make it trivial. That change, made once to a general part, would then be available to every other script that used the sort program, not only his.</p>
+
+            <p>Faults spread the same way, as the Heartbleed bug in 2014 showed. OpenSSL is a free software library that encrypts connections between computers. It is a general part: web servers, mail servers, chat systems and network equipment use it unchanged. In December 2011, <a href="https://heartbleed.com/">a programming mistake was introduced into OpenSSL</a> that let anyone on the internet read parts of the memory of servers using the affected versions, including passwords and encryption keys. It was released in March 2012 and discovered in April 2014. Two of the web servers that used OpenSSL, Apache and nginx, ran more than 66 per cent of active websites at the time.</p>
+
+            <p>One mistake in one general part exposed a large share of the internet. The repair worked the same way. OpenSSL 1.0.1g, released on 7 April 2014, the day the bug became public, fixed it in one place, and every system that installed the update was repaired. Had each website written its own encryption code, each would have had its own mistakes, found and repaired one at a time.</p>
+
+            <p>A shared part carries its faults to everything that uses it, as fast as it carries its fixes. The response is to test a general part more carefully than a special one, because more depends on it, and to keep building on it.</p>
+
+            <h2>Small, not grand</h2>
+
+            <p>“General” is easily misheard. A general part is a small one: the part the needs actually share, and nothing more. The people who argue for general parts also warn against the opposite mistake.</p>
+
+            <p>Joel Spolsky called the people who make it <a href="https://www.joelonsoftware.com/2001/04/21/dont-let-architecture-astronauts-scare-you/">“Architecture Astronauts.”</a> They take a real problem, abstract it, then abstract the abstraction, until they reach “absurd, all-encompassing, high-level pictures of the universe” that do not help anyone build anything. “When you go too far up, abstraction-wise, you run out of oxygen.” His example was Napster, the music-sharing service. Architecture astronauts, he wrote, found it interesting because it was peer to peer, a general architecture. Spolsky pointed out that people used it because “you can type the name of a song and listen to it right away,” and that a version built any other way with the same feature would have been just as popular. A framework designed to handle every case anyone might imagine is a very large special part, built for imagined cases instead of real ones.</p>
+
+            <p>Sandi Metz described a slower way to go wrong in 2016. A programmer sees the same code in two places, extracts it into one shared part, and replaces both copies. Later a new requirement arrives that the shared part “almost” fits. The next programmer adds a parameter and a condition, so that the part “now behaves differently for different cases.” More requirements add more parameters and conditions until the part is incomprehensible. Her conclusion: <a href="https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction">“duplication is far cheaper than the wrong abstraction.”</a> When this happens, her advice is to copy the shared code back into each place that uses it, delete what each place does not need, and start again.</p>
+
+            <p>A shared part full of conditions for particular cases is several special parts in one file, and it fails the test as surely as a part built for one case. McIlroy’s first maxim already said this in 1978: “To do a new job, build afresh rather than complicate old programs by adding new ‘features.’” The Unix programs stayed small, and new jobs got new small programs.</p>
+
+            <p>The limits do not change the principle. They say how to find a general part: from real cases, not imagined ones. List the cases the part has to serve, including the next one you can see coming. Name what they share. Build that, without knowledge of any one case’s details, and express each case as settings or data. If a new case does not fit, make the part more general or build a separate small part. Do not add an exception inside it.</p>
+
+            <h2>Directing an agent towards general parts</h2>
+
+            <p>An AI agent works from the request in front of it. Ask for a feature and it will build that feature, usually well, and usually shaped around the data in the request. It has no reason to ask what the next request will be, unless someone asks it to. The questions below need no ability to read code. They can be asked of a description, a plan or a report.</p>
+
+            <h3>Ask for the general need</h3>
+
+            <p>Suppose a small physiotherapy clinic uses an app built with an agent, and the owner asks for text messages reminding patients of their appointments two days in advance. The agent will propose an appointment reminder: a scheduled job that reads the appointments table, finds appointments two days away and sends a message with the patient’s name, the time and the therapist. It will work.</p>
+
+            <p>A month later the owner wants patients reminded when their doctor’s referral is about to expire. Then the staff want a reminder when a piece of equipment is due for its annual service. If each request is built as asked, the clinic ends up with three reminder systems. Each has its own schedule, its own message format and its own faults, and fixing one fixes nothing in the others.</p>
+
+            <p>Before the first one is built, ask three questions:</p>
+
+            <ul>
+                <li><strong>What is the general need inside this request?</strong> For the clinic: send a message to a person a set time before a date stored on a record.</li>
+                <li><strong>Does something we already have do most of it?</strong> The app may already send messages, or already run scheduled jobs. When you ask for the general need, the answer is often that most of it already exists.</li>
+                <li><strong>What happens when we add the next one?</strong> With a general reminder, the referral reminder is a new setting: which records, which date field, who receives it, how long before, which message. No new building is needed.</li>
+            </ul>
+
+            <p>A brief for the first request might read like this:</p>
+
+            <p><em>The clinic wants patients reminded by text two days before each appointment. Build this as a general reminder: any kind of record that has a date field and a person to contact can have reminders, each set by which date field to use, how long before the date to send, who receives it and a message template filled in from the record. Use the app’s existing messaging if there is one. Then set up the appointment reminder as the first use of it. Before you build, tell me how a reminder for equipment due for service, sent to a staff member thirty days before, would be set up with the same part, without changing its code.</em></p>
+
+            <h3>Test the proposal against a different case</h3>
+
+            <p>The last sentence of that brief is the test. Pick a case that is completely different from the one you asked for: different data, different people, different timing. Ask the agent to describe step by step how the proposed part would handle it unchanged. Listen for the words “we would add.” A new field, a new branch for this kind of record, a new special setting: each means the part was built around the first case.</p>
+
+            <p>The same test works on proposals that arrive without being asked for. When an agent reports that it built a feature, ask which parts of it would serve another feature unchanged, and which were built only for this one. When it proposes a change to something shared, ask whether any other user of that shared part would need it. A change that only one user needs belongs with that user, not in the shared part.</p>
+
+            <h3>Warning signs in a plan or report</h3>
+
+            <ul>
+                <li><strong>Something named after one customer, one screen or one kind of record.</strong> A part called “appointment reminder” will serve appointments.</li>
+                <li><strong>A list of exceptions inside a general part.</strong> “For equipment, skip the patient lookup” is a condition for one case, the pattern Metz described.</li>
+                <li><strong>A copy of a description.</strong> A list of fields or allowed values written out by hand in the code, instead of read from the place the system itself defines them, will drift from the original as the kilogram copies did. Ask where each list comes from.</li>
+                <li><strong>Values tuned to today’s data.</strong> Fixed numbers, fixed lists of the current kinds of record, or adjustments made for particular items will fail on the first item added later, as the Ariane 4 assumptions failed on Ariane 5.</li>
+                <li><strong>A script copied and edited for a second use.</strong> Two copies will diverge from the first change.</li>
+            </ul>
+
+            <h3>Keep one description</h3>
+
+            <p>The kilogram problem appears in small software as often as in large. The clinic’s app has a list of appointment types, a list of therapists and a list of the kinds of record that can carry a reminder. If the reminder settings screen keeps its own copy of the list of record types, the screen and the system will disagree the first time someone adds a type. Ask the agent where each list lives, and whether every part that needs it reads it from that one place. If the answer is that the list is written out in two places, ask for one to read from the other.</p>
+
+            <h3>Keep the part small</h3>
+
+            <p>Agents can also overshoot. Ask an agent to make something general and it may propose a framework: a rules engine, a plug-in system, a configuration language. Bring it back to the cases you listed. Ask for the smallest part that serves those cases and the next one you can see, and nothing more. If the agent cannot name a real case that needs a particular piece of the design, that piece is for an imagined case and can go.</p>
+
+            <p>The aim is a small number of parts that combine, like the bricks that came out of the 1958 patent. Each new feature then needs settings or data, and each improvement to a part improves every feature built from it.</p>
+
+            <p>Which feature in your own software was built for one case, and what will happen when the next case arrives?</p>
+
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>
