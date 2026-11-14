@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2026-12-give-every-experiment-a-way-back',
+        title: 'Give Every Experiment a Way Back',
+        date: '2026-12-09',
+        publishDate: '2026-12-09T14:00:00+01:00',
+        excerpt: 'Theatre previews let a company change a play in front of an audience and go back if a change fails. Knowing you can return to a working version changes what you are willing to try, and the same holds when you direct an agent.',
+        readTime: '4 min',
+        image: 'assets/images/preview_night.png'
+    },
+    {
         slug: '2026-12-build-the-part-every-case-can-use',
         title: 'Build the Part Every Case Can Use',
         date: '2026-12-07',
