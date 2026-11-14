@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2026-12-two-ways-to-do-the-same-job-drift-apart',
+        title: 'Why Two Ways to Do the Same Job Drift Apart',
+        date: '2026-12-21',
+        publishDate: '2026-12-21T14:00:00+01:00',
+        excerpt: 'In 1883 the North American railways stopped keeping their own times and adopted standard time zones. Software built with an agent can end up doing the same job two ways, and the fix is the same: find every place, pick one rule, and make every screen use it.',
+        readTime: '4 min',
+        image: 'assets/images/two_noons.png'
+    },
+    {
         slug: '2026-12-write-the-rule-once',
         title: 'Write the Rule Once, Then Use It Everywhere',
         date: '2026-12-16',

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="On 18 November 1883 noon came twice as North American railways reset their clocks to one standard time. Software built by an agent drifts the same way when one job is done two ways.">
+    <title>Why Two Ways to Do the Same Job Drift Apart - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>In parts of North America, noon came twice on 18 November 1883. A railway clock in those places reached noon by its own reckoning. Then, when noon in the new standard time arrived, <a href="https://guides.loc.gov/this-month-in-business-history/november/day-of-two-noons">the clock was reset to it</a>, and it showed noon again.</p>
+
+            <p>The plan behind the reset came from William F. Allen, the editor of a railway timetable guide. Until that day, each railway had kept its own time, and the clocks did not agree. When separate systems work together, small differences in their rules become a shared problem. For the railways it was a safety problem. Software built by an agent can end up with the same kind of differences inside it.</p>
+
+            <h2>Every railway on its own clock</h2>
+
+            <p>Until 1883, <a href="https://en.wikipedia.org/wiki/Standard_time">each US railway chose its own time standard</a>. Between Chicago and Pittsburgh the usual choice was Columbus time, even on lines that did not run through Columbus. The Northern Pacific went the other way and had seven time zones between St Paul and the western end of its line.</p>
+
+            <p>Each choice made sense to the railway that made it. One time along one line gave its own crews a timetable they could follow. The trouble came where one railway’s trains met another’s, each working to a different clock. The Library of Congress says the difference “could lead to wrecks and many deaths,” and that the confusion became more dangerous as routes and traffic grew.</p>
+
+            <h2>One rule, agreed by all</h2>
+
+            <p>Allen was the editor of the <em>Traveler’s Official Railway Guide</em>. His plan, <a href="https://guides.loc.gov/this-month-in-business-history/november/day-of-two-noons">as the Library of Congress describes it</a>, had five zones: Intercolonial, Eastern, Central, Mountain and Pacific. Within a zone, every railway kept the same time. The Library credits the change with making the movement of people and goods safer.</p>
+
+            <p>The first zone did not last long. The Intercolonial Railway <a href="https://en.wikipedia.org/wiki/Standard_time">declined Intercolonial Time and adopted Eastern Time</a>, so the railways started with four.</p>
+
+            <figure style="margin: 2rem 0;">
+                <img src="../assets/images/standard_railway_time_map_1883.jpg" alt="1880s outline map of the United States with zone boundaries and four clock dials labelled Pacific, Mountain, Central and Eastern time, titled Standard Railway Time, adopted November 18, 1883" style="width: 100%; height: auto;">
+                <figcaption style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">Outline map with dials showing standard railway time, adopted 18 November 1883, from <em>Popular Science Monthly</em>, volume 26 (1884 to 1885). Public domain, via <a href="https://commons.wikimedia.org/wiki/File:PSM_V26_D162_Standard_railway_time_vs_greenwich_mean_time.jpg">Wikimedia Commons</a>.</figcaption>
+            </figure>
+
+            <h2>The same job, done two ways</h2>
+
+            <p>An agent writing software meets this problem in a smaller form. In one session you ask it to show prices in the shopping basket. In another you ask it to show prices on an invoice. Unless it is told otherwise, it may write two pieces of code that add tax in slightly different ways, and each will look right on its own screen.</p>
+
+            <p>Take three items at 2.90 each, with 15 per cent tax. With tax, each costs 3.335. The basket rounds each line to the cent, giving 3.34, and adds the three lines: 10.02. The invoice adds first, 8.70 × 1.15 = 10.005, and rounds the total: 10.01. Both round halves up. Same items, same tax rate, same rounding rule, and the customer is shown two totals one cent apart. Each piece of code is correct by its own method.</p>
+
+            <p>The same happens with dates, time zones, user names, how a missing value is shown, and what counts as a valid email address. Two ways to do the same job start out matching. Then one is fixed and the other is not, or one gains a new case and the other does not, and they drift apart.</p>
+
+            <p>The railways’ remedy works here too. Ask your agent to list every place your software rounds money, formats a date or checks an email address. Where it finds two rules for one job, pick one and make every screen use it. Writing that rule where the agent will read it next time, as an earlier post covered, keeps the next screen on the same rule.</p>
+
+            <h2>The objection</h2>
+
+            <p>Before 1883 many towns <a href="https://en.wikipedia.org/wiki/Time_in_the_United_States">set their clocks by the sun</a> at their own longitude, and standard time replaced that with one clock for a whole zone. Some places objected. In November 1883 the Indianapolis <em>Sentinel</em> <a href="https://environmentandsociety.org/exhibitions/railroad/adoption-railroad-time">complained</a> that people “must eat, sleep and work as well as travel by railroad time,” and went further: “People will have to marry by railroad time, and die by railroad time.”</p>
+
+            <p>It was an objection to a change of habit. People went on marrying and dying as before, now by a clock that agreed with every train in their zone, and in <a href="https://guides.loc.gov/this-month-in-business-history/november/day-of-two-noons">1918</a> federal law adopted standard time.</p>
+
+            <p>The second rounding rule in your software is the same kind of habit. It felt right to whoever wrote it, but nothing is lost when it goes. The customer just stops seeing two totals.</p>
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>
