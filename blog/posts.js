@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2026-12-write-the-rule-once',
+        title: 'Write the Rule Once, Then Use It Everywhere',
+        date: '2026-12-16',
+        publishDate: '2026-12-16T14:00:00+01:00',
+        excerpt: 'Fannie Farmer wrote her measuring rule once, at the front of her 1896 cookbook, and every recipe pointed back to it. A rules file for an agent works the same way, if each rule means the same thing to every session that reads it.',
+        readTime: '4 min',
+        image: 'assets/images/level_cupful.png'
+    },
+    {
         slug: '2026-12-give-every-experiment-a-way-back',
         title: 'Give Every Experiment a Way Back',
         date: '2026-12-09',
