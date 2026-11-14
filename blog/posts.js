@@ -36,6 +36,15 @@ const posts = [
         image: 'assets/images/one_brick_many_shapes.png'
     },
     {
+        slug: '2026-12-ask-for-the-shape-first',
+        title: 'Ask for the Shape First',
+        date: '2026-12-02',
+        publishDate: '2026-12-02T14:00:00+01:00',
+        excerpt: 'Nightingale designed every part of her rose diagram to show officials one thing. Directing an agent takes the same discipline: ask it what you need to check, judge the shape it proposes, then ask for it filled in.',
+        readTime: '4 min',
+        image: 'assets/images/ledger_to_rose.png'
+    },
+    {
         slug: '2026-11-the-interface-should-tell-you-what-to-do',
         title: 'The Interface Should Tell You What to Do',
         date: '2026-11-30',
