@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The first container ship sailed in 1956. The shipping container changed world trade only after its edges became standard. A reusable part becomes useful to everyone when other people and systems can use it too.">
+    <title>Build Bricks, Not One-Off Features - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>In 1960, half the cost of moving a truckload of medicine from Chicago to Nancy, in France, was spent in ports. Most of it went on the wages of men who loaded and unloaded cargo by hand, <a href="https://www.federalreserve.gov/econres/feds/files/2018045pap.pdf">according to the American Association of Port Authorities</a>. Malcom McLean, who owned a trucking company, had already started on a simpler idea: put the cargo in a box and stop unpacking it.</p>
+
+            <p>In April 1956 a converted tanker, the <em>Ideal X</em>, left Port Newark, New Jersey, for Houston with 58 of his boxes on board. <a href="https://porthouston.com/ideal-x/">Loading them took less than eight hours</a>. Ships loaded the old way spent weeks in port.</p>
+
+            <figure style="margin: 2rem 0;"><img src="../assets/images/stevedores_new_york_dock_1912.jpg" alt="Dockworkers on a New York pier around 1912 rolling and hoisting barrels of corn syrup one at a time onto a barge." style="width: 100%; height: auto;"><figcaption style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">Stevedores on a New York dock loading barrels of corn syrup onto a barge on the Hudson River, about 1912. The barrel on the right is chained and hoisted on its own. Photograph by Lewis Hine, U.S. National Archives. Public domain, via <a href="https://commons.wikimedia.org/wiki/File:Stevedores_on_a_New_York_Dock_Loading_Barrels_of_Corn_Syrup_onto_a_Barge_on_the_Hudson_River,_ca._1912_-_NARA_-_518287.jpg">Wikimedia Commons</a>.</figcaption></figure>
+
+            <p>The voyage showed that the box worked. Other companies could use it only after they agreed on its edges: a standard size, a standard way to stack it, and standard fittings for cranes to grip.</p>
+
+            <p>A reusable part becomes useful to everyone only when its edges are standard enough for other people and other systems to use it. The same applies when you ask an AI agent to build something you will need more than once.</p>
+
+            <h2>One company's box</h2>
+
+            <p>McLean's boxes were 35 feet long, <a href="https://en.wikipedia.org/wiki/Intermodal_container">the longest trailer then allowed on Pennsylvania's highways</a>. They fitted his trucks and his ships. Matson, a shipping line in the Pacific, used 24-foot boxes, because California's road rules were different. In the United States alone there were <a href="https://en.wikipedia.org/wiki/Containerization">dozens of container systems</a> that could not handle each other's boxes.</p>
+
+            <h2>The standard made it reusable</h2>
+
+            <p>The United States adopted a container standard in the early 1960s, and the international standard followed in the late 1960s. The international one, ISO 668, set lengths of 10, 20, 30 and 40 feet, and the industry still counts its cargo in 20-foot units. McLean's own 35-foot box was not among the standard sizes.</p>
+
+            <p>Once the edges were fixed, a box packed in one country could be lifted by another country's crane onto another company's ship. The economists Daniel Bernhofen, Zouheir El-Sahli and Richard Kneller <a href="https://doi.org/10.1016/j.jinteco.2015.09.001">estimate</a> that among 22 industrialised countries, containerisation raised trade by about 1,240 per cent over the 15 years after each country adopted it.</p>
+
+            <h2>The same choice in software</h2>
+
+            <p>Software built with an agent often grows one request at a time. Ask for a way to pick a colour for a label, and the agent builds a colour picker. Ask a month later for a way to pick a theme, and it can just as easily build a second picker, with its own code and its own bugs. Then a third, for document icons.</p>
+
+            <p>The three jobs have the same shape: a few options shown side by side, one of them selected. A brick is a part with standard edges, and here the edges are simple: a list of options goes in and one choice comes out. One picker built that way serves all three jobs.</p>
+
+            <table style="border-collapse: collapse; margin: 1.5rem 0; width: 100%;">
+                <thead>
+                    <tr><th style="padding: 0.4rem 0.8rem; border-bottom: 2px solid #0A1128; text-align: left;">Job</th><th style="padding: 0.4rem 0.8rem; border-bottom: 2px solid #0A1128; text-align: left;">Own code (three pickers)</th><th style="padding: 0.4rem 0.8rem; border-bottom: 2px solid #0A1128; text-align: left;">One picker</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left;">Label colour</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left;">picker 1</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left;">options: colours</td></tr>
+                    <tr><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left;">Theme</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left;">picker 2</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left;">options: themes</td></tr>
+                    <tr><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left;">Document icon</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left;">picker 3</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left;">options: icons</td></tr>
+                    <tr><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; font-weight: 700; background: #fff3cd;">A bug fix</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; font-weight: 700; background: #fff3cd;">three places</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; font-weight: 700; background: #fff3cd;">one place</td></tr>
+                </tbody>
+            </table>
+
+            <p>A fourth use then needs new options, not new code. An agent will build whatever part you ask for. Whether it builds a one-off or a brick depends on whether someone asks where else the part will be used and what its edges should be. So before you ask for a second version of something the agent has already built, ask it to show you the first one and describe its edges.</p>
+
+            <p>The edges also limit what can be built later. If the picker can only show a short list, every feature that uses it inherits that limit, and the feature that later needs two hundred options has to change the brick or work around it.</p>
+
+            <h2>What the box did to the piers</h2>
+
+            <p>The container pushed its own requirements onto every port that wanted it. Container ports need much less labour and much more land, for cranes and for the yards where containers and trucks wait.</p>
+
+            <p>In 1956 Manhattan's piers made up the largest port in the world. They never containerised. The work moved across the harbour to Port Newark and to a <a href="https://en.wikipedia.org/wiki/Port_Newark%E2%80%93Elizabeth_Marine_Terminal">new terminal at Elizabeth, New Jersey</a>, built for McLean's company, Sea-Land. The <em>Ideal X</em> had sailed from Port Newark. According to <a href="https://www.federalreserve.gov/econres/feds/files/2018045pap.pdf">a 2018 Federal Reserve paper</a>, the port of Manhattan "no longer exists as a freight port."</p>
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

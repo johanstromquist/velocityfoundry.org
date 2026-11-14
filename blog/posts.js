@@ -36,6 +36,15 @@ const posts = [
         image: 'assets/images/level_cupful.png'
     },
     {
+        slug: '2026-12-build-bricks-not-one-off-features',
+        title: 'Build Bricks, Not One-Off Features',
+        date: '2026-12-14',
+        publishDate: '2026-12-14T14:00:00+01:00',
+        excerpt: 'The shipping container changed world trade only after its edges became standard. A reusable part becomes useful to everyone when other people and systems can use it too, and an agent will build a one-off unless someone asks for the brick.',
+        readTime: '4 min',
+        image: 'assets/images/standard_box.png'
+    },
+    {
         slug: '2026-12-give-every-experiment-a-way-back',
         title: 'Give Every Experiment a Way Back',
         date: '2026-12-09',
