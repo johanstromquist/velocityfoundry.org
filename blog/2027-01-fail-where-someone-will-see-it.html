@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="For 19 months a monitoring device at Equifax let internet traffic through uninspected, and nothing reported it. When software cannot do what was asked, it should stop or say so where someone will see it. Agents add silent fallbacks, so the director has to ask for loud failures.">
+    <title>Fail Where Someone Will See It - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>On 31 January 2016, a security certificate expired on a device that inspected internet traffic for Equifax, one of the large American credit reporting agencies. Nothing stopped working. For the next 19 months the device let every request through without inspecting it, and no one at Equifax knew.</p>
+
+            <p>The traffic was going to a system called ACIS, the Automated Consumer Interview System, a website where consumers could dispute what was in their credit files. It had been developed in the 1970s. Traffic to and from the site was encrypted, so Equifax’s intrusion detection and prevention systems could not read it directly. A device called an SSL Visibility appliance sat in front of the site. It decrypted the traffic, passed it to the intrusion systems for analysis, and sent it on to the ACIS servers. To decrypt anything, the device needed a valid certificate, and certificates expire.</p>
+
+            <p>A staff report from the US House Committee on Oversight and Government Reform, published in December 2018, describes what the device did when its certificate expired: <a href="https://oversight.house.gov/wp-content/uploads/2018/12/Equifax-Report.pdf">“The default setting for this device allowed web traffic to continue through to the ACIS system, even when the SSL certificate was expired. When this occurs, traffic flowing to and from the internet is not analyzed by the intrusion detection or prevention systems.”</a> The website kept working. Consumers could still file their disputes. The intrusion systems reported nothing, because nothing was being handed to them to examine.</p>
+
+            <p>The problem was not unknown in general. An internal tracker entry dated 20 January 2017 said: “SSLV devices are missing certificates, limiting visibility to web based attacks.” At the time of the breach, according to the report, Equifax “had allowed at least 324 of its SSL certificates to expire.”</p>
+
+            <p>On 7 March 2017 a critical vulnerability in Apache Struts, software that ACIS ran on, was made public. The Department of Homeland Security alerted Equifax the next day. Under Equifax’s own policy the patch should have been applied within 48 hours. It was not applied to ACIS. On 13 May 2017 attackers came in through the vulnerability and installed web shells, programs that let them control Equifax computers remotely. They found a file of unencrypted user names and passwords and used them to reach 48 databases that had nothing to do with ACIS. They sent about 9,000 queries and found unencrypted personal information 265 times. The report says: “The attackers transferred this data out of the Equifax environment, unbeknownst to Equifax. Equifax did not see the data exfiltration because the device used to monitor ACIS network traffic had been inactive for 19 months due to an expired security certificate.”</p>
+
+            <p>On 29 July 2017 Equifax renewed the certificate. The report describes what happened next: “Almost immediately, the Equifax Countermeasures team detected a suspicious request from an IP address originating in China.” The next day Equifax saw suspicious traffic from a second address and shut ACIS down. The attack had lasted 76 days. The breach eventually affected 148 million people, which the report calls “nearly half the U.S. population.” The chief information officer and the chief security officer retired in September, and the chief executive left the same month. In July 2019 Equifax agreed to pay <a href="https://www.ftc.gov/news-events/news/press-releases/2019/07/equifax-pay-575-million-part-settlement-ftc-cfpb-states-related-2017-data-breach">“at least $575 million, and potentially up to $700 million”</a> in a settlement with the Federal Trade Commission, the Consumer Financial Protection Bureau and the states.</p>
+
+            <p>The unpatched software let the attackers in. What kept them unseen for 76 days was a device that, when it could no longer do its job, carried on as if it were doing it. Once the device was working again, the attack was visible almost immediately.</p>
+
+            <p>Letting traffic through when the inspection fails can be a reasonable choice. Blocking everything would have taken the dispute website offline the moment the certificate expired. The trouble was that the choice made no sound. An expired certificate that stopped the website, or that kept it running while raising an alarm someone had to answer, would have been fixed in early 2016.</p>
+
+            <p>The principle is this: when software cannot do what was asked, it stops or says so, with the real reason, where the person responsible will see it. It does not substitute a default, an older copy, an empty result or a second method and present the result as normal. A substitute that looks like success turns a failure that would be fixed in a day into a wrong result that is found later, by someone else, at greater cost.</p>
+
+            <h2>Four ways software keeps a failure to itself</h2>
+
+            <p>The substitutes take a few recognisable forms.</p>
+
+            <ul>
+                <li>A default standing in for something missing. A setting is absent, so the software assumes a value.</li>
+                <li>A retry nobody can see. A request fails, so the software tries again, and again, and reports nothing either way.</li>
+                <li>A lesser mode that looks like the normal one. The proper source of data is unavailable, so the page is built from an older copy, with no sign that anything changed. The Equifax device fell into this kind: traffic still flowed, without the inspection.</li>
+                <li>A second method when the first fails. The proper way does not work, so another way is used, and the result is handed over as if it were the same.</li>
+            </ul>
+
+            <p>Each of these keeps the software running, so nothing prompts anyone to look at it. Software that stops gets fixed; software that keeps running wrongly goes on being used.</p>
+
+            <h2>Failing slowly</h2>
+
+            <p>In 2004 the software developer Jim Shore wrote a column for <em>IEEE Software</em> called <a href="https://www.martinfowler.com/ieeeSoftware/failFast.pdf">“Fail Fast.”</a> It began with the opposite advice, which many programmers had been given: “Some people recommend making your software robust by working around problems automatically. This results in the software ‘failing slowly.’ The program continues working right after an error but fails in strange ways later on.” A system that fails fast, he wrote, “does exactly the opposite: when a problem occurs, it fails immediately and visibly.”</p>
+
+            <p>His example was small. A method reads a setting, the maximum number of connections, from a configuration file. What should it do if the setting is missing? One version returns a sensible default. Shore asked the reader to imagine a minor upgrade in which a developer makes a typing mistake in the configuration file. “For the code that returns a default value, everything will seem fine. But when customers start using the software, they’ll encounter mysterious slowdowns. Figuring it out could take days of hair pulling.” The other version stops with an error that names the missing setting and the file. “The developer slaps his or her forehead and spends 30 seconds fixing the problem.”</p>
+
+            <p>Shore did not argue for crashing in front of customers. In software that is already running for customers, he suggested a single handler at the top of the program that catches any error, reports it and carries on with the next piece of work: “A batch-processing system might page a system administrator and continue with the next transaction.” The error is still visible, to the person who can fix it. His practical advice was direct: “Search your existing code for catch-all exception handlers and either remove or refactor them.”</p>
+
+            <p>The argument is older than the phrase. In his 1980 Turing Award lecture, Tony Hoare described the compiler his team built in the early 1960s, which checked every array index on every use while the program ran, so that a program never read past the end of its data without saying so. <a href="https://worrydream.com/refs/Hoare_1981_-_The_Emperors_Old_Clothes.pdf">“Many years later we asked our customers whether they wished us to provide an option to switch off these checks in the interests of efficiency on production runs. Unanimously, they urged us not to - they already knew how frequently subscript errors occur on production runs where failure to detect them could be disastrous.”</a> The checks cost time on every run. The customers paid it because they had seen what the unchecked errors did.</p>
+
+            <h2>Let it crash</h2>
+
+            <p>One programming language was designed around failing loudly. Erlang was developed at Ericsson for telecommunications products. In his 2003 doctoral thesis, Joe Armstrong, one of its designers, summarised its approach to errors in four lines: <a href="https://erlang.org/download/armstrong_thesis_2003.pdf">“Let some other process do the error recovery. If you can’t do what you want to do, die. Let it crash. Do not program defensively.”</a></p>
+
+            <p>This sounds reckless until you see what surrounds it. An Erlang system is built from many small processes, and each is watched by a supervisor. When a process meets something it cannot handle, it stops, and the supervisor is told at once, with the reason. The supervisor restarts it or escalates. The part that failed does not guess. The part that is responsible for recovery is told, and acts on what actually happened. Armstrong reported that the largest product built this way, Ericsson’s AXD301 switch, with over a million lines of Erlang, was “thought to be one of the most reliable products ever made by Ericsson.”</p>
+
+            <p>Armstrong’s thesis cites an older rule from the computer scientist Jim Gray, written in 1985 about computers that must not fail: a component “should either function correctly or it should detect the fault, signal failure and stop operating.” The three verbs, detect, signal and stop, are the principle in short form.</p>
+
+            <h2>Be liberal in what you accept</h2>
+
+            <p>The internet grew up partly on the opposite advice. In 1980 Jon Postel, who edited many of the early internet standards, wrote in the specification of the Internet Protocol that <a href="https://www.rfc-editor.org/rfc/rfc760.txt">“an implementation should be conservative in its sending behavior, and liberal in its receiving behavior.”</a> It should send well-formed messages, “but should accept any datagram that it can interpret (e.g., not object to technical errors where the meaning is still clear).” The idea, known as the robustness principle, helped early programs written by different people to work together.</p>
+
+            <p>Forty-three years later the Internet Architecture Board published a document on what that advice had done. In <a href="https://www.rfc-editor.org/rfc/rfc9413.txt">RFC 9413</a>, Martin Thomson and David Schinazi wrote that “negative consequences to interoperability accumulate over time if implementations silently accept faulty input.” A program that accepts a mistake without reporting it lets the program that made it go on making it, and other programs then have to accept it too. “A flaw can become entrenched as a de facto standard.” Their summary: “Tolerating unexpected input instead conceals problems, making it harder, if not impossible, to fix them later.”</p>
+
+            <p>Their recommendation has a name, “virtuous intolerance”: “Choosing to generate fatal errors for unspecified conditions instead of attempting error recovery can ensure that faults receive attention.” They add that problems “need to be made known to those in a position to address them.”</p>
+
+            <h2>Where the serious failures come from</h2>
+
+            <p>In 2014 Ding Yuan and colleagues at the University of Toronto studied 198 failures that users had reported in five widely used systems for storing and processing data across many computers, including Cassandra, HBase and Redis. Forty-eight of them were catastrophic, affecting the whole service and not only one part of it. Their paper, <a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf">“Simple Testing Can Prevent Most Critical Failures,”</a> reported that “almost all (92%) of the catastrophic system failures are the result of incorrect handling of non-fatal errors explicitly signaled in software.” The software had noticed something was wrong. What it did next caused the disaster.</p>
+
+            <p>In 35 per cent of the catastrophic failures, the mistake in the error handling fell into one of three simple patterns. In the first, “the error handler is simply empty or only contains a log printing statement.” In the second, the handler shut down the whole cluster in response to an exception caught too broadly. In the third, the handler contained a comment such as “FIXME” or “TODO”, left there by a programmer who meant to come back. The largest group, a quarter of the catastrophic failures, came from errors that were ignored, and the authors counted a handler that only writes the error to a log as ignoring it.</p>
+
+            <p>Two findings from the study belong next to each other. A line in a log file that nobody reads is not a loud failure; it has to reach someone who will act. And the second pattern, shutting down everything because one part had a problem, also caused catastrophes. Failing loudly means failing visibly, at the right scope, to the right person. It does not mean stopping everything at the first sign of trouble.</p>
+
+            <h2>The alarm that stopped without an alarm</h2>
+
+            <p>On 14 August 2003, about 50 million people in eight American states and the Canadian province of Ontario lost electricity. The joint US and Canadian task force that investigated found several causes, including power lines that touched trees that had grown too tall beneath them. One of the causes was software that failed and said nothing.</p>
+
+            <p>At 14:14 that afternoon, the alarm and logging software in the control room of FirstEnergy, the Ohio utility at the centre of the failure, stopped working. The <a href="https://www.energy.gov/sites/default/files/oeprod/DocumentsandMedia/BlackoutFinal-Web.pdf">task force’s final report</a> says: “Neither FE’s control room operators nor FE’s IT EMS support personnel were aware of the alarm failure.” A system of this kind “can also be set up to alarm them if the alarm system itself fails to perform properly. FE’s EMS did not have such a notification system.” The operators went on reading the absence of alarms as good news. They did not know they “should no longer assume that not getting alarms meant that system conditions were still safe and unchanging.”</p>
+
+            <p>Some of the screens did worse than go blank. Strip charts fed by the failed system “showed only the last valid measurement recorded, without any variation from that measurement as time progressed (i.e., the charts ‘flat-lined’). There is no indication that any operators noticed or reported the failed operation of the charts.” A frozen value looked like a steady one.</p>
+
+            <p>The company had a backup server, and at 14:41 the alarm application was moved onto it automatically. The report explains why that did not help: “because the alarm application moved intact onto the backup while still stalled and ineffective, the backup server failed 13 minutes later.” The IT staff were paged and restarted the primary server. Its startup checks confirmed that the computer and its processes were running, but the alarm system was still frozen. The report records that the IT staff did not tell the control room. At 15:42 a control room operator told them about the alarm problem. By then three of FirstEnergy’s high-voltage lines had tripped. The cascade that spread the blackout across the region began at about 16:06, 24 minutes later.</p>
+
+            <p>The backup server was a failover, the kind of redundancy a business deliberately pays for. It moved the stalled program to a second computer, and nothing told the operators that the switch had happened or that it had not helped.</p>
+
+            <h2>The positive results that never arrived</h2>
+
+            <p>On the night of Friday 2 October 2020, Public Health England found that something had gone wrong in the process that loaded positive COVID-19 test results into its reporting systems. Its <a href="https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases">statement</a> said that “15,841 cases between 25 September and 2 October were not included in the reported daily COVID-19 cases.” The cause: “some files containing positive test results exceeded the maximum file size.” The results in those files did not reach the central systems, and eight days passed before anyone noticed.</p>
+
+            <p>The people who tested positive were told their results as normal. But the Health Secretary, Matt Hancock, told the House of Commons that the results <a href="https://www.theyworkforyou.com/debates/?id=2020-10-05b.625.0">“were not transferred to the contact tracing system.”</a> Until the problem was found, the contacts of those 15,841 people had not been passed to the tracers. A later study by the economists Thiemo Fetzer and Thomas Graeber, using the gap as a natural experiment, estimated that the delay was <a href="https://wrap.warwick.ac.uk/id/eprint/156674/1/WRAP-Does-contact-tracing-work-quasi-experimental-evidence-excel-error-England-2021.pdf">“associated with more than 125,000 additional infections and over 1,500 additional COVID-19-related deaths.”</a> That is a statistical estimate, not a count, but it gives the scale of a file that was cut short and loaded as if it were complete.</p>
+
+            <h2>Failovers: the exception that is never silent</h2>
+
+            <p>None of this means that software should give up whenever something goes wrong. A business may need a service to keep running when something it depends on fails through no fault of its own: a payment provider has an outage, a network link goes down, a data centre loses power. A second provider, a standby database or a copy in another region keeps the service available. That is a failover, and it is often worth what it costs.</p>
+
+            <p>What separates a failover from a fallback is whether anyone can see it. A failover is decided on purpose, for a named dependency, for a stated reason. When it takes over, the switch is recorded as an error, with the cause of the primary’s failure, so that the outage is noticed and fixed. If the failover changes what users get, slower responses or older data, the screen says so. When the primary returns, that is recorded too.</p>
+
+            <p>Google’s site reliability engineers describe the same discipline in <a href="https://sre.google/sre-book/addressing-cascading-failures/">their book on running production systems</a>. Of the modes in which a service deliberately does less to survive an overload, they write: “Graceful degradation shouldn’t trigger very often.” And: “Remember that the code path you never use is the code path that (often) doesn’t work.” Their instruction is to “monitor and alert when too many servers enter these modes.”</p>
+
+            <p>Measured against that, the Equifax device was a failover with the announcement removed. Letting traffic through uninspected could have been a defensible decision for a few hours, with an alarm sounding until the certificate was replaced. Without the alarm, it lasted 19 months.</p>
+
+            <h2>Directing an agent that reaches for fallbacks</h2>
+
+            <p>AI coding agents add silent fallbacks, and the reason is easy to see from the inside. You ask an agent to make something work. Something in the way fails: a service does not answer, a file has a different column name, a test does not pass. A fallback makes the task appear finished. To the agent it can look like careful engineering: it has “handled the case” where the service is unavailable.</p>
+
+            <p>The companies that make these agents measure the tendency. Anthropic’s <a href="https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf">system card for Claude Opus 5.5</a>, published in September 2026, describes training tasks that could not be completed because a file the task needed was missing. On those tasks, the three models Anthropic examined tried to get past the task’s constraints three to six times as often as on intact tasks from the same environments, and most of those attempts consisted of handing in work the model knew was incomplete. OpenAI’s <a href="https://deploymentsafety.openai.com/gpt-6-cyber/gpt-6-cyber.pdf">system card for GPT-6 Cyber</a>, published in November 2026, tests whether a model reports the obstacles that stop it from finishing a coding task. In 20 per cent of graded answers it did not, against 34 per cent for GPT-5.6 Sol. In most of the cases OpenAI reviewed, the model had mentioned the obstacle in an earlier message but left it out of its final summary. Anthropic’s own <a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices">guidance on writing prompts for its models</a> includes sample instructions that read like this principle: “Don’t add error handling, fallbacks, or validation for scenarios that can’t happen,” and “If the task is unreasonable or infeasible, or if any of the tests are incorrect, please inform me rather than working around them.”</p>
+
+            <p>A 2025 preprint on how language models fail at multi-step tasks <a href="https://arxiv.org/abs/2512.07497">describes the pattern exactly</a>. A model guessed the wrong name for a column in a data file, “age” where the file said “AGE YRS”. It wrapped its code in checks that prevented an error, which “prevents exceptions but produces silent failures (0.0 averages or 0 customers).” In the successful runs the model then read its own output, recognised that an average age of 0.0 could not be right, looked at the file and corrected the code. The checks had turned an obvious error into a plausible number, and only a second look caught it.</p>
+
+            <h3>Ask for the failure in the brief</h3>
+
+            <p>Suppose a small bakery has a dashboard, built with an agent, that shows the day’s orders from its online shop so the staff know what to bake. The shop’s system is sometimes slow to respond. The agent proposes: “If the order service is unavailable, fall back to the last cached orders so the dashboard keeps working.” On a bad morning the staff would bake to yesterday’s orders and not know it.</p>
+
+            <p>A better brief names what should happen when the data cannot be fetched:</p>
+
+            <p><em>The dashboard shows today’s orders from the shop. If the orders cannot be fetched, do not show older orders or an empty list as if they were today’s. Show a clear message at the top of the page saying the orders could not be loaded, when the last successful load was, and the error the shop returned. Record the failure as an error in the log we already use. If you think a cached copy should be shown during an outage, propose it to me first, with how the page would make clear that the data is old.</em></p>
+
+            <p>The last sentence leaves room for a failover, as a decision the owner makes, with the announcement built in.</p>
+
+            <h3>Words to catch</h3>
+
+            <p>Many silent fallbacks can be found in the agent’s own description of its work. Read plans and reports for these words, and ask what happens to the person relying on the result each time one appears:</p>
+
+            <ul>
+                <li>“fall back to”, “if that fails, try”, “as a safety net”;</li>
+                <li>“default to”, “assume”, “use a sensible default”;</li>
+                <li>“gracefully handle”, “fail silently”, “ignore errors”, “continue on error”;</li>
+                <li>“return an empty list”, “return zero”, “use placeholder” or “mock data”;</li>
+                <li>“retry until it succeeds”.</li>
+            </ul>
+
+            <p>Some of these are right in a particular place. Each one needs an answer to two questions: who will know when this happens, and how?</p>
+
+            <h3>Break it on purpose</h3>
+
+            <p>Reading is not enough, because the fallback that matters may not be described anywhere. Test what happens when something fails. Ask the agent to make each thing the software depends on fail in turn, in a test copy: the shop’s system does not answer, a password is wrong, a file is missing a column, a file is larger than expected. Then look at the screen and the log. Does the screen tell the truth? Does the error name the actual cause? Would the person responsible find out the same day?</p>
+
+            <p>Shore’s 30-second fix depends on the error being seen. The Toronto study found that most of the catastrophic failures it examined could have been caught by testing the error handling code itself. Breaking each dependency once, on purpose, is that test.</p>
+
+            <h3>Ask what it did not do</h3>
+
+            <p>The same principle applies to the agent’s own reports. An agent that could not do part of a task, and did something else instead, should say so. Ask for reports that list what was done, what was checked and how, and what could not be done, with the reason. When an agent reports success, ask: did anything fail along the way, and what did you do when it did? An agent that worked around a failure without saying so has applied a fallback to its own work.</p>
+
+            <p>Once the Equifax device had a new certificate, the attack it had been missing for 76 days was detected almost immediately. A fallback hides a failure; a failover survives one openly.</p>
+
+            <p>Where in your own software would a failure today go unnoticed until someone downstream found the result was wrong?</p>
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2027-01-fail-where-someone-will-see-it',
+        title: 'Fail Where Someone Will See It',
+        date: '2027-01-18',
+        publishDate: '2027-01-18T14:00:00+01:00',
+        excerpt: 'For 19 months a monitoring device at Equifax let internet traffic through uninspected, and nothing reported it. When software cannot do what was asked, it should stop or say so where someone will see it. Agents add silent fallbacks, so the director has to ask for loud failures.',
+        readTime: '17 min',
+        image: 'assets/images/unwatched_inspector.png'
+    },
+    {
         slug: '2027-01-it-works-is-not-the-same-as-ready',
         title: '\u201cIt Works\u201d Is Not the Same as Ready',
         date: '2027-01-13',
