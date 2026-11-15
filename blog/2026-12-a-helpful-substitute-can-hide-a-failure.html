@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="In October 1992 London&#39;s new ambulance dispatch system kept recommending ambulances on wrong information, and nothing on screen showed it. A substitute an agent adds can hide a failure from the person who could fix it.">
+    <title>A Helpful Substitute Can Hide a Failure - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>In October 1992, London’s new ambulance dispatch system kept recommending which ambulance to send. Many of its recommendations were wrong, and the screen showed a wrong one exactly like a right one.</p>
+
+            <p>The London Ambulance Service put the system into full use at 07:00 on Monday 26 October 1992. At that hour, <a href="https://personal.utdallas.edu/~chung/SE/South_West_Thames--Report_of_the_Inquiry_Into_The_London_Ambulance_Service.pdf">the official inquiry found</a>, the system was lightly loaded, and the staff in the control room could cope with its problems.</p>
+
+            <p>The inquiry also found that on 26 and 27 October the system “did not fail in a technical sense.” It did what it had been designed to do.</p>
+
+            <p>A loud failure is mainly useful to the builder: it shows where to look. A substitute that hides a failure, such as a guess shown in place of the real answer, keeps that signal from the one person who could fix the problem. An agent building software for you will add substitutes like that, and you can ask it to show you every one.</p>
+
+            <h2>Monday, as the calls increased</h2>
+
+            <p>To recommend the right vehicle, the system needed to know where each ambulance was and whether it was free. In the inquiry’s words, it “needed near perfect information all of the time.” As the number of incidents increased, so did the wrong location and status information it received. With the new room layout and way of working, allocators were less able to spot and correct the errors.</p>
+
+            <p>The system kept making recommendations. It believed fewer ambulances were free than really were, so it often proposed a vehicle when, in the inquiry’s words, “a closer vehicle was actually available.” A recommendation built on wrong information looked the same as one built on correct information, and the allocator had no way to tell them apart.</p>
+
+            <p>There were warnings, but they were easy to lose. Exception messages piled up faster than staff could clear them and scrolled off the top of the screen. At one stage the whole queue was cleared to make the system run faster.</p>
+
+            <p>From the afternoon of 27 October, the computer still took calls, but incident details were printed out and staff chose the vehicle themselves. The inquiry says this “operated with reasonable success” for the next week. On 28 October the chief executive of the service, John Wilby, <a href="https://api.parliament.uk/historic-hansard/commons/1992/oct/28/london-ambulance-service">resigned</a>.</p>
+
+            <h2>Shortly after 2am, 4 November</h2>
+
+            <p>The system slowed, then stopped completely, and its standby server did not take over. This time everyone knew the computer had failed. Staff went back to paper and sent ambulances by voice and telephone.</p>
+
+            <p>The contractor was called in at once to explain the failure, and the inquiry traced it to a single programming error. Three weeks earlier a programmer had left in a piece of code that used up a small amount of the server’s memory each time the system sent out a vehicle, and never released it. The standby switch had been built for the paperless system that was planned. Nobody had tested it with the printer-based version that was actually running.</p>
+
+            <p>The October failure had no single line of code to point at. The inquiry reported in February 1993 that the people running the project “failed to identify or to recognise the significance of the many problems” that made it fail. Its list ran across the whole project: a design with “fatal flaws”, location and status information that was often wrong, a system “not fully tested” and training that was “incomplete and inconsistent”.</p>
+
+            <h2>What the service did next</h2>
+
+            <p>The inquiry recommended that the service keep planning for a computer dispatch system, but introduce it in steps, with fully tested back-up, once staff had confidence in it. The service did not scrap the idea. It built the next system itself. <a href="https://doi.org/10.1016/S0953-5438(98)00050-2">The first stage</a>, covering call-logging, address-finding and vehicle location, was introduced successfully in January 1996. Later functions were added in small steps, and by September 1996, according to <a href="https://arxiv.org/abs/1003.3880">a study by researchers at St Andrews</a>, the share of calls dispatched within three minutes had risen from 38% to 60%.</p>
+
+            <h2>The substitutes an agent adds</h2>
+
+            <p>Ask an agent to stop a page crashing, or to make a failing test pass, and it may reach for a substitute. When a service is down, it catches the error and shows an empty list. When the price lookup fails, it shows a default price. When a test fails, it gives the test sample data, and the test passes without checking the real data. Each result looks normal, so nothing tells you, the person who could fix the cause, that anything went wrong.</p>
+
+            <p>Ask the agent to list every place where it puts a default, a cached value or a placeholder in place of what the code was meant to get, and to write each one to a log you read. Where the user would act on the wrong value, show an error instead. Then test the failure itself: switch off the service, break the connection, and check that you can see it in the log. The crash on 4 November was traced to a single programming error. The October failure, which looked like normal work, took an inquiry more than three months to explain.</p>
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

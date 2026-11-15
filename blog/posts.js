@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2026-12-a-helpful-substitute-can-hide-a-failure',
+        title: 'A Helpful Substitute Can Hide a Failure',
+        date: '2026-12-23',
+        publishDate: '2026-12-23T14:00:00+01:00',
+        excerpt: 'In October 1992 London\'s new ambulance dispatch system kept recommending ambulances on wrong information, and nothing on screen showed it. A loud failure tells the builder where to look; a substitute an agent adds can hide it.',
+        readTime: '5 min',
+        image: 'assets/images/control_room_1992.png'
+    },
+    {
         slug: '2026-12-two-ways-to-do-the-same-job-drift-apart',
         title: 'Why Two Ways to Do the Same Job Drift Apart',
         date: '2026-12-21',
