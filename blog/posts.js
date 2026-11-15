@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2026-12-simple-is-a-design-decision',
+        title: 'Simple Is a Design Decision',
+        date: '2026-12-28',
+        publishDate: '2026-12-28T14:00:00+01:00',
+        excerpt: 'After an oxygen tank failed on Apollo 13, carbon dioxide built up in the lunar module. Houston read the crew a procedure for an adapter made of a bag, cardboard, a hose and tape. It was simple because the job was fixed and nothing else was on board. An agent has neither limit, so you have to set them.',
+        readTime: '5 min',
+        image: 'assets/images/four_materials.png'
+    },
+    {
         slug: '2026-12-a-helpful-substitute-can-hide-a-failure',
         title: 'A Helpful Substitute Can Hide a Failure',
         date: '2026-12-23',
