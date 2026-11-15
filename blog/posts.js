@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2027-01-done-is-a-claim-verification-is-evidence',
+        title: '“Done” Is a Claim; Verification Is Evidence',
+        date: '2027-01-04',
+        publishDate: '2027-01-04T14:00:00+01:00',
+        excerpt: 'In 2015 Dutch engineers proof-loaded one span of a viaduct cut to one lane, and it held. The bridge still stayed at one lane, because the critical span over the motorway could not be tested, and they said so. An agent\'s report that work is done needs the same: checks seen, and a list of what was not tested.',
+        readTime: '5 min',
+        image: 'assets/images/tested_span.png'
+    },
+    {
         slug: '2026-12-simple-is-a-design-decision',
         title: 'Simple Is a Design Decision',
         date: '2026-12-28',
