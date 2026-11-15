@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Kansas bridge deck was poured too thin, and the steel showed through. Bridge inspectors check before the pour because afterwards it is buried. Stop an agent at the step that cannot be undone, and let it work freely on the rest.">
+    <title>Check Before the Irreversible Step - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>In April 2026 the new Rocky Ford Bridge in Emporia, Kansas, had what Wayne Scritchfield, the county engineer for Lyon County, called a “major snafu.” Reinforcing bar that should have sat about <a href="https://www.roadsbridges.com/bridge-construction/news/55371087/rebar-issue-during-deck-pour-delays-kansas-bridge-project">2.5 inches below the surface</a> was showing through the freshly poured concrete deck.</p>
+
+            <p>The first theory was that the beams had flexed. Testing found a different cause. According to Scritchfield, the contractor’s equipment appears to have been adjusted wrongly, so <a href="https://www.emporiagazette.com/free/article_ba61fbbf-b29c-4e66-a4fc-04eac6dd156f.html">the deck was poured too thin</a>, and not only in one place: sampling found the problem across the whole deck. The steel could no longer be moved. The repair was to mill the surface down, sandblast it and add a 1.5-inch concrete overlay over the entire bridge, and the opening moved from June to about July. In July the Emporia Gazette reported <a href="https://www.emporiagazette.com/free/article_899b721a-e98a-4614-a252-0203ecb8331e.html">the repairs successful</a> and the bridge expected to open soon.</p>
+
+            <p>A bar inside wet concrete can no longer be moved, only measured through it. So the checking happens before the pour, and the same rule works with an agent. Most of what an agent does for you can be undone. A few things cannot, and those are where you stop the agent and look.</p>
+
+            <h2>Everything is checked while it can still move</h2>
+
+            <p>The US Federal Highway Administration publishes a <a href="https://www.fhwa.dot.gov/construction/reviews/revconc4.cfm">checklist for inspecting concrete bridge decks</a>. Its heaviest section comes before any concrete arrives:</p>
+
+            <ul>
+                <li>Check the condition of the forms before the pour.</li>
+                <li>Make sure the bolts, bolt holes and reinforcing for the railings are in the right position.</li>
+                <li>Check how the expansion devices are installed, and their grade and elevation.</li>
+            </ul>
+
+            <p>Then comes a dry run. The finishing machine is set up on the empty deck, and the inspector checks the grade and the crown, checks the minimum cover of concrete over the steel, verifies the slab will be thick enough, and watches whether the supports bend under the machine’s weight. Each of these is a question about something that will soon be hidden or fixed in place. The fault at Rocky Ford, equipment set up wrongly and a deck poured too thin, is the kind of fault this dry run is meant to find while the deck is still empty.</p>
+
+            <p>Checks continue after the pour, but they can only see the surface.</p>
+
+            <h2>The pour in your own software</h2>
+
+            <p>When you build with an agent, most changes are like the formwork. A change to a page or a function can be undone, especially if you keep a working version to return to. Checking every one of them before the agent makes it would slow the work and add little.</p>
+
+            <p>A few actions are like the pour:</p>
+
+            <ul>
+                <li>Sending an email to every customer.</li>
+                <li>Deleting records from the live database.</li>
+                <li>Taking a payment or sending money. The US Federal Trade Commission warns about wire transfers: <a href="https://consumer.ftc.gov/articles/what-know-you-wire-money">“Scammers know that once you wire money to them, there’s usually no way to get your money back.”</a></li>
+                <li>Publishing something under your name.</li>
+            </ul>
+
+            <p>Once they are done, the email is in every inbox and the deleted records are gone. Unless you say otherwise, an agent may carry out any of them as readily as it renames a button. You have to tell it.</p>
+
+            <h2>The dry run, before the send</h2>
+
+            <p>For these steps, tell the agent to stop just before the action and show you what is about to happen, in a fixed form you can read in ten seconds. For a newsletter it might look like this:</p>
+
+            <table style="border-collapse: collapse; margin: 1.5rem 0; width: 100%;">
+                <thead>
+                    <tr><th style="padding: 0.4rem 0.8rem; border-bottom: 2px solid #0A1128; text-align: left;" colspan="2">Before sending: customer newsletter</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top;">Recipients</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top;">4,212 customers</td></tr>
+                    <tr><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top;">Unsubscribed customers excluded</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top;">yes (318 removed)</td></tr>
+                    <tr><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top;">Preview</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top;">attached, as one customer will see it</td></tr>
+                    <tr><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top;">Sender address</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top;">news@yourcompany.example</td></tr>
+                    <tr><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; background: #fff3cd;">Send now?</td><td style="padding: 0.4rem 0.8rem; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; background: #fff3cd;"><strong>yes / no</strong></td></tr>
+                </tbody>
+            </table>
+
+            <p>For a deletion, the same idea: how many records, which ones, and whether a backup exists and when it was taken. Then you answer yes or no. If you answer no, nothing has happened yet, and that is the point of asking.</p>
+
+            <p>Keep this for the few steps that cannot be undone. An agent that stops for approval on everything wears down the attention you need for the steps that matter. The checklist puts its heaviest checks where things are about to become hard to reach, and so can you.</p>
+
+            <h2>Before your agent pours</h2>
+
+            <p>Let it work freely on what can be undone. For the few actions that cannot, the agent stops, shows you the form, and waits for your yes.</p>
+
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

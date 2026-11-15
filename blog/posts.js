@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2027-01-check-before-the-irreversible-step',
+        title: 'Check Before the Irreversible Step',
+        date: '2027-01-11',
+        publishDate: '2027-01-11T14:00:00+01:00',
+        excerpt: 'A Kansas bridge deck was poured too thin, and the steel showed through. Bridge inspectors check before the pour because afterwards it is buried. Stop an agent at the step that cannot be undone, and let it work freely on the rest.',
+        readTime: '4 min',
+        image: 'assets/images/before_the_pour.png'
+    },
+    {
         slug: '2027-01-find-the-cause-before-asking-for-a-fix',
         title: 'Find the Cause Before Asking for a Fix',
         date: '2027-01-06',
