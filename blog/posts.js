@@ -72,10 +72,19 @@ const posts = [
         image: 'assets/images/tested_span.png'
     },
     {
-        slug: '2026-12-describe-the-result-not-the-activity',
-        title: 'Describe the Result, Not the Activity',
+        slug: '2026-12-build-the-part-every-case-can-use',
+        title: 'Build the Part Every Case Can Use',
         date: '2026-12-30',
         publishDate: '2026-12-30T14:00:00+01:00',
+        excerpt: 'Find the small, general part that several needs share, build it once, and make each feature an arrangement of it. Would a completely different case use it unchanged? Agents build for one request, so the director has to ask.',
+        readTime: '20 min',
+        image: 'assets/images/one_brick_many_shapes.png'
+    },
+    {
+        slug: '2026-12-describe-the-result-not-the-activity',
+        title: 'Describe the Result, Not the Activity',
+        date: '2026-12-28',
+        publishDate: '2026-12-28T14:00:00+01:00',
         excerpt: 'In 1902 Hanoi paid a bounty for rat tails to get rid of rats, and people started breeding rats for their tails. An instruction that names an activity gets the activity. Tell an agent the result you want.',
         readTime: '4 min',
         image: 'assets/images/counted_tails.png'
@@ -83,8 +92,8 @@ const posts = [
     {
         slug: '2026-12-simple-is-a-design-decision',
         title: 'Simple Is a Design Decision',
-        date: '2026-12-28',
-        publishDate: '2026-12-28T14:00:00+01:00',
+        date: '2026-12-23',
+        publishDate: '2026-12-23T14:00:00+01:00',
         excerpt: 'After an oxygen tank failed on Apollo 13, carbon dioxide built up in the lunar module. Houston read the crew a procedure for an adapter made of a bag, cardboard, a hose and tape. It was simple because the job was fixed and nothing else was on board. An agent has neither limit, so you have to set them.',
         readTime: '5 min',
         image: 'assets/images/four_materials.png'
@@ -92,8 +101,8 @@ const posts = [
     {
         slug: '2026-12-a-helpful-substitute-can-hide-a-failure',
         title: 'A Helpful Substitute Can Hide a Failure',
-        date: '2026-12-23',
-        publishDate: '2026-12-23T14:00:00+01:00',
+        date: '2026-12-21',
+        publishDate: '2026-12-21T14:00:00+01:00',
         excerpt: 'In October 1992 London\'s new ambulance dispatch system kept recommending ambulances on wrong information, and nothing on screen showed it. A loud failure tells the builder where to look; a substitute an agent adds can hide it.',
         readTime: '5 min',
         image: 'assets/images/control_room_1992.png'
@@ -101,8 +110,8 @@ const posts = [
     {
         slug: '2026-12-two-ways-to-do-the-same-job-drift-apart',
         title: 'Why Two Ways to Do the Same Job Drift Apart',
-        date: '2026-12-21',
-        publishDate: '2026-12-21T14:00:00+01:00',
+        date: '2026-12-16',
+        publishDate: '2026-12-16T14:00:00+01:00',
         excerpt: 'In 1883 the North American railways stopped keeping their own times and adopted standard time zones. Software built with an agent can end up doing the same job two ways, and the fix is the same: find every place, pick one rule, and make every screen use it.',
         readTime: '4 min',
         image: 'assets/images/two_noons.png'
@@ -110,17 +119,26 @@ const posts = [
     {
         slug: '2026-12-write-the-rule-once',
         title: 'Write the Rule Once, Then Use It Everywhere',
-        date: '2026-12-16',
-        publishDate: '2026-12-16T14:00:00+01:00',
+        date: '2026-12-14',
+        publishDate: '2026-12-14T14:00:00+01:00',
         excerpt: 'Fannie Farmer wrote her measuring rule once, at the front of her 1896 cookbook, and every recipe pointed back to it. A rules file for an agent works the same way, if each rule means the same thing to every session that reads it.',
         readTime: '4 min',
         image: 'assets/images/level_cupful.png'
     },
     {
+        slug: '2026-11-the-interface-should-tell-you-what-to-do',
+        title: 'The Interface Should Tell You What to Do',
+        date: '2026-12-09',
+        publishDate: '2026-12-09T14:00:00+01:00',
+        excerpt: 'People do not read instructions. An interface can show what to do through its structure, controls, defaults, constraints and feedback. Self-explanatory design is a north star, and it applies directly to software built with an agent.',
+        readTime: '21 min',
+        image: 'assets/images/door_without_a_sign.png'
+    },
+    {
         slug: '2026-12-build-bricks-not-one-off-features',
         title: 'Build Bricks, Not One-Off Features',
-        date: '2026-12-14',
-        publishDate: '2026-12-14T14:00:00+01:00',
+        date: '2026-12-07',
+        publishDate: '2026-12-07T14:00:00+01:00',
         excerpt: 'The shipping container changed world trade only after its edges became standard. A reusable part becomes useful to everyone when other people and systems can use it too, and an agent will build a one-off unless someone asks for the brick.',
         readTime: '4 min',
         image: 'assets/images/standard_box.png'
@@ -128,38 +146,20 @@ const posts = [
     {
         slug: '2026-12-give-every-experiment-a-way-back',
         title: 'Give Every Experiment a Way Back',
-        date: '2026-12-09',
-        publishDate: '2026-12-09T14:00:00+01:00',
+        date: '2026-12-02',
+        publishDate: '2026-12-02T14:00:00+01:00',
         excerpt: 'Theatre previews let a company change a play in front of an audience and go back if a change fails. Knowing you can return to a working version changes what you are willing to try, and the same holds when you direct an agent.',
         readTime: '4 min',
         image: 'assets/images/preview_night.png'
     },
     {
-        slug: '2026-12-build-the-part-every-case-can-use',
-        title: 'Build the Part Every Case Can Use',
-        date: '2026-12-07',
-        publishDate: '2026-12-07T14:00:00+01:00',
-        excerpt: 'Find the small, general part that several needs share, build it once, and make each feature an arrangement of it. Would a completely different case use it unchanged? Agents build for one request, so the director has to ask.',
-        readTime: '20 min',
-        image: 'assets/images/one_brick_many_shapes.png'
-    },
-    {
         slug: '2026-12-ask-for-the-shape-first',
         title: 'Ask for the Shape First',
-        date: '2026-12-02',
-        publishDate: '2026-12-02T14:00:00+01:00',
+        date: '2026-11-30',
+        publishDate: '2026-11-30T14:00:00+01:00',
         excerpt: 'Nightingale designed every part of her rose diagram to show officials one thing. Directing an agent takes the same discipline: ask it what you need to check, judge the shape it proposes, then ask for it filled in.',
         readTime: '4 min',
         image: 'assets/images/ledger_to_rose.png'
-    },
-    {
-        slug: '2026-11-the-interface-should-tell-you-what-to-do',
-        title: 'The Interface Should Tell You What to Do',
-        date: '2026-11-30',
-        publishDate: '2026-11-30T14:00:00+01:00',
-        excerpt: 'People do not read instructions. An interface can show what to do through its structure, controls, defaults, constraints and feedback. Self-explanatory design is a north star, and it applies directly to software built with an agent.',
-        readTime: '21 min',
-        image: 'assets/images/door_without_a_sign.png'
     },
     {
         slug: '2026-11-ask-for-the-map',
