@@ -20,8 +20,18 @@
             return;
         }
 
+        getPublicationTime().then(clock => {
+            if (!clock) {
+                blogList.innerHTML = `<p class="clock-error">${CLOCK_ERROR_TEXT}</p>`;
+                return;
+            }
+            if (clock.stale) showClockNotice(clock.time);
+            renderPosts(blogList, noPosts, clock.time);
+        });
+    }
+
+    function renderPosts(blogList, noPosts, now) {
         // Filter out posts that are scheduled for future publication
-        const now = new Date();
         const publishedPosts = posts.filter(post => {
             // If no publishDate is set, the post is published immediately
             if (!post.publishDate) return true;

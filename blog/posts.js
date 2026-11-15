@@ -25,6 +25,40 @@ function parsePublishDate(value) {
     return new Date(hasTimezone ? normalized : normalized + 'Z');
 }
 
+/* PUBLICATION CLOCK
+   The publication check uses the server's Date header, never the browser clock.
+   Resolves to { time, stale }: stale is true when the server could not be reached
+   and the last stored server time is used. Resolves to null when neither exists. */
+const SERVER_TIME_KEY = 'vf-server-time';
+const CLOCK_ERROR_TEXT = 'Could not reach the server to check the date. Connect to the internet and reload.';
+
+function getPublicationTime() {
+    return fetch(location.href, { method: 'HEAD', cache: 'no-store' })
+        .then(response => {
+            const header = response.headers.get('Date');
+            const time = header ? new Date(header) : null;
+            if (!time || isNaN(time)) throw new Error('No usable Date header');
+            try { localStorage.setItem(SERVER_TIME_KEY, String(time.getTime())); } catch (e) {}
+            return { time, stale: false };
+        })
+        .catch(() => {
+            let stored = null;
+            try { stored = localStorage.getItem(SERVER_TIME_KEY); } catch (e) {}
+            const time = stored ? new Date(Number(stored)) : null;
+            return time && !isNaN(time) ? { time, stale: true } : null;
+        });
+}
+
+function showClockNotice(time) {
+    const notice = document.createElement('button');
+    notice.type = 'button';
+    notice.className = 'clock-notice';
+    notice.textContent = 'Could not check the time. Showing posts as of ' +
+        time.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) + '. Click to retry.';
+    notice.addEventListener('click', () => location.reload());
+    document.body.appendChild(notice);
+}
+
 const posts = [
     {
         slug: '2027-01-fail-where-someone-will-see-it',

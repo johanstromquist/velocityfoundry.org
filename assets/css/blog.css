@@ -366,3 +366,30 @@
         font-size: 1.25rem;
     }
 }
+/* Publication clock messages (see getPublicationTime in blog/posts.js) */
+.clock-notice {
+    position: fixed;
+    top: calc(70px + var(--space-sm)); /* below the 70px navigation bar */
+    right: var(--space-sm);
+    z-index: 2000;
+    max-width: 320px;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    background: var(--gray-50);
+    color: var(--gray-900);
+    font: inherit;
+    font-size: 0.85rem;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.clock-error {
+    grid-column: 1 / -1;
+    padding: var(--space-md);
+    border-left: 4px solid var(--red);
+    background: var(--gray-50);
+    color: var(--gray-900);
+    font-weight: 600;
+}

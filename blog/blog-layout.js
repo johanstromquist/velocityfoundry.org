@@ -59,8 +59,7 @@ const footerHTML = `
 /**
  * Get published posts (respecting publish dates)
  */
-function getPublishedPosts() {
-    const now = new Date();
+function getPublishedPosts(now) {
     return posts.filter(post => {
         if (!post.publishDate) return true;
         const publishDate = parsePublishDate(post.publishDate);
@@ -83,8 +82,8 @@ function getCurrentPost() {
  * Get next and previous posts (from published posts only)
  * Previous = older post, Next = newer post (chronological reading)
  */
-function getAdjacentPosts(currentPost) {
-    const publishedPosts = getPublishedPosts();
+function getAdjacentPosts(currentPost, now) {
+    const publishedPosts = getPublishedPosts(now);
     const currentIndex = publishedPosts.findIndex(post => post.slug === currentPost.slug);
 
     return {
@@ -98,10 +97,10 @@ function getAdjacentPosts(currentPost) {
 /**
  * Generate post navigation HTML (next/previous links)
  */
-function generatePostNavigation(currentPost) {
+function generatePostNavigation(currentPost, now) {
     if (!currentPost) return '';
 
-    const { previous, next } = getAdjacentPosts(currentPost);
+    const { previous, next } = getAdjacentPosts(currentPost, now);
 
     let navHTML = '';
 
@@ -180,20 +179,19 @@ function initBlogLayout() {
             heroPlaceholder.outerHTML = generateHeroSection(currentPost);
         }
 
-        // Generate navigation HTML once
-        const navHTML = generatePostNavigation(currentPost);
-
-        // Inject top navigation (below hero) - same as bottom
+        // Previous/next links depend on the server's time (see posts.js)
         const topNavPlaceholder = document.getElementById('blog-top-nav');
-        if (topNavPlaceholder) {
-            topNavPlaceholder.innerHTML = navHTML;
-        }
-
-        // Inject bottom navigation (with next/prev)
         const bottomNavPlaceholder = document.getElementById('blog-bottom-nav');
-        if (bottomNavPlaceholder) {
-            bottomNavPlaceholder.innerHTML = navHTML;
-        }
+        getPublicationTime().then(clock => {
+            if (!clock) {
+                if (topNavPlaceholder) topNavPlaceholder.innerHTML = `<p class="clock-error">${CLOCK_ERROR_TEXT}</p>`;
+                return;
+            }
+            if (clock.stale) showClockNotice(clock.time);
+            const navHTML = generatePostNavigation(currentPost, clock.time);
+            if (topNavPlaceholder) topNavPlaceholder.innerHTML = navHTML;
+            if (bottomNavPlaceholder) bottomNavPlaceholder.innerHTML = navHTML;
+        });
     }
 }
 
