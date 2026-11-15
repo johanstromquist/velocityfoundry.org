@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="In 1902 Hanoi paid a bounty for rat tails to get rid of rats, and people started breeding rats for their tails. An instruction that names an activity gets the activity. Tell an agent the result you want.">
+    <title>Describe the Result, Not the Activity - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>In April 1902, the city government of Hanoi, then the capital of French Indochina, <a href="https://h-france.net/vol21reviews/vol21no203Aso.pdf">began paying a bounty for dead rats</a>. Plague was spreading through port cities around the world, rats were newly known to carry it, and officials feared it would reach Hanoi before an international exposition the city was due to host later that year.</p>
+
+            <p>What the city wanted was fewer rats. What it paid for was something else.</p>
+
+            <h2>Proof of a kill</h2>
+
+            <p>The city already employed men to hunt rats in its new sewers. According to the historian Michael Vann, who found their daily tallies in the colonial archives, they killed 7,442 rats on 19 May and <a href="https://freakonomics.com/podcast/the-cobra-effect-2/">20,114 on 12 June 1902</a>. In his words, “They’re not making a dent on it.” The bounty was the city’s way of getting residents to help: it offered money for each rat they killed.</p>
+
+            <p>It did not want piles of dead rats delivered to government buildings, so it asked for proof instead: the tail. Bring in a tail, and you were paid.</p>
+
+            <p>Tails arrived in such numbers that the scheme became expensive, and the city lowered the bounty. The tails kept coming. Then, Vann says, a health official visiting a village just outside the city limits “discovered a rat farm”: people were raising rats, cutting off their tails and bringing the tails into the city. The <a href="https://h-france.net/vol21reviews/vol21no203Aso.pdf">review of Vann’s history</a> in <em>H-France</em> adds that people were also bringing in tails from the countryside. The city stopped the hunt. The rats stayed, and so did <a href="https://h-france.net/vol21reviews/vol21no203Aso.pdf">the threat of plague</a>.</p>
+
+            <p>The residents did what they were paid for. They delivered tails, more and more of them. The tails were meant to show that rats had died in Hanoi, and the instruction did not say that. It said “bring tails”, and a tail could come from a rat raised for the purpose, or from a rat that had never been in the city at all. Vann <a href="https://freakonomics.com/podcast/the-cobra-effect-2/">called it</a> “absolutely a disaster in terms of trying to remove rats.”</p>
+
+            <h2>Your agent’s rat tails</h2>
+
+            <p>An agent follows the instruction you give it, often very well. If the instruction names an activity, the agent will carry out the activity, and its report will say so accurately. Whether the thing you wanted happened is a separate question, and the report may not answer it.</p>
+
+            <p>“Make the failing test pass” is a tail. The agent can make it pass by fixing the code, or by changing the test so it checks less. Both meet the instruction. What you wanted was “customers can check out with a discount code”, and the test was only the proof.</p>
+
+            <p>“Add caching to the product page” names an activity. The result it was for is something like “the product page loads in under a second on a phone.” The second version tells the agent what to aim for, and it tells you what to check: load the page on a phone before the agent starts and after it finishes.</p>
+
+            <p>The same change works for other requests:</p>
+
+            <ul>
+                <li>“Write tests for the checkout” becomes “if a change breaks checkout, the tests fail,” and you can check it by breaking the checkout on purpose and seeing whether the tests catch it.</li>
+                <li>“Refactor the login code” becomes “login works as before, and the next change to it takes one file, not five.”</li>
+                <li>“Fix the error on the dashboard” becomes “the dashboard shows the right totals,” so a fix that only hides the error message does not count.</li>
+            </ul>
+
+            <p>Hanoi could have paid for what it wanted, fewer rats in the city, but that is hard to count, so it counted tails. With an agent you can state the result directly. Tell it what you want to achieve, in plain words, and treat the activity, or the test, as one way of checking that it happened.</p>
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

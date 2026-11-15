@@ -36,6 +36,15 @@ const posts = [
         image: 'assets/images/tested_span.png'
     },
     {
+        slug: '2026-12-describe-the-result-not-the-activity',
+        title: 'Describe the Result, Not the Activity',
+        date: '2026-12-30',
+        publishDate: '2026-12-30T14:00:00+01:00',
+        excerpt: 'In 1902 Hanoi paid a bounty for rat tails to get rid of rats, and people started breeding rats for their tails. An instruction that names an activity gets the activity. Tell an agent the result you want.',
+        readTime: '4 min',
+        image: 'assets/images/counted_tails.png'
+    },
+    {
         slug: '2026-12-simple-is-a-design-decision',
         title: 'Simple Is a Design Decision',
         date: '2026-12-28',
