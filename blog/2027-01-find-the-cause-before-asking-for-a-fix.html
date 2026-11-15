@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="In 1840s Vienna, one maternity clinic lost far more mothers than the other. Semmelweis tried fixes aimed at guesses before finding a cause that explained the whole pattern. Ask an agent for the cause before the fix.">
+    <title>Find the Cause Before Asking for a Fix - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>In 1840s Vienna, some women gave birth in the street on purpose. They then <a href="https://en.wikipedia.org/wiki/Ignaz_Semmelweis">claimed it had happened on the way to the hospital</a>, so that they would not be admitted to the First Clinic of the Vienna General Hospital. They had reason. In 1846, by the hospital's own figures, 459 of the 4,010 mothers in the First Clinic died, 11.4 per cent, most of them from puerperal fever. In the Second Clinic, next door, 105 of 3,754 died, under 3 per cent.</p>
+
+            <p>Ignaz Semmelweis was a young assistant doctor in the First Clinic, and he set out to find why. His first attempts were fixes aimed at guesses. One guess concerned the priest. In his <a href="https://archive.org/details/b33953740/page/33/">1861 book</a> Semmelweis describes how the priest bringing the last rites walked through five rooms of the First Clinic to reach the sick ward, preceded by an attendant ringing a bell. In the Second Clinic he reached the sick ward without passing any other room. Perhaps the bell frightened women into fever. Semmelweis persuaded the priests to take a roundabout route, without the bell. In his words, the two clinics were now equal on this point, "aber die Mortalitätsdifferenz blieb": but the difference in deaths remained.</p>
+
+            <h2>A cause that fitted the pattern</h2>
+
+            <p>Semmelweis also tested explanations against what he could see. One thing puzzled him: women who gave birth in the street rarely caught the fever.</p>
+
+            <p>On 13 March 1847 his colleague <a href="https://en.wikipedia.org/wiki/Jakob_Kolletschka">Jakob Kolletschka</a> died after a student's scalpel cut his finger during a post-mortem. Kolletschka's autopsy showed the same disease as the dying mothers. Doctors and medical students in the First Clinic came straight from the autopsy room to examine women in labour. The <a href="https://www.gov.si/assets/ministrstva/MZ/DOKUMENTI/Dostopnost-in-varnost-zdravstvenega-varstva/Kakovost-zdravstvenega-varstva/3cb762f21a/WHO-Guidelines-on-Hand-Hygiene-in-Health-Care.pdf">World Health Organization's account</a> records that they often had "a disagreeable odour on their hands despite handwashing with soap and water". The Second Clinic was run by student midwives, who did no autopsies.</p>
+
+            <p>By then he had four candidates, and only one fitted everything he could see:</p>
+
+            <ul>
+                <li><strong>Overcrowding.</strong> The Second Clinic was always more crowded, and it did better.</li>
+                <li><strong>Climate.</strong> The two clinics were side by side.</li>
+                <li><strong>The priest's bell.</strong> The gap stayed after the route changed.</li>
+                <li><strong>Hands from the autopsy room.</strong> It explained the gap, the better results of the crowded Second Clinic, and the mothers who gave birth in the street and rarely fell ill.</li>
+            </ul>
+
+            <p>Semmelweis had staff scrub their hands in a chlorinated lime solution before examining patients, starting in mid-May 1847. In April, the First Clinic's death rate had been <a href="https://en.wikipedia.org/wiki/Historical_mortality_rates_of_puerperal_fever">18.3 per cent</a>. In June it was 2.2 per cent, and in July 1.2.</p>
+
+            <figure style="margin: 2rem auto; max-width: 420px;">
+                <img src="../assets/images/semmelweis_1861_vienna_dublin_table.jpg" alt="A page of yearly births and deaths from Semmelweis's 1861 book, with columns for the Dublin and Vienna maternity hospitals from 1823 to 1849" style="width: 100%; height: auto;">
+                <figcaption style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">Page 172 of Semmelweis's 1861 book. The right-hand columns are Vienna's First Clinic from 1841: 459 deaths in 1846, then 45 in 1848, after the hand washing began. The left-hand columns are the Dublin maternity hospital. Public domain, via the <a href="https://archive.org/details/b33953740/page/172/">Internet Archive</a> (Wellcome Library copy).</figcaption>
+            </figure>
+
+            <p>The bell was a fix aimed at a guess. It looked like action, and the difference in deaths remained. Hand washing worked because it came from a cause that explained every difference Semmelweis could see. When something breaks in software you are building with an agent, ask for the cause before you ask for the fix.</p>
+
+            <h2>The fix that keeps the problem</h2>
+
+            <p>An agent asked to fix a bug often proposes a fix straight away. Say some users are being logged out in the middle of their work. The agent suggests making sessions last longer and makes the change. The next week is a holiday week, fewer people use the app, and fewer complaints arrive.</p>
+
+            <p>Now run the same check Semmelweis ran. Short sessions would log out everyone, but only some users are affected, and the session length has not changed recently. A second cause fits both facts: the app loses its session when a user opens it in a second tab, which affects only users who open two tabs, and it started with the release that changed login. Longer sessions change nothing for those users. The problem is still there, now with a fix on top that everyone believes in.</p>
+
+            <p>Before any code changes, ask the agent who this happens to and who it does not happen to, when it started and what changed then, and which cause explains every difference, including the awkward ones. If the proposed cause explains only part of the pattern, keep looking, as Semmelweis did after the bell.</p>
+
+            <p>Vienna was not a clean experiment. The WHO describes it as what “would be considered an intervention trial using historical controls”, and Semmelweis blamed particles from corpses before germ theory existed. His test holds up anyway: a cause has to explain every difference you can see, including the users your agent's fix leaves out.</p>
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>

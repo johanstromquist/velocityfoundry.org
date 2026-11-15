@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2027-01-find-the-cause-before-asking-for-a-fix',
+        title: 'Find the Cause Before Asking for a Fix',
+        date: '2027-01-06',
+        publishDate: '2027-01-06T14:00:00+01:00',
+        excerpt: 'In 1840s Vienna, one maternity clinic lost far more mothers than the other. Semmelweis tried fixes aimed at guesses before finding a cause that explained the whole pattern. Ask an agent for the cause before the fix.',
+        readTime: '4 min',
+        image: 'assets/images/chlorine_basin.png'
+    },
+    {
         slug: '2027-01-done-is-a-claim-verification-is-evidence',
         title: '“Done” Is a Claim; Verification Is Evidence',
         date: '2027-01-04',
