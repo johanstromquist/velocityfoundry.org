@@ -180,15 +180,6 @@ const posts = [
         image: 'assets/images/director_selection.png'
     },
     {
-        slug: '2026-11-who-gets-to-build-software',
-        title: 'Who Gets to Build Software?',
-        date: '2026-11-16',
-        publishDate: '2026-11-16T14:00:00+01:00',
-        excerpt: 'Why I wrote The vibe coder\'s guide to the galaxy: who can build software now, and what it takes to direct an agent well.',
-        readTime: '6 min',
-        image: 'assets/images/who_gets_to_build_software.jpg'
-    },
-    {
         slug: '2026-11-how-i-wrote-the-vibe-coders-guide',
         title: 'How I Wrote The vibe coder\'s guide to the galaxy',
         date: '2026-11-18',
@@ -196,6 +187,15 @@ const posts = [
         excerpt: 'How I wrote The vibe coder\'s guide to the galaxy by making principles explicit, checking examples, and directing agents through writing and publishing.',
         readTime: '9 min',
         image: 'assets/images/how_i_wrote_the_vibe_coders_guide.jpg'
+    },
+    {
+        slug: '2026-11-who-gets-to-build-software',
+        title: 'Who Gets to Build Software?',
+        date: '2026-11-16',
+        publishDate: '2026-11-16T14:00:00+01:00',
+        excerpt: 'Why I wrote The vibe coder\'s guide to the galaxy: who can build software now, and what it takes to direct an agent well.',
+        readTime: '6 min',
+        image: 'assets/images/who_gets_to_build_software.jpg'
     },
     {
         slug: '2026-05-what-stays-yours',
@@ -324,15 +324,6 @@ const posts = [
         image: 'assets/images/regulatory_runway.png'
     },
     {
-        slug: '2025-11-on-change-release',
-        title: 'On Change is Live',
-        date: '2025-11-19',
-        publishDate: '2025-11-19',
-        excerpt: 'After watching 300+ transformations, I wrote the book I wish existed at Day 45—when doubt peaks and most transformations die. On Change is live today.',
-        readTime: '5 min',
-        image: 'assets/images/On_Change_Cover_Kindle.jpg'
-    },
-    {
         slug: '2026-01-agents-and-velocity',
         title: 'Agents and the Speed of Development',
         date: '2026-01-19',
@@ -414,6 +405,15 @@ const posts = [
         image: 'assets/images/removed_mask.png'
     },
     {
+        slug: '2025-11-on-change-release',
+        title: 'On Change is Live',
+        date: '2025-11-19',
+        publishDate: '2025-11-19',
+        excerpt: 'After watching 300+ transformations, I wrote the book I wish existed at Day 45—when doubt peaks and most transformations die. On Change is live today.',
+        readTime: '5 min',
+        image: 'assets/images/On_Change_Cover_Kindle.jpg'
+    },
+    {
         slug: '2025-11-kill-the-redlines',
         title: 'Kill the Redlines',
         date: '2025-11-17',
@@ -459,13 +459,13 @@ const posts = [
         image: 'assets/images/hamster.jpg'
     },
     {
-        slug: '2025-10-the-bio-tech-stack',
-        title: 'The Bio Tech Stack: Golden Paths for Every Biotech',
-        date: '2025-10-06',
-        publishDate: '2025-10-06 14:00:00',
-        excerpt: '80% of biotech operations follow predictable patterns. We\'re all special snowflakes doing identical administrative work. Stop rebuilding these processes from scratch and start assembling your Bio Tech Stack.',
-        readTime: '7 min',
-        image: 'assets/images/techstack.png'
+        slug: '2025-10-operationalizing-velocity-os',
+        title: 'Operationalizing Velocity OS: From Committee Speed to Continuous Speed',
+        date: '2025-10-13',
+        publishDate: '2025-10-13',
+        excerpt: 'The Velocity Operating System isn\'t philosophy - it\'s mechanics. Five core components that work together to eliminate organizational friction and move from committee speed to continuous speed.',
+        readTime: '10 min',
+        image: 'assets/images/switchboard.png'
     },
     {
         slug: '2025-10-platos-dialogue-on-agi',
@@ -477,13 +477,13 @@ const posts = [
         image: 'assets/images/Socrates.png'
     },
     {
-        slug: '2025-10-operationalizing-velocity-os',
-        title: 'Operationalizing Velocity OS: From Committee Speed to Continuous Speed',
-        date: '2025-10-13',
-        publishDate: '2025-10-13',
-        excerpt: 'The Velocity Operating System isn\'t philosophy - it\'s mechanics. Five core components that work together to eliminate organizational friction and move from committee speed to continuous speed.',
-        readTime: '10 min',
-        image: 'assets/images/switchboard.png'
+        slug: '2025-10-the-bio-tech-stack',
+        title: 'The Bio Tech Stack: Golden Paths for Every Biotech',
+        date: '2025-10-06',
+        publishDate: '2025-10-06 14:00:00',
+        excerpt: '80% of biotech operations follow predictable patterns. We\'re all special snowflakes doing identical administrative work. Stop rebuilding these processes from scratch and start assembling your Bio Tech Stack.',
+        readTime: '7 min',
+        image: 'assets/images/techstack.png'
     },
     {
         slug: '2025-09-velocity-os',
