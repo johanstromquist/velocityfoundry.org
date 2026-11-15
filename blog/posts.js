@@ -27,6 +27,15 @@ function parsePublishDate(value) {
 
 const posts = [
     {
+        slug: '2027-01-it-works-is-not-the-same-as-ready',
+        title: '\u201cIt Works\u201d Is Not the Same as Ready',
+        date: '2027-01-13',
+        publishDate: '2027-01-13T14:00:00+01:00',
+        excerpt: 'Denver\'s new airport moved its opening date four times, each time because of the baggage system. A demonstration shows that something works; only a full-scale test shows whether it is ready. The same holds for an agent\'s \u201cit works\u201d.',
+        readTime: '3 min',
+        image: 'assets/images/basement_tour.png'
+    },
+    {
         slug: '2027-01-check-before-the-irreversible-step',
         title: 'Check Before the Irreversible Step',
         date: '2027-01-11',

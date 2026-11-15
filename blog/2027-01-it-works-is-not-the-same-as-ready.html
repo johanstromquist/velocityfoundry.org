@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Denver&#39;s new airport moved its opening date four times, each time because of the baggage system. A demonstration shows that something works; only a full-scale test shows whether it is ready. The same holds for an agent&#39;s &quot;it works&quot;.">
+    <title>“It Works” Is Not the Same as Ready - Velocity Foundry</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+</head>
+<body>
+    <!-- Navigation (injected dynamically) -->
+    <div id="blog-nav"></div>
+
+    <!-- Post Hero (injected dynamically from posts.js) -->
+    <div id="blog-hero"></div>
+
+    <!-- Post Content -->
+    <article class="container" style="padding: 0 var(--space-md) var(--space-xl);">
+        <div class="post-nav" style="border-bottom: 2px solid var(--gray-200); padding-bottom: var(--space-sm); margin-bottom: var(--space-lg);" id="blog-top-nav"></div>
+
+        <div class="post-content">
+            <p>Tours of Denver’s new airport, the <a href="https://www.nytimes.com/2005/08/27/us/denver-airport-saw-the-future-it-didnt-work.html">New York Times later reported</a>, ended in the basement, where thousands of small carts sped bags up and down inclines. “They were so proud of it,” an airline analyst told the paper. “It’s the one thing they wanted to show you.”</p>
+
+            <p>The airport was due to open in October 1993, and it opened in February 1995, 16 months late. Each time the opening moved, the reason given was the baggage system. A <a href="https://www.gao.gov/assets/rced-95-241fs.pdf">1995 fact sheet</a> that the US General Accounting Office wrote for Senator Hank Brown records how it happened.</p>
+
+            <h2>Four opening dates</h2>
+
+            <p>The warning came early. In 1990 a consulting firm the city had hired said there was not enough time to design, install and test an airport-wide automated baggage system by October 1993. In March 1993 the city moved the opening to December. In June the contractor wrote that the system would be installed by October, which would leave time to test all of it before the December opening. In October the opening moved again, to March 1994.</p>
+
+            <p>The first large-scale test came in February 1994, a month before the new date, and it produced major failures. United Airlines’ baggage consultant concluded that the system would not work by March, and that extensive testing would be needed to “debug” its software and hardware. The city moved the opening to May.</p>
+
+            <p>In April it invited reporters to watch the system at work. A <a href="https://press.anu.edu.au/downloads/press/p128271/mobile/ch06s08.html">timeline published by ANU Press</a> records the result: “Disaster – everything broke.” Richard de Neufville of MIT <a href="https://www.cs.vassar.edu/~cs335/Crisis/Denver.pdf">wrote that television showed</a> carts jammed in the tracks and bags “mutilated and lost”. In May 1994 the city stopped naming an opening date.</p>
+
+            <h2>Opening in smaller pieces</h2>
+
+            <p>That same month the city hired Logplan, a baggage consultancy. Logplan recommended two things: test the system and bring it into operation in smaller pieces, and build a conventional baggage system to use until the automated one was finished.</p>
+
+            <p>The city did both. It signed a contract for an alternative system of conveyors, carousels, tugs and carts, estimated at $63 million, and it cut the automated system’s specified speed from 65 bags per minute per line to 30. When the airport opened in February 1995, the automated system handled United’s outbound bags and odd-sized baggage, and Concourses A and C used tugs and carts. By then the cost of the baggage system had risen from about $195 million to over $290 million.</p>
+
+            <p>The city could still choose how to open because the failure came before any passenger depended on the system. The basement tour had shown the system running. Only running it at full scale could show whether it was ready.</p>
+
+            <h2>Your agent’s basement tour</h2>
+
+            <p>When an agent reports that a feature works, that may be true where the agent checked it: ten sample customers, one user at a time, on a fast computer, with plain names. Your users will arrive with thousands of real records, several at once, on phones, with names that contain apostrophes and addresses in other countries.</p>
+
+            <p>Before people depend on what you have built, test it under conditions close to theirs. Load a copy of the real data, or as much of it as you are allowed to use. Open it on the devices your users have. Ask a few people who did not build it to use it for something they actually need. Then do what Denver’s consultant advised: release it to a small group first, and keep the old way of working available until the new one has held up.</p>
+
+            <p>Denver kept its old way available for longer than planned. In 2005, United, the only airline that ever used any part of the automated system, <a href="https://www.nbcnews.com/id/wbna8975649">switched it off</a> and went back to tugs and carts.</p>
+        </div>
+
+        <!-- Bottom Navigation with Next/Prev (injected dynamically) -->
+        <div class="post-nav" id="blog-bottom-nav"></div>
+    </article>
+
+    <!-- Footer (injected dynamically) -->
+    <div id="blog-footer"></div>
+
+    <!-- Load posts data and layout manager -->
+    <script src="posts.js"></script>
+    <script src="blog-layout.js"></script>
+</body>
+</html>
